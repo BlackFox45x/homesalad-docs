@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Development Roadmap</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../images/image.png">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="game-overview.html">Game Overview</a>
+                            <a href="gameplay-systems.html">Gameplay Systems</a>
+                            <a href="character-progression.html">Character Progression</a>
+                            <a href="skill-tree.html">Skill Tree System</a>
+                            <a href="garden-building.html">Garden Building System</a>
+                            <a href="quest-rewards.html">Quest & Reward System</a>
+                            <a href="quest-design.html">Quest Design</a>
+                            <a href="world-design.html">World Design</a>
+                            <a href="user-interface.html">User Interface</a>
+                            <a href="art-audio.html">Art & Audio</a>
+                            <a href="development-roadmap.html">Development Roadmap</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Design Document</a>
+            <span class="separator">></span>
+            <span class="current">Development Roadmap</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Design Document</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li><a href="garden-building.html">Garden Building System</a></li>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li class="active"><a href="development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                        <li><a href="../technical/technical-challenges.html">Technical Challenges</a></li>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Development Roadmap</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section outlines the development plan for HomeSalad, including project phases, milestone targets, feature prioritization, and release strategy.</p>
+                </div>
+                
+                <h2>Development Philosophy</h2>
+                <p>HomeSalad's development approach is guided by several core principles:</p>
+                
+                <ul>
+                    <li><strong>Systems-First Development:</strong> Building core gameplay systems before content creation to ensure solid foundations</li>
+                    <li><strong>Iterative Design:</strong> Regular playtesting and refinement cycles to improve gameplay feel and balance</li>
+                    <li><strong>Vertical Slice Strategy:</strong> Creating complete, polished sections before expanding to full scope</li>
+                    <li><strong>Community Feedback:</strong> Incorporating player input throughout development while maintaining vision</li>
+                    <li><strong>Sustainable Pace:</strong> Maintaining team health and avoiding crunch through realistic scheduling</li>
+                </ul>
+                
+                <h2>Development Phases</h2>
+                <p>The project is structured into six major development phases:</p>
+                
+                <div class="phase-section">
+                    <h3>Phase 1: Pre-Production (3 Months)</h3>
+                    <p><strong>Focus:</strong> Establishing design foundations, technical prototyping, and team alignment</p>
+                    
+                    <p><strong>Key Deliverables:</strong></p>
+                    <ul>
+                        <li>Complete game design document and story bible</li>
+                        <li>Technical architecture plan and framework selection</li>
+                        <li>Art style guides and audio direction documents</li>
+                        <li>Core gameplay prototypes for gardening and building systems</li>
+                        <li>Project management infrastructure and development roadmap</li>
+                    </ul>
+                    
+                    <p><strong>Milestones:</strong></p>
+                    <ul>
+                        <li>Design documentation approval</li>
+                        <li>Technical prototype demonstration</li>
+                        <li>Art direction approval</li>
+                        <li>Team onboarding completion</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-section">
+                    <h3>Phase 2: Core Systems Development (6 Months)</h3>
+                    <p><strong>Focus:</strong> Building the fundamental systems that power gameplay</p>
+                    
+                    <p><strong>Key Deliverables:</strong></p>
+                    <ul>
+                        <li>Character controller and animation system</li>
+                        <li>Environmental transformation framework</li>
+                        <li>Plant growth and gardening mechanics</li>
+                        <li>Building and construction system</li>
+                        <li>Basic NPC interaction framework</li>
+                        <li>Time and season cycle implementation</li>
+                        <li>Inventory and resource management</li>
+                    </ul>
+                    
+                    <p><strong>Milestones:</strong></p>
+                    <ul>
+                        <li>Playable systems prototype</li>
+                        <li>First internal playtest</li>
+                        <li>Technical systems review</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-section">
+                    <h3>Phase 3: Vertical Slice (4 Months)</h3>
+                    <p><strong>Focus:</strong> Creating a polished, representative section of the game</p>
+                    
+                    <p><strong>Key Deliverables:</strong></p>
+                    <ul>
+                        <li>One complete district (Downtown Commons)</li>
+                        <li>Core gameplay loop implementation</li>
+                        <li>UI system and basic menus</li>
+                        <li>Initial quest implementation</li>
+                        <li>Character customization basics</li>
+                        <li>Preliminary audio implementation</li>
+                        <li>Visual effects for key interactions</li>
+                    </ul>
+                    
+                    <p><strong>Milestones:</strong></p>
+                    <ul>
+                        <li>Vertical slice completion</li>
+                        <li>Focus group testing</li>
+                        <li>Publisher/stakeholder presentation</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-section">
+                    <h3>Phase 4: Content Production (8 Months)</h3>
+                    <p><strong>Focus:</strong> Building out the full game world and content</p>
+                    
+                    <p><strong>Key Deliverables:</strong></p>
+                    <ul>
+                        <li>All five districts with unique characteristics</li>
+                        <li>Complete NPC roster and relationship systems</li>
+                        <li>Full quest implementation for main storyline</li>
+                        <li>Faction quests and reputation system</li>
+                        <li>Complete plant and building libraries</li>
+                        <li>Environmental states for all areas</li>
+                        <li>Seasonal variations and weather system</li>
+                    </ul>
+                    
+                    <p><strong>Milestones:</strong></p>
+                    <ul>
+                        <li>Alpha release (feature complete)</li>
+                        <li>Content completion review</li>
+                        <li>Closed alpha testing</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-section">
+                    <h3>Phase 5: Polish and Optimization (3 Months)</h3>
+                    <p><strong>Focus:</strong> Refining gameplay, fixing issues, and optimizing performance</p>
+                    
+                    <p><strong>Key Deliverables:</strong></p>
+                    <ul>
+                        <li>Bug fixing and quality assurance</li>
+                        <li>Performance optimization for target platforms</li>
+                        <li>UI refinement and accessibility implementation</li>
+                        <li>Tutorial and onboarding improvements</li>
+                        <li>Balance adjustments based on testing</li>
+                        <li>Final audio mix and implementation</li>
+                        <li>Localization integration</li>
+                    </ul>
+                    
+                    <p><strong>Milestones:</strong></p>
+                    <ul>
+                        <li>Beta release</li>
+                        <li>Open beta testing</li>
+                        <li>Performance benchmark targets met</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-section">
+                    <h3>Phase 6: Launch and Post-Launch (Ongoing)</h3>
+                    <p><strong>Focus:</strong> Releasing the game and supporting it with updates and community engagement</p>
+                    
+                    <p><strong>Key Deliverables:</strong></p>
+                    <ul>
+                        <li>Release build preparation</li>
+                        <li>Marketing and community support</li>
+                        <li>Day one patch</li>
+                        <li>Post-launch content updates</li>
+                        <li>Community feedback implementation</li>
+                        <li>Seasonal events and activities</li>
+                        <li>Multiplayer implementation (post-launch)</li>
+                    </ul>
+                    
+                    <p><strong>Milestones:</strong></p>
+                    <ul>
+                        <li>Gold master</li>
+                        <li>Public release</li>
+                        <li>Post-launch update schedule</li>
+                    </ul>
+                </div>
+                
+                <h2>Feature Prioritization</h2>
+                <p>Features are categorized based on their importance to the core experience:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>Description</th>
+                                <th>Example Features</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>P0: Core</td>
+                                <td>Essential features without which the game cannot function</td>
+                                <td>Character movement, environmental transformation, gardening system, building system</td>
+                            </tr>
+                            <tr>
+                                <td>P1: Critical</td>
+                                <td>Features necessary for the complete gameplay experience</td>
+                                <td>NPC relationships, quest system, seasonal cycle, resource management</td>
+                            </tr>
+                            <tr>
+                                <td>P2: Important</td>
+                                <td>Features that significantly enhance the experience</td>
+                                <td>Character customization, faction reputation, community projects, weather system</td>
+                            </tr>
+                            <tr>
+                                <td>P3: Desirable</td>
+                                <td>Features that add depth but could be scaled back if needed</td>
+                                <td>Detailed skill system, cooking mechanics, decorative options, festival events</td>
+                            </tr>
+                            <tr>
+                                <td>P4: Nice-to-Have</td>
+                                <td>Features that could be added post-launch if necessary</td>
+                                <td>Photo mode, advanced customization, additional districts, pet companions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2>Risk Management</h2>
+                <p>Identified development risks and mitigation strategies:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Risk</th>
+                                <th>Impact</th>
+                                <th>Likelihood</th>
+                                <th>Mitigation Strategy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Environmental transformation system complexity</td>
+                                <td>High</td>
+                                <td>Medium</td>
+                                <td>Early prototyping, staged implementation, fallback to simpler version if needed</td>
+                            </tr>
+                            <tr>
+                                <td>Performance issues with plant rendering</td>
+                                <td>Medium</td>
+                                <td>High</td>
+                                <td>LOD system, instancing, optimization sprints, scalable quality settings</td>
+                            </tr>
+                            <tr>
+                                <td>Scope creep in content production</td>
+                                <td>High</td>
+                                <td>High</td>
+                                <td>Clear feature prioritization, modular design, regular scope reviews</td>
+                            </tr>
+                            <tr>
+                                <td>Balancing complexity in gameplay systems</td>
+                                <td>Medium</td>
+                                <td>Medium</td>
+                                <td>Regular playtesting, data-driven design, configurable difficulty</td>
+                            </tr>
+                            <tr>
+                                <td>Integration challenges with uMMORPG framework</td>
+                                <td>High</td>
+                                <td>Medium</td>
+                                <td>Technical spike early in development, dedicated integration team, fallback plans</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2>Release Strategy</h2>
+                <p>HomeSalad will follow a staged release approach:</p>
+                
+                <h3>Early Access (Year 1 Content)</h3>
+                <ul>
+                    <li><strong>Scope:</strong> Downtown Commons and Riverside Heights districts, core gameplay systems, Year 1 storyline</li>
+                    <li><strong>Duration:</strong> 6-8 months</li>
+                    <li><strong>Purpose:</strong> Gather player feedback, refine systems, build community</li>
+                    <li><strong>Update Cadence:</strong> Major updates every 4-6 weeks</li>
+                    <li><strong>Pricing:</strong> Reduced price with free upgrades to full version</li>
+                </ul>
+                
+                <h3>Full Release (Complete Game)</h3>
+                <ul>
+                    <li><strong>Scope:</strong> All five districts, complete three-year storyline, all core features</li>
+                    <li><strong>Platforms:</strong> PC (Windows, Mac, Linux) initially, console ports later</li>
+                    <li><strong>Marketing:</strong> Focus on sustainability themes, community building, and unique gameplay</li>
+                    <li><strong>Launch Window:</strong> Avoid major competitive releases, target spring season</li>
+                </ul>
+                
+                <h3>Post-Launch Support</h3>
+                <ul>
+                    <li><strong>Free Updates:</strong> Seasonal events, quality of life improvements, bug fixes</li>
+                    <li><strong>Expansion Content:</strong> New districts, storylines, and gameplay systems as paid DLC</li>
+                    <li><strong>Community Engagement:</strong> Regular dev streams, feature voting, community challenges</li>
+                    <li><strong>Multiplayer Implementation:</strong> Cooperative play added as major post-launch feature</li>
+                </ul>
+                
+                <h2>Team Structure</h2>
+                <p>The development team is organized into cross-functional groups:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Team</th>
+                                <th>Responsibilities</th>
+                                <th>Size</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Core Systems</td>
+                                <td>Character controller, environmental systems, building mechanics, plant growth</td>
+                                <td>5-6 developers</td>
+                            </tr>
+                            <tr>
+                                <td>Content Creation</td>
+                                <td>World building, quest design, dialogue writing, NPC implementation</td>
+                                <td>4-5 designers</td>
+                            </tr>
+                            <tr>
+                                <td>Art & Audio</td>
+                                <td>Visual assets, animation, sound design, music composition</td>
+                                <td>6-8 artists</td>
+                            </tr>
+                            <tr>
+                                <td>UI/UX</td>
+                                <td>Interface design, player experience, accessibility, tutorials</td>
+                                <td>2-3 specialists</td>
+                            </tr>
+                            <tr>
+                                <td>QA & Community</td>
+                                <td>Testing, bug tracking, community management, player feedback</td>
+                                <td>3-4 team members</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2>Development Tools</h2>
+                <p>Primary tools and technologies used in development:</p>
+                <ul>
+                    <li><strong>Engine:</strong> Unity with uMMORPG Remastered framework</li>
+                    <li><strong>Version Control:</strong> Git with branching strategy for features and releases</li>
+                    <li><strong>Project Management:</strong> Jira for task tracking, Confluence for documentation</li>
+                    <li><strong>Art Pipeline:</strong> Blender for 3D modeling, Substance for texturing, Photoshop for 2D assets</li>
+                    <li><strong>Audio Production:</strong> FMOD for implementation, Pro Tools for composition and sound design</li>
+                    <li><strong>Testing:</strong> Automated test framework for core systems, playtesting protocols</li>
+                    <li><strong>Build System:</strong> Jenkins for CI/CD, automated build distribution</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Design Note:</strong> The development roadmap for HomeSalad emphasizes building solid foundations before expanding content, with regular opportunities for testing and refinement. The staged release approach allows for community input while maintaining the core vision for the game.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="art-audio.html" class="prev-link">Previous: Art & Audio</a>
+                    <a href="accessibility.html" class="next-link">Next: Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

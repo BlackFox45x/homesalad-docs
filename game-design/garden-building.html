@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Garden Building System</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="game-overview.html">Game Overview</a>
+                            <a href="gameplay-systems.html">Gameplay Systems</a>
+                            <a href="character-progression.html">Character Progression</a>
+                            <a href="skill-tree.html">Skill Tree System</a>
+                            <a href="garden-building.html">Garden Building System</a>
+                            <a href="quest-rewards.html">Quest & Reward System</a>
+                            <a href="quest-design.html">Quest Design</a>
+                            <a href="world-design.html">World Design</a>
+                            <a href="user-interface.html">User Interface</a>
+                            <a href="art-audio.html">Art & Audio</a>
+                            <a href="development-roadmap.html">Development Roadmap</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Design Document</a>
+            <span class="separator">></span>
+            <span class="current">Garden Building System</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Design Document</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li class="active"><a href="garden-building.html">Garden Building System</a></li>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Garden Building System</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details HomeSalad's garden building system, including garden types, component progression, design patterns, and the evolution of garden capabilities throughout the game.</p>
+                </div>
+                
+                <h2>Garden Building Overview</h2>
+                <p>The garden building system is a core gameplay mechanic that allows players to design, construct, and evolve various types of growing spaces. Gardens progress from simple plots to complex integrated systems as players gain knowledge, skills, and resources.</p>
+                
+                <div class="garden-diagram">
+                    <img src="../images/garden-building-overview.jpg" alt="Overview diagram showing the progression of garden types from basic to advanced">
+                    <p class="caption"><strong>AI Prompt:</strong> "A progression diagram showing the evolution of garden types in a farming game, from simple row gardens to complex permaculture systems. Show 5 stages of increasing complexity with arrows connecting them, each with small illustrations of the garden type. Include labels for each stage. Clean, instructional style with a natural color palette."</p>
+                </div>
+                
+                <h2>Garden Building Progression Tree</h2>
+                <p>Garden development follows a progression tree that branches into different specializations:</p>
+                
+                <div class="garden-tree-diagram">
+                    <img src="../images/garden-progression-tree.jpg" alt="Complete garden progression tree showing all branches and unlockable components">
+                    <p class="caption"><strong>AI Prompt:</strong> "A detailed progression tree diagram for garden building in a farming game. The tree starts with 'Basic Plot' at the bottom and branches upward into four main paths: Food Production, Permaculture Systems, Ornamental Gardens, and Specialized Production. Each branch has 4-5 tiers of increasingly complex garden types with connecting lines showing prerequisites. Include small illustrations for each garden type."</p>
+                </div>
+                
+                <h3>Garden Type Progression</h3>
+                <p>Gardens evolve through five tiers of complexity and capability:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tier</th>
+                                <th>Garden Types</th>
+                                <th>Key Features</th>
+                                <th>Requirements</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tier 1<br>(Basic)</td>
+                                <td>Row Garden, Container Garden, Herb Spiral</td>
+                                <td>Simple layouts, single-function, basic crops</td>
+                                <td>Basic Gardening skill, minimal resources</td>
+                            </tr>
+                            <tr>
+                                <td>Tier 2<br>(Established)</td>
+                                <td>Raised Beds, Square Foot Garden, Vertical Garden</td>
+                                <td>Improved space efficiency, better soil management</td>
+                                <td>Level 2 Gardening skill, basic construction</td>
+                            </tr>
+                            <tr>
+                                <td>Tier 3<br>(Advanced)</td>
+                                <td>Keyhole Garden, Hugelkultur, Food Forest Edge</td>
+                                <td>Water efficiency, soil building, multi-function</td>
+                                <td>Level 3 Gardening skill, intermediate construction</td>
+                            </tr>
+                            <tr>
+                                <td>Tier 4<br>(Integrated)</td>
+                                <td>Guild Systems, Aquaponics, Edible Landscape</td>
+                                <td>Integrated systems, multiple yields, self-maintaining</td>
+                                <td>Level 4 Gardening skill, advanced construction</td>
+                            </tr>
+                            <tr>
+                                <td>Tier 5<br>(Regenerative)</td>
+                                <td>Food Forest, Living Machine, Closed-Loop System</td>
+                                <td>Self-sustaining, maximum diversity, regenerative</td>
+                                <td>Level 5 Gardening skill, master construction</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Specialization Branches</h3>
+                <p>The garden progression tree branches into four main specializations:</p>
+                
+                <div class="garden-branch">
+                    <h4>Food Production Branch</h4>
+                    <p>Focuses on maximizing food yield and efficiency</p>
+                    
+                    <div class="progression-path">
+                        <div class="progression-node">
+                            <h5>Row Garden (Tier 1)</h5>
+                            <p><strong>Description:</strong> Traditional rows of single crops with paths between</p>
+                            <p><strong>Benefits:</strong> Simple to plan, easy maintenance access</p>
+                            <p><strong>Unlocks:</strong> Basic vegetable production, simple crop rotation</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Raised Beds (Tier 2)</h5>
+                            <p><strong>Description:</strong> Elevated growing areas with defined borders</p>
+                            <p><strong>Benefits:</strong> Improved soil control, better drainage, ergonomic access</p>
+                            <p><strong>Unlocks:</strong> 25% yield increase, season extension options</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Intensive Beds (Tier 3)</h5>
+                            <p><strong>Description:</strong> Densely planted beds with companion planting</p>
+                            <p><strong>Benefits:</strong> Maximum space utilization, reduced weeding</p>
+                            <p><strong>Unlocks:</strong> 50% yield increase, companion planting bonuses</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Biointensive System (Tier 4)</h5>
+                            <p><strong>Description:</strong> Deep soil preparation with closed-loop fertility</p>
+                            <p><strong>Benefits:</strong> Maximum yield per area, soil building</p>
+                            <p><strong>Unlocks:</strong> 100% yield increase, 50% water reduction</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Market Garden (Tier 5)</h5>
+                            <p><strong>Description:</strong> Professional-level food production system</p>
+                            <p><strong>Benefits:</strong> Maximum efficiency, crop diversity, year-round production</p>
+                            <p><strong>Unlocks:</strong> 200% yield increase, premium crop quality, commercial-scale production</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="garden-branch">
+                    <h4>Permaculture Systems Branch</h4>
+                    <p>Focuses on self-sustaining ecological systems</p>
+                    
+                    <div class="progression-path">
+                        <div class="progression-node">
+                            <h5>Herb Spiral (Tier 1)</h5>
+                            <p><strong>Description:</strong> Spiral-shaped raised bed with microclimate zones</p>
+                            <p><strong>Benefits:</strong> Multiple growing conditions in small space</p>
+                            <p><strong>Unlocks:</strong> Microclimate creation, herb variety</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Keyhole Garden (Tier 2)</h5>
+                            <p><strong>Description:</strong> Circular bed with access notch and central compost</p>
+                            <p><strong>Benefits:</strong> Integrated composting, water efficiency</p>
+                            <p><strong>Unlocks:</strong> 30% water reduction, continuous fertility</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Hugelkultur (Tier 3)</h5>
+                            <p><strong>Description:</strong> Mound system with buried wood and organic matter</p>
+                            <p><strong>Benefits:</strong> Long-term fertility, water retention</p>
+                            <p><strong>Unlocks:</strong> 50% water reduction, no-irrigation options</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Guild System (Tier 4)</h5>
+                            <p><strong>Description:</strong> Plant communities with complementary functions</p>
+                            <p><strong>Benefits:</strong> Self-maintaining, multiple yields, pest resistance</p>
+                            <p><strong>Unlocks:</strong> 75% maintenance reduction, ecosystem services</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Food Forest (Tier 5)</h5>
+                            <p><strong>Description:</strong> Multi-layered perennial system mimicking forest structure</p>
+                            <p><strong>Benefits:</strong> Self-sustaining, maximum diversity, minimal maintenance</p>
+                            <p><strong>Unlocks:</strong> 90% maintenance reduction, continuous harvests, maximum biodiversity</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="garden-branch">
+                    <h4>Ornamental Gardens Branch</h4>
+                    <p>Focuses on aesthetic and community wellbeing benefits</p>
+                    
+                    <!-- Ornamental Gardens progression path would be detailed here -->
+                </div>
+                
+                <div class="garden-branch">
+                    <h4>Specialized Production Branch</h4>
+                    <p>Focuses on specific production systems for unique outputs</p>
+                    
+                    <!-- Specialized Production progression path would be detailed here -->
+                </div>
+                
+                <h2>Garden Components</h2>
+                <p>Gardens are built from various components that unlock as players progress:</p>
+                
+                <h3>Bed Types</h3>
+                <div class="component-grid">
+                    <div class="component-card">
+                        <h4>Ground Level Bed</h4>
+                        <p><strong>Tier:</strong> 1</p>
+                        <p><strong>Materials:</strong> Soil amendments only</p>
+                        <p><strong>Benefits:</strong> No construction needed, unlimited size</p>
+                        <p><strong>Limitations:</strong> Poor drainage, soil quality issues, pest access</p>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4>Raised Bed</h4>
+                        <p><strong>Tier:</strong> 2</p>
+                        <p><strong>Materials:</strong> Wood, stone, or brick + quality soil</p>
+                        <p><strong>Benefits:</strong> Better drainage, soil control, reduced bending</p>
+                        <p><strong>Limitations:</strong> Material cost, size constraints, eventual replacement</p>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4>Wicking Bed</h4>
+                        <p><strong>Tier:</strong> 3</p>
+                        <p><strong>Materials:</strong> Liner, gravel, pipe, soil layers</p>
+                        <p><strong>Benefits:</strong> Water efficiency, drought resistance</p>
+                        <p><strong>Limitations:</strong> Complex construction, higher cost</p>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4>Hugelkultur Bed</h4>
+                        <p><strong>Tier:</strong> 3</p>
+                        <p><strong>Materials:</strong> Logs, branches, compost, soil layers</p>
+                        <p><strong>Benefits:</strong> Long-term fertility, water retention</p>
+                        <p><strong>Limitations:</strong> Large space requirement, initial decomposition period</p>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4>Aquaponic Bed</h4>
+                        <p><strong>Tier:</strong> 4</p>
+                        <p><strong>Materials:</strong> Waterproof container, grow media, plumbing</p>
+                        <p><strong>Benefits:</strong> Fish integration, high productivity, water efficiency</p>
+                        <p><strong>Limitations:</strong> Technical complexity, energy requirements</p>
+                    </div>
+                </div>
+                
+                <h3>Water Management</h3>
+                <div class="component-grid">
+                    <div class="component-card">
+                        <h4>Hand Watering</h4>
+                        <p><strong>Tier:</strong> 1</p>
+                        <p><strong>Materials:</strong> Watering can or hose</p>
+                        <p><strong>Benefits:</strong> Precise control, no installation</p>
+                        <p><strong>Limitations:</strong> Time-consuming, inconsistent</p>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4>Soaker Hose</h4>
+                        <p><strong>Tier:</strong> 2</p>
+                        <p><strong>Materials:</strong> Porous hose, connectors</p>
+                        <p><strong>Benefits:</strong> Water conservation, root-level moisture</p>
+                        <p><strong>Limitations:</strong> Limited configuration options</p>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4>Drip Irrigation</h4>
+                        <p><strong>Tier:</strong> 3</p>
+                        <p><strong>Materials:</strong> Tubing, emitters, connectors, timer</p>
+                        <p><strong>Benefits:</strong> Precise delivery, automation, water efficiency</p>
+                        <p><strong>Limitations:</strong> Setup complexity, maintenance</p>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4>Rainwater Harvesting</h4>
+                        <p><strong>Tier:</strong> 3</p>
+                        <p><strong>Materials:</strong> Barrels/tanks, gutters, filters, pump</p>
+                        <p><strong>Benefits:</strong> Free water source, sustainability</p>
+                        <p><strong>Limitations:</strong> Weather dependence, storage space</p>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4>Greywater System</h4>
+                        <p><strong>Tier:</strong> 4</p>
+                        <p><strong>Materials:</strong> Filtration components, distribution system</p>
+                        <p><strong>Benefits:</strong> Water recycling, reduced consumption</p>
+                        <p><strong>Limitations:</strong> Complex regulations, filtration requirements</p>
+                    </div>
+                </div>
+                
+                <h3>Soil Management</h3>
+                <!-- Soil Management components would be detailed here -->
+                
+                <h3>Plant Support</h3>
+                <!-- Plant Support components would be detailed here -->
+                
+                <h3>Season Extension</h3>
+                <!-- Season Extension components would be detailed here -->
+                
+                <h2>Garden Design Patterns</h2>
+                <p>Players can implement various design patterns to optimize their gardens:</p>
+                
+                <div class="design-pattern">
+                    <h3>Keyhole Pattern</h3>
+                    <img src="../images/keyhole-pattern.jpg" alt="Diagram of keyhole garden design pattern">
+                    <p class="caption"><strong>AI Prompt:</strong> "A top-down diagram of a keyhole garden design pattern showing a circular garden bed with a notched access path extending to the center. Include measurements, planting zones, and a small legend explaining the components. Clean, instructional style with earthy colors."</p>
+                    
+                    <p><strong>Description:</strong> Circular or horseshoe-shaped bed with a narrow access path extending to the center</p>
+                    <p><strong>Benefits:</strong></p>
+                    <ul>
+                        <li>Maximizes growing area while maintaining access to all plants</li>
+                        <li>Central area can contain compost or water source</li>
+                        <li>Creates multiple microclimate zones from center to edge</li>
+                    </ul>
+                    <p><strong>Unlocked At:</strong> Gardening Level 2, Construction Level 2</p>
+                </div>
+                
+                <div class="design-pattern">
+                    <h3>Mandala Pattern</h3>
+                    <img src="../images/mandala-pattern.jpg" alt="Diagram of mandala garden design pattern">
+                    <p class="caption"><strong>AI Prompt:</strong> "A top-down diagram of a mandala garden design pattern showing concentric circular beds with keyhole access paths and central feature. Include planting zones, path layout, and a small legend explaining the components. Clean, instructional style with earthy colors."</p>
+                    
+                    <p><strong>Description:</strong> Concentric circles with keyhole access paths and central feature</p>
+                    <p><strong>Benefits:</strong></p>
+                    <ul>
+                        <li>Beautiful aesthetic with functional design</li>
+                        <li>Creates multiple microclimate zones</li>
+                        <li>Efficient use of space with good access</li>
+                    </ul>
+                    <p><strong>Unlocked At:</strong> Gardening Level 3, Construction Level 2</p>
+                </div>
+                
+                <div class="design-pattern">
+                    <h3>Herb Spiral</h3>
+                    <!-- Herb Spiral pattern would be detailed here -->
+                </div>
+                
+                <div class="design-pattern">
+                    <h3>Three Sisters Guild</h3>
+                    <!-- Three Sisters Guild pattern would be detailed here -->
+                </div>
+                
+                <div class="design-pattern">
+                    <h3>Seven-Layer Food Forest</h3>
+                    <!-- Seven-Layer Food Forest pattern would be detailed here -->
+                </div>
+                
+                <h2>Garden Building Interface</h2>
+                <p>The garden building interface provides tools for designing and implementing gardens:</p>
+                
+                <div class="interface-screenshot">
+                    <img src="../images/garden-building-interface.jpg" alt="Screenshot of the garden building interface">
+                    <p class="caption"><strong>AI Prompt:</strong> "A clean UI design for a garden building interface in a farming game. Show a top-down view of a garden area being designed with a toolbar of components on the left (beds, paths, water features), property panel on the right showing selected item details, and a planning grid overlay on the main area. Include some partially completed garden beds and planning markers."</p>
+                </div>
+                
+                <p>The technical implementation of this interface is detailed in the <a href="../technical/ui-mcp-implementation.html">UI MCP Implementation</a> documentation, which explains how the garden building UI integrates with the game's architecture and multiplayer systems.</p>
+                
+                <h3>Interface Features</h3>
+                <ul>
+                    <li><strong>Planning Mode:</strong> Grid-based layout planning before committing resources</li>
+                    <li><strong>Component Library:</strong> Categorized access to all unlocked garden components</li>
+                    <li><strong>Resource Calculator:</strong> Automatic calculation of required materials</li>
+                    <li><strong>Environment Analysis:</strong> Overlay showing sunlight, water, and soil conditions</li>
+                    <li><strong>Template Library:</strong> Pre-designed garden layouts for quick implementation</li>
+                    <li><strong>Seasonal Preview:</strong> Visualization of the garden across different seasons</li>
+                </ul>
+                
+                <h2>Garden Evolution Mechanics</h2>
+                <p>Gardens evolve over time through several mechanics:</p>
+                
+                <h3>Soil Development</h3>
+                <ul>
+                    <li><strong>Initial State:</strong> Basic soil with limited fertility and structure</li>
+                    <li><strong>Improvement Methods:</strong> Composting, cover cropping, mulching, amendments</li>
+                    <li><strong>Evolution Stages:</strong> Poor → Basic → Good → Rich → Living Soil</li>
+                    <li><strong>Visual Changes:</strong> Color darkens, texture changes, visible organic matter</li>
+                    <li><strong>Gameplay Effects:</strong> Increased yields, reduced water needs, pest resistance</li>
+                </ul>
+                
+                <h3>Plant Establishment</h3>
+                <ul>
+                    <li><strong>Annual Cycles:</strong> Seasonal planting, growth, harvest, and renewal</li>
+                    <li><strong>Perennial Growth:</strong> Multi-year establishment with increasing yields</li>
+                    <li><strong>Self-Seeding:</strong> Plants begin to reproduce naturally in later stages</li>
+                    <li><strong>Visual Changes:</strong> Increased size, density, and complexity of plantings</li>
+                    <li><strong>Gameplay Effects:</strong> Reduced maintenance, continuous harvests</li>
+                </ul>
+                
+                <h3>System Integration</h3>
+                <ul>
+                    <li><strong>Component Connections:</strong> Water systems, compost, animal integration</li>
+                    <li><strong>Ecological Relationships:</strong> Beneficial insects, soil life, plant communities</li>
+                    <li><strong>Evolution Stages:</strong> Isolated → Connected → Integrated → Synergistic</li>
+                    <li><strong>Visual Changes:</strong> Increased biodiversity, visible ecosystem activity</li>
+                    <li><strong>Gameplay Effects:</strong> Self-regulation, multiple yields, resilience</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Design Note:</strong> The garden building system is designed to reward both immediate creativity and long-term investment. Players can see quick results from their designs while also experiencing the satisfaction of gardens that mature and evolve over multiple in-game years.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="skill-tree.html" class="prev-link">Previous: Skill Tree System</a>
+                    <a href="quest-rewards.html" class="next-link">Next: Quest & Reward System</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

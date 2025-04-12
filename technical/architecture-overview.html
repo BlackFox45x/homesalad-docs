@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Architecture Overview</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../game-design/index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="../game-design/game-overview.html">Game Overview</a>
+                            <a href="../game-design/gameplay-systems.html">Gameplay Systems</a>
+                            <a href="../game-design/character-progression.html">Character Progression</a>
+                            <a href="../game-design/quest-design.html">Quest Design</a>
+                            <a href="../game-design/world-design.html">World Design</a>
+                            <a href="../game-design/user-interface.html">User Interface</a>
+                            <a href="../game-design/art-audio.html">Art & Audio</a>
+                            <a href="../game-design/development-roadmap.html">Development Roadmap</a>
+                            <a href="../game-design/accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="architecture-overview.html">Architecture Overview</a>
+                            <a href="core-systems.html">Core Systems</a>
+                            <a href="specific-systems.html">Specific Systems</a>
+                            <a href="multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="development-milestones.html">Development Milestones</a>
+                            <a href="technical-challenges.html">Technical Challenges</a>
+                            <a href="ui-mcp-implementation.html">UI-MCP Implementation</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Technical Implementation Guide</a>
+            <span class="separator">></span>
+            <span class="current">Architecture Overview</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li class="active"><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="specific-systems.html">Specific Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="development-milestones.html">Development Milestones</a></li>
+                        <li><a href="technical-challenges.html">Technical Challenges</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="../game-design/development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Architecture Overview</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section provides a high-level overview of HomeSalad's technical architecture, including the framework selection, system organization, and implementation approach.</p>
+                </div>
+                
+                <h2>Technical Foundation</h2>
+                <p>HomeSalad is built on the following technical foundation:</p>
+                
+                <ul>
+                    <li><strong>Engine:</strong> Unity 2022.3 LTS (or newer stable version at development start)</li>
+                    <li><strong>Networking Framework:</strong> uMMORPG Remastered with custom extensions</li>
+                    <li><strong>Programming Language:</strong> C# with .NET Standard 2.1</li>
+                    <li><strong>Build Targets:</strong> Windows, macOS, Linux (primary), with console ports planned post-launch</li>
+                    <li><strong>Minimum Specifications:</strong> Targeting moderate hardware requirements to ensure accessibility</li>
+                </ul>
+                
+                <h2>Architectural Principles</h2>
+                <p>The technical architecture is guided by several core principles:</p>
+                
+                <ul>
+                    <li><strong>Modularity:</strong> Systems are designed as self-contained modules with clear interfaces</li>
+                    <li><strong>Extensibility:</strong> Core systems can be extended without modifying their base implementation</li>
+                    <li><strong>Maintainability:</strong> Code organization and documentation prioritize long-term maintenance</li>
+                    <li><strong>Performance:</strong> Critical systems are optimized for consistent framerate and responsiveness</li>
+                    <li><strong>Testability:</strong> Systems are designed to be testable in isolation with minimal dependencies</li>
+                </ul>
+                
+                <h2>High-Level Architecture</h2>
+                <p>HomeSalad's architecture is organized into several major layers:</p>
+                
+                <div class="architecture-diagram">
+                    <pre>
+┌─────────────────────────────────────────────────────────────┐
+│                      Presentation Layer                      │
+│  (UI, Rendering, Animation, Audio, Input, Feedback Systems)  │
+├─────────────────────────────────────────────────────────────┤
+│                       Gameplay Layer                         │
+│  (Player Systems, NPC Systems, Quest System, World Systems)  │
+├─────────────────────────────────────────────────────────────┤
+│                        Domain Layer                          │
+│  (Game Rules, Simulation Systems, Entity Components)         │
+├─────────────────────────────────────────────────────────────┤
+│                      Infrastructure Layer                    │
+│  (Networking, Persistence, Resource Management, Utilities)   │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                       Unity Engine                           │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    uMMORPG Framework                         │
+└─────────────────────────────────────────────────────────────┘
+                    </pre>
+                </div>
+                
+                <h3>Layer Responsibilities</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Layer</th>
+                                <th>Responsibilities</th>
+                                <th>Key Components</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Presentation Layer</td>
+                                <td>User interface, visual and audio feedback, player input processing</td>
+                                <td>UI Manager, Input System, Camera Controller, Visual Effects, Audio Manager</td>
+                            </tr>
+                            <tr>
+                                <td>Gameplay Layer</td>
+                                <td>Game-specific systems that implement player experiences</td>
+                                <td>Player Controller, NPC System, Quest Manager, Interaction System, Building System</td>
+                            </tr>
+                            <tr>
+                                <td>Domain Layer</td>
+                                <td>Core game rules, simulation logic, and entity behaviors</td>
+                                <td>Entity Component System, Time System, Environmental System, Relationship System</td>
+                            </tr>
+                            <tr>
+                                <td>Infrastructure Layer</td>
+                                <td>Technical foundation and services</td>
+                                <td>Network Manager, Save System, Resource Loader, Event System, Logging</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2>System Organization</h2>
+                <p>HomeSalad's systems are organized using a combination of architectural patterns:</p>
+                
+                <h3>Component-Based Architecture</h3>
+                <p>The core gameplay entities use Unity's component-based architecture with the following enhancements:</p>
+                <ul>
+                    <li><strong>Scriptable Objects:</strong> Used for configuration, shared data, and system communication</li>
+                    <li><strong>Composition over Inheritance:</strong> Favoring small, focused components over deep inheritance hierarchies</li>
+                    <li><strong>Interface-Based Design:</strong> Components implement interfaces to enable polymorphism and testing</li>
+                    <li><strong>Data-Oriented Approach:</strong> Performance-critical systems use data-oriented design principles</li>
+                </ul>
+                
+                <h3>Service Locator Pattern</h3>
+                <p>Core game services are accessed through a service locator pattern:</p>
+                <ul>
+                    <li><strong>GameManager:</strong> Central access point for core game systems and services</li>
+                    <li><strong>Lazy Initialization:</strong> Services are initialized on demand to optimize startup</li>
+                    <li><strong>Interface-Based Services:</strong> Services are defined by interfaces for testability</li>
+                    <li><strong>Dependency Injection:</strong> Services receive their dependencies explicitly</li>
+                </ul>
+                
+                <h3>Event-Driven Architecture</h3>
+                <p>System communication uses an event-driven approach:</p>
+                <ul>
+                    <li><strong>Global Event Bus:</strong> Centralized event system for cross-system communication</li>
+                    <li><strong>Typed Events:</strong> Strongly-typed events to ensure type safety</li>
+                    <li><strong>Local Events:</strong> Component-specific events for internal communication</li>
+                    <li><strong>Event Visualization:</strong> Debug tools to visualize event flow during development</li>
+                </ul>
+                
+                <h2>Namespace Organization</h2>
+                <p>Code is organized into a hierarchical namespace structure:</p>
+                
+                <pre>
+HomeSalad
+├── Core                  // Core framework and infrastructure
+│   ├── Network           // Networking and synchronization
+│   ├── Persistence       // Save/load and data persistence
+│   ├── Events            // Event system
+│   └── Utils             // Utility classes and extensions
+├── Gameplay              // Gameplay systems
+│   ├── Player            // Player-specific systems
+│   ├── NPC               // NPC behavior and AI
+│   ├── Quests            // Quest and mission system
+│   ├── Building          // Construction and building system
+│   ├── Gardening         // Plant growth and gardening
+│   ├── Environment       // Environmental systems
+│   └── Community         // Community and relationship systems
+├── UI                    // User interface components (see UI-MCP Implementation)
+│   ├── HUD               // In-game heads-up display
+│   ├── Menus             // Game menus and screens
+│   ├── Dialogue          // Conversation system
+│   └── Feedback          // Visual and audio feedback
+├── Data                  // Data structures and scriptable objects
+│   ├── Items             // Item definitions
+│   ├── Characters        // Character data
+│   ├── Buildings         // Building templates
+│   └── Plants            // Plant definitions
+└── Editor                // Editor tools and extensions
+    ├── Tools             // Custom editor tools
+    ├── Inspectors        // Custom inspectors
+    └── Wizards           // Creation wizards
+                </pre>
+                
+                <h2>Framework Integration</h2>
+                <p>HomeSalad extends the uMMORPG Remastered framework with custom systems:</p>
+                
+                <h3>uMMORPG Core Components</h3>
+                <ul>
+                    <li><strong>NetworkManager:</strong> Extended for HomeSalad's specific networking needs</li>
+                    <li><strong>Player:</strong> Base player functionality extended with HomeSalad-specific systems</li>
+                    <li><strong>Entity:</strong> Base class for all networked entities in the game</li>
+                    <li><strong>Combat:</strong> Modified for HomeSalad's non-violent conflict resolution</li>
+                    <li><strong>Chat:</strong> Extended for community interaction features</li>
+                </ul>
+                
+                <h3>Extension Approach</h3>
+                <p>The framework is extended using several strategies:</p>
+                <ul>
+                    <li><strong>Inheritance:</strong> Extending base classes with HomeSalad-specific functionality</li>
+                    <li><strong>Composition:</strong> Adding HomeSalad components to framework entities</li>
+                    <li><strong>Replacement:</strong> Replacing certain framework systems with custom implementations</li>
+                    <li><strong>Integration:</strong> Creating bridge components between framework and HomeSalad systems</li>
+                </ul>
+                
+                <h2>Data Flow</h2>
+                <p>Data flows through the system in several key patterns:</p>
+                
+                <h3>Input Processing</h3>
+                <ol>
+                    <li>Player input is captured by the Input System in the Presentation Layer</li>
+                    <li>Input is translated into commands or intents</li>
+                    <li>Commands are passed to the appropriate system in the Gameplay Layer</li>
+                    <li>Systems execute the commands and update the game state</li>
+                    <li>State changes trigger events that update the presentation</li>
+                </ol>
+                
+                <h3>Simulation Updates</h3>
+                <ol>
+                    <li>The Time System advances the simulation time</li>
+                    <li>Systems register for time-based updates</li>
+                    <li>On update, systems process their internal logic</li>
+                    <li>State changes are propagated through events</li>
+                    <li>Dependent systems react to the events</li>
+                    <li>Visual and audio feedback is generated based on state changes</li>
+                </ol>
+                
+                <h3>Networking</h3>
+                <ol>
+                    <li>Local player actions generate commands</li>
+                    <li>Commands are serialized and sent to the server</li>
+                    <li>Server validates and processes commands</li>
+                    <li>State changes are synchronized to all clients</li>
+                    <li>Clients update their local representation</li>
+                    <li>Visual and audio feedback reflects the synchronized state</li>
+                </ol>
+                
+                <h2>Technical Specifications</h2>
+                <p>Key technical specifications and constraints:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Specification</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Target Frame Rate</td>
+                                <td>60 FPS on recommended hardware</td>
+                                <td>Scalable settings for lower-end hardware</td>
+                            </tr>
+                            <tr>
+                                <td>Network Bandwidth</td>
+                                <td>~100 KB/s per client (peak)</td>
+                                <td>Optimized for lower bandwidth with quality settings</td>
+                            </tr>
+                            <tr>
+                                <td>Server Capacity</td>
+                                <td>50-100 concurrent players per server instance</td>
+                                <td>Sharding approach for larger player bases</td>
+                            </tr>
+                            <tr>
+                                <td>Memory Footprint</td>
+                                <td>2-4 GB RAM recommended</td>
+                                <td>Asset streaming for lower memory configurations</td>
+                            </tr>
+                            <tr>
+                                <td>Storage Requirements</td>
+                                <td>~2-4 GB installation</td>
+                                <td>Additional space for save data and updates</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2>Development Environment</h2>
+                <p>The development environment for HomeSalad includes:</p>
+                
+                <ul>
+                    <li><strong>Unity Version:</strong> Unity 2022.3 LTS or newer stable version</li>
+                    <li><strong>IDE:</strong> Visual Studio 2022 or JetBrains Rider</li>
+                    <li><strong>Version Control:</strong> Git with GitHub for repository hosting</li>
+                    <li><strong>CI/CD:</strong> GitHub Actions for automated builds and testing</li>
+                    <li><strong>Documentation:</strong> XML documentation with DocFX for generation</li>
+                    <li><strong>Asset Pipeline:</strong> Custom asset processing tools for optimization</li>
+                    <li><strong>Testing Framework:</strong> Unity Test Framework for unit and integration tests</li>
+                </ul>
+                
+                <h2>Third-Party Dependencies</h2>
+                <p>HomeSalad relies on several third-party packages and assets:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Package</th>
+                                <th>Purpose</th>
+                                <th>Integration Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>uMMORPG Remastered</td>
+                                <td>Core networking and multiplayer framework</td>
+                                <td>Extended with custom systems for HomeSalad's specific needs</td>
+                            </tr>
+                            <tr>
+                                <td>TextMesh Pro</td>
+                                <td>High-quality text rendering</td>
+                                <td>Used for all UI text with custom styling</td>
+                            </tr>
+                            <tr>
+                                <td>Cinemachine</td>
+                                <td>Advanced camera system</td>
+                                <td>Used for dynamic camera behaviors and transitions</td>
+                            </tr>
+                            <tr>
+                                <td>Addressables</td>
+                                <td>Asset management and loading</td>
+                                <td>Used for efficient content loading and memory management</td>
+                            </tr>
+                            <tr>
+                                <td>FMOD</td>
+                                <td>Advanced audio system</td>
+                                <td>Used for dynamic audio and environmental sound design</td>
+                            </tr>
+                            <tr>
+                                <td>Shader Graph</td>
+                                <td>Visual shader creation</td>
+                                <td>Used for environmental effects and material transitions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="alert alert-info">
+                    <p><strong>Technical Note:</strong> The architecture is designed to balance flexibility for future expansion with performance requirements for a multiplayer experience. The modular approach allows for iterative development and testing of individual systems while maintaining overall stability.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="index.html" class="prev-link">Previous: Technical Implementation Guide</a>
+                    <a href="core-systems.html" class="next-link">Next: Core Systems</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                        <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                        <li><a href="../game-design/world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="specific-systems.html">Specific Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="development-milestones.html">Development Milestones</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

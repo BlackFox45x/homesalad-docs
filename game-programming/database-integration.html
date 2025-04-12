@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Database Integration</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Mermaid diagrams
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'default',
+                securityLevel: 'loose'
+            });
+            
+            // Initialize table node click events
+            document.querySelectorAll('.db-table-header').forEach(header => {
+                header.addEventListener('click', function() {
+                    const tableId = this.getAttribute('data-table');
+                    const tableDetails = document.getElementById(tableId + '-details');
+                    if (tableDetails) {
+                        tableDetails.classList.toggle('hidden');
+                        this.classList.toggle('expanded');
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+        /* Additional styles for Database Integration page */
+        .db-diagram {
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .db-table {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        
+        .db-table-header {
+            font-weight: bold;
+            color: var(--secondary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            position: relative;
+            padding-right: 20px;
+        }
+        
+        .db-table-header:after {
+            content: "▼";
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 0.8rem;
+        }
+        
+        .db-table-header.expanded:after {
+            content: "▲";
+        }
+        
+        .db-field {
+            padding: 3px 0;
+            display: flex;
+        }
+        
+        .db-field-name {
+            font-weight: bold;
+            width: 150px;
+        }
+        
+        .db-field-type {
+            color: var(--accent-color);
+            width: 100px;
+        }
+        
+        .db-field-description {
+            flex: 1;
+        }
+        
+        .db-table-details {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .code-block {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            font-family: var(--code-font);
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .implementation-progress {
+            margin: 1rem 0;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../game-design/index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="../game-design/game-overview.html">Game Overview</a>
+                            <a href="../game-design/gameplay-systems.html">Gameplay Systems</a>
+                            <a href="../game-design/character-progression.html">Character Progression</a>
+                            <a href="../game-design/quest-design.html">Quest Design</a>
+                            <a href="../game-design/world-design.html">World Design</a>
+                            <a href="../game-design/user-interface.html">User Interface</a>
+                            <a href="../game-design/art-audio.html">Art & Audio</a>
+                            <a href="../game-design/development-roadmap.html">Development Roadmap</a>
+                            <a href="../game-design/accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Programming & Architecture</a>
+                        <div class="dropdown-content">
+                            <a href="project-structure.html">Project Structure</a>
+                            <a href="database-integration.html">Database Integration</a>
+                            <a href="gameobject-integration.html">GameObject Integration</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                            <a href="../technical/ui-mcp-implementation.html">UI-MCP Implementation</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Programming & Architecture</a>
+            <span class="separator">></span>
+            <span class="current">Database Integration</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Programming</h3>
+                    <ul>
+                        <li><a href="project-structure.html">Project Structure</a></li>
+                        <li><a href="database-integration.html" class="active">Database Integration</a></li>
+                        <li><a href="gameobject-integration.html">GameObject Integration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Database Tables</h3>
+                    <ul>
+                        <li><a href="#characters">Characters</a></li>
+                        <li><a href="#inventory">Inventory</a></li>
+                        <li><a href="#quests">Quests</a></li>
+                        <li><a href="#environment">Environment</a></li>
+                        <li><a href="#plants">Plants</a></li>
+                        <li><a href="#buildings">Buildings</a></li>
+                        <li><a href="#relationships">Relationships</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>HomeSalad Database Integration</h1>
+                
+                <div class="alert alert-success">
+                    <p>This page explains how the uMMORPG database is used as the backend for HomeSalad, with interactive diagrams showing the database structure and detailed explanations of how the database is integrated with the game systems.</p>
+                </div>
+                
+                <h2>Database Overview</h2>
+                <p>HomeSalad uses the SQLite database system provided by uMMORPG Remastered as its backend. The database stores all persistent game data, including character information, inventory, quest progress, environment states, plants, buildings, and relationships.</p>
+                
+                <p>The database schema has been extended from the base uMMORPG implementation to support HomeSalad's unique features, such as gardening, environmental transformation, and community relationships.</p>
+                
+                <div class="db-diagram">
+                    <h3>Database Schema Diagram</h3>
+                    <p>Click on any table in the diagram to see its detailed structure.</p>
+                    <div class="mermaid">
+                        erDiagram
+                            characters ||--o{ inventory : has
+                            characters ||--o{ quests : tracks
+                            characters ||--o{ relationships : has
+                            characters ||--o{ buildings : owns
+                            environment ||--o{ plants : contains
+                            environment ||--o{ buildings : hosts
+                            
+                            characters {
+                                int id PK
+                                string name
+                                int level
+                                int experience
+                                int health
+                                int gardening_skill
+                                int building_skill
+                                int community_skill
+                            }
+                            
+                            inventory {
+                                int id PK
+                                int character_id FK
+                                string item_name
+                                int amount
+                            }
+                            
+                            quests {
+                                int id PK
+                                int character_id FK
+                                string quest_name
+                                int progress
+                                boolean completed
+                            }
+                            
+                            environment {
+                                int id PK
+                                string area_name
+                                int state
+                                int biodiversity
+                                int pollution
+                            }
+                            
+                            plants {
+                                int id PK
+                                int environment_id FK
+                                string plant_type
+                                int growth_stage
+                                int health
+                                int water_level
+                            }
+                            
+                            buildings {
+                                int id PK
+                                int character_id FK
+                                int environment_id FK
+                                string building_type
+                                int level
+                            }
+                            
+                            relationships {
+                                int id PK
+                                int character_id FK
+                                string npc_name
+                                int relationship_value
+                            }
+                    </div>
+                </div>
+                
+                <h2 id="characters">Character Table</h2>
+                <p>The character table stores all player character data, including basic attributes, skills, and position.</p>
+                
+                <div class="db-table">
+                    <div class="db-table-header" data-table="characters">Characters Table</div>
+                    <div id="characters-details" class="db-table-details hidden">
+                        <div class="db-field">
+                            <div class="db-field-name">id</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Primary key, auto-incremented</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">name</div>
+                            <div class="db-field-type">TEXT</div>
+                            <div class="db-field-description">Character name, unique</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">level</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Character level (1-60)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">gardening_skill</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Gardening skill level (HomeSalad specific)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">building_skill</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Building skill level (HomeSalad specific)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">community_skill</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Community skill level (HomeSalad specific)</div>
+                        </div>
+                    <div class="mermaid">
+                        erDiagram
+                            characters ||--o{ inventory : has
+                            characters ||--o{ quests : tracks
+                            characters ||--o{ relationships : has
+                            characters ||--o{ buildings : owns
+                            environment ||--o{ plants : contains
+                            environment ||--o{ buildings : hosts
+                            
+                            characters {
+                                int id PK
+                                string name
+                                int level
+                                int experience
+                                int health
+                                int mana
+                                int strength
+                                int intelligence
+                                int dexterity
+                                int gardening_skill
+                                int building_skill
+                                int community_skill
+                                string last_position
+                                datetime last_login
+                            }
+                            
+                            inventory {
+                                int id PK
+                                int character_id FK
+                                string item_name
+                                int amount
+                                int durability
+                                boolean equipped
+                                string slot
+                            }
+                            
+                            quests {
+                                int id PK
+                                int character_id FK
+                                string quest_name
+                                int progress
+                                boolean completed
+                                datetime completion_time
+                            }
+                            
+                            environment {
+                                int id PK
+                                string area_name
+                                int state
+                                int biodiversity
+                                int pollution
+                                int water_quality
+                                datetime last_update
+                            }
+                            
+                            plants {
+                                int id PK
+                                int environment_id FK
+                                string plant_type
+                                int growth_stage
+                                int health
+                                int water_level
+                                int nutrient_level
+                                datetime plant_time
+                                datetime last_watered
+                                vector3 position
+                            }
+                            
+                            buildings {
+                                int id PK
+                                int character_id FK
+                                int environment_id FK
+                                string building_type
+                                int level
+                                int durability
+                                vector3 position
+                                quaternion rotation
+                                datetime build_time
+                            }
+                            
+                            relationships {
+                                int id PK
+                                int character_id FK
+                                string npc_name
+                                int relationship_value
+                                int gift_count
+                                datetime last_interaction
+                            }
+                    </div>
+                </div>
+                
+                <h2 id="characters">Character Table</h2>
+                <p>The character table stores all player character data, including basic attributes, skills, and position.</p>
+                
+                <div class="db-table">
+                    <div class="db-table-header" data-table="characters">Characters Table</div>
+                    <div id="characters-details" class="db-table-details hidden">
+                        <div class="db-field">
+                            <div class="db-field-name">id</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Primary key, auto-incremented</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">name</div>
+                            <div class="db-field-type">TEXT</div>
+                            <div class="db-field-description">Character name, unique</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">level</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Character level (1-60)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">experience</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current experience points</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">health</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current health points</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">mana</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current mana points</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">strength</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Strength attribute</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">intelligence</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Intelligence attribute</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">dexterity</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Dexterity attribute</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">gardening_skill</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Gardening skill level (HomeSalad specific)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">building_skill</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Building skill level (HomeSalad specific)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">community_skill</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Community skill level (HomeSalad specific)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">last_position</div>
+                            <div class="db-field-type">TEXT</div>
+                            <div class="db-field-description">Serialized Vector3 position</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">last_login</div>
+                            <div class="db-field-type">DATETIME</div>
+                            <div class="db-field-description">Timestamp of last login</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-block">
+                    <pre>
+// Example of character data access in C#
+public void SaveCharacter(Player player)
+{
+    using (var connection = new SqliteConnection(connectionString))
+    {
+        connection.Open();
+        
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = @"
+                UPDATE characters 
+                SET level = @level, 
+                    experience = @experience, 
+                    health = @health, 
+                    mana = @mana, 
+                    strength = @strength, 
+                    intelligence = @intelligence, 
+                    dexterity = @dexterity, 
+                    gardening_skill = @gardening_skill, 
+                    building_skill = @building_skill, 
+                    community_skill = @community_skill, 
+                    last_position = @last_position, 
+                    last_login = @last_login 
+                WHERE name = @name";
+                
+            command.Parameters.AddWithValue("@name", player.name);
+            command.Parameters.AddWithValue("@level", player.level);
+            command.Parameters.AddWithValue("@experience", player.experience);
+            command.Parameters.AddWithValue("@health", player.health);
+            command.Parameters.AddWithValue("@mana", player.mana);
+            command.Parameters.AddWithValue("@strength", player.strength);
+            command.Parameters.AddWithValue("@intelligence", player.intelligence);
+            command.Parameters.AddWithValue("@dexterity", player.dexterity);
+            command.Parameters.AddWithValue("@gardening_skill", player.gardeningSkill);
+            command.Parameters.AddWithValue("@building_skill", player.buildingSkill);
+            command.Parameters.AddWithValue("@community_skill", player.communitySkill);
+            command.Parameters.AddWithValue("@last_position", player.transform.position.ToString());
+            command.Parameters.AddWithValue("@last_login", DateTime.UtcNow);
+            
+            command.ExecuteNonQuery();
+        }
+    }
+}</pre>
+                </div>
+                
+                <h2 id="environment">Environment Table</h2>
+                <p>The environment table stores data about different areas in the game world, including their environmental state, biodiversity, pollution levels, and water quality.</p>
+                
+                <div class="db-table">
+                    <div class="db-table-header" data-table="environment">Environment Table</div>
+                    <div id="environment-details" class="db-table-details hidden">
+                        <div class="db-field">
+                            <div class="db-field-name">id</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Primary key, auto-incremented</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">area_name</div>
+                            <div class="db-field-type">TEXT</div>
+                            <div class="db-field-description">Name of the area, unique</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">state</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Environmental state (0-10, 0=degraded, 10=restored)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">biodiversity</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Biodiversity level (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">pollution</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Pollution level (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">water_quality</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Water quality (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">last_update</div>
+                            <div class="db-field-type">DATETIME</div>
+                            <div class="db-field-description">Timestamp of last update</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 id="plants">Plants Table</h2>
+                <p>The plants table stores data about all plants in the game world, including their type, growth stage, health, and position.</p>
+                
+                <div class="db-table">
+                    <div class="db-table-header" data-table="plants">Plants Table</div>
+                    <div id="plants-details" class="db-table-details hidden">
+                        <div class="db-field">
+                            <div class="db-field-name">id</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Primary key, auto-incremented</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">environment_id</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Foreign key to environment table</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">plant_type</div>
+                            <div class="db-field-type">TEXT</div>
+                            <div class="db-field-description">Type of plant (e.g., "Tomato", "Carrot")</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">growth_stage</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current growth stage (0-5)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">health</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Plant health (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">water_level</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current water level (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">nutrient_level</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current nutrient level (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">plant_time</div>
+                            <div class="db-field-type">DATETIME</div>
+                            <div class="db-field-description">Timestamp when planted</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">last_watered</div>
+                            <div class="db-field-type">DATETIME</div>
+                            <div class="db-field-description">Timestamp when last watered</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">position</div>
+                            <div class="db-field-type">TEXT</div>
+                            <div class="db-field-description">Serialized Vector3 position</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>Implementation Progress</h2>
+                
+                <p>The database integration for HomeSalad is currently in progress, with the following components implemented:</p>
+                
+                <div class="implementation-progress">
+                    <h4>Character System</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%;"></div>
+                    </div>
+                    <p>90% Complete - Basic character data storage and retrieval is fully implemented. Skill-specific attributes are being finalized.</p>
+                </div>
+                
+                <div class="implementation-progress">
+                    <h4>Environment System</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <p>75% Complete - Environmental state tracking is implemented. Biodiversity and pollution calculations are being refined.</p>
+                </div>
+                
+                <div class="implementation-progress">
+                    <h4>Plant System</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                    <p>85% Complete - Plant growth, watering, and harvesting are implemented. Nutrient system is being finalized.</p>
+                </div>
+                
+                <div class="implementation-progress">
+                    <h4>Building System</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 70%;"></div>
+                    </div>
+                    <p>70% Complete - Basic building placement and persistence are implemented. Upgrades and functionality are in progress.</p>
+                </div>
+                
+                <div class="implementation-progress">
+                    <h4>Relationship System</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%;"></div>
+                    </div>
+                    <p>60% Complete - Basic relationship tracking is implemented. Gift system and relationship events are in progress.</p>
+                </div>
+                
+                <h2>Integration Steps</h2>
+                
+                <p>The following steps outline the process of integrating the uMMORPG database with HomeSalad's unique systems:</p>
+                
+                <div class="integration-step">
+                    <h4>1. Database Schema Extension</h4>
+                    <p>The first step was to extend the uMMORPG database schema to include tables for HomeSalad's unique features, such as plants, environment states, and relationships.</p>
+                    <div class="code-block">
+                        <pre>
+// Example of schema extension
+public void ExtendDatabaseSchema()
+{
+    using (var connection = new SqliteConnection(connectionString))
+    {
+        connection.Open();
+        
+        using (var command = connection.CreateCommand())
+        {
+            // Create environment table
+            command.CommandText = @"
+                CREATE TABLE IF NOT EXISTS environment (
+                                string building_type
+                                int level
+                                int durability
+                                vector3 position
+                                quaternion rotation
+                                datetime build_time
+                            }
+                            
+                            relationships {
+                                int id PK
+                                int character_id FK
+                                string npc_name
+                                int relationship_value
+                                int gift_count
+                                datetime last_interaction
+                            }
+                    </div>
+                </div>
+                
+                <h2 id="characters">Character Table</h2>
+                <p>The character table stores all player character data, including basic attributes, skills, and position.</p>
+                
+                <div class="db-table">
+                    <div class="db-table-header" data-table="characters">Characters Table</div>
+                    <div id="characters-details" class="db-table-details hidden">
+                        <div class="db-field">
+                            <div class="db-field-name">id</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Primary key, auto-incremented</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">name</div>
+                            <div class="db-field-type">TEXT</div>
+                            <div class="db-field-description">Character name, unique</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">level</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Character level (1-60)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">experience</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current experience points</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">health</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current health points</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">mana</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current mana points</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">strength</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Strength attribute</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">intelligence</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Intelligence attribute</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">dexterity</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Dexterity attribute</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">gardening_skill</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Gardening skill level (HomeSalad specific)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">building_skill</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Building skill level (HomeSalad specific)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">community_skill</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Community skill level (HomeSalad specific)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">last_position</div>
+                            <div class="db-field-type">TEXT</div>
+                            <div class="db-field-description">Serialized Vector3 position</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">last_login</div>
+                            <div class="db-field-type">DATETIME</div>
+                            <div class="db-field-description">Timestamp of last login</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-block">
+                    <pre>
+// Example of character data access in C#
+public void SaveCharacter(Player player)
+{
+    using (var connection = new SqliteConnection(connectionString))
+    {
+        connection.Open();
+        
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = @"
+                UPDATE characters 
+                SET level = @level, 
+                    experience = @experience, 
+                    health = @health, 
+                    mana = @mana, 
+                    strength = @strength, 
+                    intelligence = @intelligence, 
+                    dexterity = @dexterity, 
+                    gardening_skill = @gardening_skill, 
+                    building_skill = @building_skill, 
+                    community_skill = @community_skill, 
+                    last_position = @last_position, 
+                    last_login = @last_login 
+                WHERE name = @name";
+                
+            command.Parameters.AddWithValue("@name", player.name);
+            command.Parameters.AddWithValue("@level", player.level);
+            command.Parameters.AddWithValue("@experience", player.experience);
+            command.Parameters.AddWithValue("@health", player.health);
+            command.Parameters.AddWithValue("@mana", player.mana);
+            command.Parameters.AddWithValue("@strength", player.strength);
+            command.Parameters.AddWithValue("@intelligence", player.intelligence);
+            command.Parameters.AddWithValue("@dexterity", player.dexterity);
+            command.Parameters.AddWithValue("@gardening_skill", player.gardeningSkill);
+            command.Parameters.AddWithValue("@building_skill", player.buildingSkill);
+            command.Parameters.AddWithValue("@community_skill", player.communitySkill);
+            command.Parameters.AddWithValue("@last_position", player.transform.position.ToString());
+            command.Parameters.AddWithValue("@last_login", DateTime.UtcNow);
+            
+            command.ExecuteNonQuery();
+        }
+    }
+}</pre>
+                </div>
+                
+                <h2 id="environment">Environment Table</h2>
+                <p>The environment table stores data about different areas in the game world, including their environmental state, biodiversity, pollution levels, and water quality.</p>
+                
+                <div class="db-table">
+                    <div class="db-table-header" data-table="environment">Environment Table</div>
+                    <div id="environment-details" class="db-table-details hidden">
+                        <div class="db-field">
+                            <div class="db-field-name">id</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Primary key, auto-incremented</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">area_name</div>
+                            <div class="db-field-type">TEXT</div>
+                            <div class="db-field-description">Name of the area, unique</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">state</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Environmental state (0-10, 0=degraded, 10=restored)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">biodiversity</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Biodiversity level (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">pollution</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Pollution level (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">water_quality</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Water quality (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">last_update</div>
+                            <div class="db-field-type">DATETIME</div>
+                            <div class="db-field-description">Timestamp of last update</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 id="plants">Plants Table</h2>
+                <p>The plants table stores data about all plants in the game world, including their type, growth stage, health, and position.</p>
+                
+                <div class="db-table">
+                    <div class="db-table-header" data-table="plants">Plants Table</div>
+                    <div id="plants-details" class="db-table-details hidden">
+                        <div class="db-field">
+                            <div class="db-field-name">id</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Primary key, auto-incremented</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">environment_id</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Foreign key to environment table</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">plant_type</div>
+                            <div class="db-field-type">TEXT</div>
+                            <div class="db-field-description">Type of plant (e.g., "Tomato", "Carrot")</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">growth_stage</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current growth stage (0-5)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">health</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Plant health (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">water_level</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current water level (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">nutrient_level</div>
+                            <div class="db-field-type">INTEGER</div>
+                            <div class="db-field-description">Current nutrient level (0-100)</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">plant_time</div>
+                            <div class="db-field-type">DATETIME</div>
+                            <div class="db-field-description">Timestamp when planted</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">last_watered</div>
+                            <div class="db-field-type">DATETIME</div>
+                            <div class="db-field-description">Timestamp when last watered</div>
+                        </div>
+                        <div class="db-field">
+                            <div class="db-field-name">position</div>
+                            <div class="db-field-type">TEXT</div>
+                            <div class="db-field-description">Serialized Vector3 position</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>Implementation Progress</h2>
+                
+                <p>The database integration for HomeSalad is currently in progress, with the following components implemented:</p>
+                
+                <div class="implementation-progress">
+                    <h4>Character System</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%;"></div>
+                    </div>
+                    <p>90% Complete - Basic character data storage and retrieval is fully implemented. Skill-specific attributes are being finalized.</p>
+                </div>
+                
+                <div class="implementation-progress">
+                    <h4>Environment System</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <p>75% Complete - Environmental state tracking is implemented. Biodiversity and pollution calculations are being refined.</p>
+                </div>
+                
+                <div class="implementation-progress">
+                    <h4>Plant System</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                    <p>85% Complete - Plant growth, watering, and harvesting are implemented. Nutrient system is being finalized.</p>
+                </div>
+                
+                <div class="implementation-progress">
+                    <h4>Building System</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 70%;"></div>
+                    </div>
+                    <p>70% Complete - Basic building placement and persistence are implemented. Upgrades and functionality are in progress.</p>
+                </div>
+                
+                <div class="implementation-progress">
+                    <h4>Relationship System</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%;"></div>
+                    </div>
+                    <p>60% Complete - Basic relationship tracking is implemented. Gift system and relationship events are in progress.</p>
+                </div>
+                
+                <h2>Integration Steps</h2>
+                
+                <p>The following steps outline the process of integrating the uMMORPG database with HomeSalad's unique systems:</p>
+                
+                <div class="integration-step">
+                    <h4>1. Database Schema Extension</h4>
+                    <p>The first step was to extend the uMMORPG database schema to include tables for HomeSalad's unique features, such as plants, environment states, and relationships.</p>
+                    <div class="code-block">
+                        <pre>
+// Example of schema extension
+public void ExtendDatabaseSchema()
+{
+    using (var connection = new SqliteConnection(connectionString))
+    {
+        connection.Open();
+        
+        using (var command = connection.CreateCommand())
+        {
+            // Create environment table
+            command.CommandText = @"
+                CREATE TABLE IF NOT EXISTS environment (

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Specific Systems</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../game-design/index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="../game-design/game-overview.html">Game Overview</a>
+                            <a href="../game-design/gameplay-systems.html">Gameplay Systems</a>
+                            <a href="../game-design/character-progression.html">Character Progression</a>
+                            <a href="../game-design/quest-design.html">Quest Design</a>
+                            <a href="../game-design/world-design.html">World Design</a>
+                            <a href="../game-design/user-interface.html">User Interface</a>
+                            <a href="../game-design/art-audio.html">Art & Audio</a>
+                            <a href="../game-design/development-roadmap.html">Development Roadmap</a>
+                            <a href="../game-design/accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="architecture-overview.html">Architecture Overview</a>
+                            <a href="core-systems.html">Core Systems</a>
+                            <a href="specific-systems.html">Specific Systems</a>
+                            <a href="multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="development-milestones.html">Development Milestones</a>
+                            <a href="technical-challenges.html">Technical Challenges</a>
+                            <a href="ui-mcp-implementation.html">UI-MCP Implementation</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Technical Implementation Guide</a>
+            <span class="separator">></span>
+            <span class="current">Specific Systems</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li class="active"><a href="specific-systems.html">Specific Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="development-milestones.html">Development Milestones</a></li>
+                        <li><a href="technical-challenges.html">Technical Challenges</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="../game-design/world-design.html">World Design</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Specific Systems</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details the technical implementation of HomeSalad's specific gameplay systems, including gardening, building, environmental transformation, community relationships, and quest management.</p>
+                </div>
+                
+                <h2>Gardening System</h2>
+                <p>The gardening system is a core gameplay mechanic that allows players to cultivate plants and manage growing spaces.</p>
+                
+                <h3>System Architecture</h3>
+                <p>The gardening system is implemented through several interconnected components:</p>
+                
+                <ul>
+                    <li><strong>Plant:</strong> Core component for individual plants with growth stages, health, and resource needs</li>
+                    <li><strong>GardenBed:</strong> Container for plants with soil properties and grid-based planting</li>
+                    <li><strong>GardeningSystem:</strong> Global manager for plant databases and environmental effects</li>
+                    <li><strong>PlantVisualController:</strong> Handles visual representation of plants at different growth stages</li>
+                    <li><strong>SoilSystem:</strong> Manages soil properties, moisture, and nutrients</li>
+                </ul>
+                
+                <h3>Key Technical Features</h3>
+                <ul>
+                    <li><strong>Growth Simulation:</strong> Time-based growth system with multiple stages and visual transitions</li>
+                    <li><strong>Environmental Factors:</strong> Plants respond to soil conditions, weather, seasons, and nearby plants</li>
+                    <li><strong>Grid-Based Planting:</strong> Spatial management system for organizing plants in garden beds</li>
+                    <li><strong>Procedural Variation:</strong> Plants have slight variations in appearance and growth patterns</li>
+                    <li><strong>Network Synchronization:</strong> Plant states are synchronized across clients using SyncVars</li>
+                </ul>
+                
+                <h3>Integration Points</h3>
+                <p>The gardening system integrates with several other systems:</p>
+                <ul>
+                    <li><strong>Time System:</strong> Plant growth advances based on game time</li>
+                    <li><strong>Weather System:</strong> Weather conditions affect watering needs and growth rates</li>
+                    <li><strong>Inventory System:</strong> Seeds are consumed from inventory, harvests are added to inventory</li>
+                    <li><strong>Environmental System:</strong> Plants contribute to environmental metrics and transformation</li>
+                    <li><strong>Skill System:</strong> Player gardening skills affect success rates and yields</li>
+                </ul>
+                
+                <h2>Building System</h2>
+                <p>The building system allows players to construct structures and infrastructure in the game world.</p>
+                
+                <h3>System Architecture</h3>
+                <p>The building system is implemented through these key components:</p>
+                
+                <ul>
+                    <li><strong>Building:</strong> Core component for structures with construction progress and functionality</li>
+                    <li><strong>BuildingSystem:</strong> Global manager for building placement and construction</li>
+                    <li><strong>BuildingFunction:</strong> Interface for functional components that can be attached to buildings</li>
+                    <li><strong>BuildingPlacementValidator:</strong> Validates building placement based on terrain and collision</li>
+                    <li><strong>BuildingVisualController:</strong> Manages visual representation during construction and customization</li>
+                </ul>
+                
+                <h3>Key Technical Features</h3>
+                <ul>
+                    <li><strong>Modular Construction:</strong> Buildings are assembled from modular components</li>
+                    <li><strong>Placement System:</strong> Grid-based placement with collision and terrain validation</li>
+                    <li><strong>Construction Process:</strong> Multi-stage building process requiring resources and time</li>
+                    <li><strong>Functional Components:</strong> Buildings have pluggable functional components</li>
+                    <li><strong>Customization:</strong> Visual and functional customization options</li>
+                </ul>
+                
+                <h3>Integration Points</h3>
+                <p>The building system integrates with several other systems:</p>
+                <ul>
+                    <li><strong>Resource System:</strong> Buildings require resources for construction and maintenance</li>
+                    <li><strong>Grid System:</strong> Buildings occupy space on a world grid</li>
+                    <li><strong>Environmental System:</strong> Buildings affect and are affected by environmental conditions</li>
+                    <li><strong>Power System:</strong> Buildings can produce, consume, and distribute power</li>
+                    <li><strong>Water System:</strong> Buildings can collect, store, and distribute water</li>
+                </ul>
+                
+                <h2>Environmental Transformation System</h2>
+                <p>The environmental transformation system manages the visual and functional changes to the environment based on player actions.</p>
+                
+                <h3>System Architecture</h3>
+                <p>The environmental system is implemented through these components:</p>
+                
+                <ul>
+                    <li><strong>EnvironmentalRegion:</strong> Manages environmental state for a specific area</li>
+                    <li><strong>EnvironmentalSystem:</strong> Global manager for environmental regions and effects</li>
+                    <li><strong>EnvironmentalVisualController:</strong> Handles visual representation of environmental states</li>
+                    <li><strong>EnvironmentalAction:</strong> Represents player actions that affect the environment</li>
+                    <li><strong>EnvironmentalEffect:</strong> Ongoing effects that modify environmental metrics over time</li>
+                </ul>
+                
+                <h3>Key Technical Features</h3>
+                <ul>
+                    <li><strong>Region-Based Management:</strong> Environment is divided into manageable regions</li>
+                    <li><strong>Multi-Metric System:</strong> Environmental health is measured across multiple metrics</li>
+                    <li><strong>Visual Transformation:</strong> Progressive visual changes based on environmental state</li>
+                    <li><strong>Action Propagation:</strong> Environmental actions have radius-based effects</li>
+                    <li><strong>Temporal Dynamics:</strong> Environmental changes occur over time with momentum</li>
+                </ul>
+                
+                <h3>Integration Points</h3>
+                <p>The environmental system integrates with several other systems:</p>
+                <ul>
+                    <li><strong>Gardening System:</strong> Plants contribute to environmental metrics</li>
+                    <li><strong>Building System:</strong> Buildings can have positive or negative environmental impacts</li>
+                    <li><strong>Weather System:</strong> Weather affects and is affected by environmental conditions</li>
+                    <li><strong>Wildlife System:</strong> Animal presence is tied to environmental health</li>
+                    <li><strong>Quest System:</strong> Environmental transformation can trigger or complete quests</li>
+                </ul>
+                
+                <h2>Community Relationship System</h2>
+                <p>The community relationship system manages NPC relationships, faction standings, and social dynamics.</p>
+                
+                <h3>System Architecture</h3>
+                <p>The relationship system is implemented through these components:</p>
+                
+                <ul>
+                    <li><strong>NPCRelationship:</strong> Manages individual NPC relationship dimensions and history</li>
+                    <li><strong>FactionReputation:</strong> Tracks player standing with factions and organizations</li>
+                    <li><strong>CommunitySystem:</strong> Global manager for relationships and reputation</li>
+                    <li><strong>RelationshipEvent:</strong> Records interactions that affect relationships</li>
+                    <li><strong>CommunityEvent:</strong> Represents events that affect multiple relationships</li>
+                </ul>
+                
+                <h3>Key Technical Features</h3>
+                <ul>
+                    <li><strong>Multi-Dimensional Relationships:</strong> NPCs have trust, respect, and affinity dimensions</li>
+                    <li><strong>Relationship Memory:</strong> System tracks interaction history and context</li>
+                    <li><strong>Faction Reputation Levels:</strong> Progressive reputation tiers with unlockable benefits</li>
+                    <li><strong>Relationship Networks:</strong> NPCs have relationships with each other that affect behavior</li>
+                    <li><strong>Community Events:</strong> Events can affect multiple relationships simultaneously</li>
+                </ul>
+                
+                <h3>Integration Points</h3>
+                <p>The relationship system integrates with several other systems:</p>
+                <ul>
+                    <li><strong>Dialogue System:</strong> Relationship affects available dialogue options</li>
+                    <li><strong>Quest System:</strong> Relationship levels unlock quests and affect outcomes</li>
+                    <li><strong>Trading System:</strong> Relationship affects prices and available items</li>
+                    <li><strong>Help System:</strong> NPCs provide different assistance based on relationship</li>
+                    <li><strong>Event System:</strong> Community events are influenced by relationship networks</li>
+                </ul>
+                
+                <h2>Quest System</h2>
+                <p>The quest system manages mission tracking, objectives, and rewards.</p>
+                
+                <h3>System Architecture</h3>
+                <p>The quest system is implemented through these components:</p>
+                
+                <ul>
+                    <li><strong>Quest:</strong> Core component for individual quest instances with objectives and state</li>
+                    <li><strong>QuestObjective:</strong> Tracks progress for specific quest goals</li>
+                    <li><strong>QuestSystem:</strong> Global manager for quest tracking and availability</li>
+                    <li><strong>QuestTrigger:</strong> World objects that can start or advance quests</li>
+                    <li><strong>QuestReward:</strong> Defines rewards for completing quests</li>
+                </ul>
+                
+                <h3>Key Technical Features</h3>
+                <ul>
+                    <li><strong>Objective Tracking:</strong> Multiple objective types with progress tracking</li>
+                    <li><strong>Branching Quests:</strong> Support for player choices affecting quest progression</li>
+                    <li><strong>Quest Dependencies:</strong> Quests can require completion of other quests</li>
+                    <li><strong>Dynamic Availability:</strong> Quests appear based on player actions and world state</li>
+                    <li><strong>Reward System:</strong> Multiple reward types including items, reputation, and environmental changes</li>
+                </ul>
+                
+                <h3>Integration Points</h3>
+                <p>The quest system integrates with several other systems:</p>
+                <ul>
+                    <li><strong>Dialogue System:</strong> Quests can be started and advanced through dialogue</li>
+                    <li><strong>Inventory System:</strong> Quest items and rewards interact with inventory</li>
+                    <li><strong>Relationship System:</strong> Quests affect and are affected by NPC relationships</li>
+                    <li><strong>Environmental System:</strong> Quests can trigger environmental changes</li>
+                    <li><strong>Time System:</strong> Some quests have time constraints or time-based triggers</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Technical Note:</strong> All specific systems are designed with modularity in mind, allowing for independent testing and iterative development. Systems communicate primarily through events and interfaces to maintain loose coupling.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="core-systems.html" class="prev-link">Previous: Core Systems</a>
+                    <a href="multiplayer-sync.html" class="next-link">Next: Multiplayer Synchronization</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                        <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                        <li><a href="../game-design/world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="specific-systems.html">Specific Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="development-milestones.html">Development Milestones</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

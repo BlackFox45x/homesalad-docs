@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Project Structure</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize collapsible elements
+            const collapsibles = document.querySelectorAll('.folder');
+            collapsibles.forEach(folder => {
+                folder.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const content = this.nextElementSibling;
+                    if (content && content.tagName === 'UL') {
+                        content.classList.toggle('hidden');
+                        this.classList.toggle('expanded');
+                    }
+                });
+            });
+            
+            // Initialize expand/collapse all buttons
+            document.getElementById('expandAll').addEventListener('click', function() {
+                document.querySelectorAll('.folder-structure ul').forEach(ul => {
+                    ul.classList.remove('hidden');
+                });
+                document.querySelectorAll('.folder').forEach(folder => {
+                    folder.classList.add('expanded');
+                });
+            });
+            
+            document.getElementById('collapseAll').addEventListener('click', function() {
+                document.querySelectorAll('.folder-structure ul').forEach(ul => {
+                    if (!ul.classList.contains('root-level')) {
+                        ul.classList.add('hidden');
+                    }
+                });
+                document.querySelectorAll('.folder').forEach(folder => {
+                    folder.classList.remove('expanded');
+                });
+            });
+            
+            // Search functionality
+            document.getElementById('folderSearch').addEventListener('keyup', function() {
+                const searchTerm = this.value.toLowerCase();
+                const allItems = document.querySelectorAll('.folder-structure .folder, .folder-structure .file');
+                
+                allItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    const listItem = item.closest('li');
+                    
+                    if (text.includes(searchTerm)) {
+                        listItem.style.display = '';
+                        // Expand parent folders
+                        let parent = listItem.parentElement;
+                        while (parent && !parent.classList.contains('root-level')) {
+                            parent.classList.remove('hidden');
+                            const parentFolder = parent.previousElementSibling;
+                            if (parentFolder && parentFolder.classList.contains('folder')) {
+                                parentFolder.classList.add('expanded');
+                            }
+                            parent = parent.parentElement;
+                            if (parent) parent = parent.parentElement;
+                        }
+                    } else {
+                        if (searchTerm.length > 0) {
+                            listItem.style.display = 'none';
+                        } else {
+                            listItem.style.display = '';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+        /* Additional styles for Project Structure page */
+        .folder-structure {
+            font-family: var(--code-font);
+            line-height: 1.5;
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .folder-structure ul {
+            list-style-type: none;
+            margin-left: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .folder-structure ul.hidden {
+            display: none;
+        }
+        
+        .folder-structure li {
+            position: relative;
+            padding: 3px 0;
+        }
+        
+        .folder {
+            color: var(--primary-color);
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .folder:before {
+            content: "📁";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .folder.expanded:before {
+            content: "📂";
+        }
+        
+        .file {
+            color: var(--text-color);
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .file:before {
+            content: "📄";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .file.cs:before {
+            content: "🔧";
+        }
+        
+        .folder-controls {
+            margin-bottom: 1rem;
+        }
+        
+        .folder-controls button {
+            background-color: var(--light-bg);
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .folder-description {
+            background-color: white;
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../game-design/index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="../game-design/game-overview.html">Game Overview</a>
+                            <a href="../game-design/gameplay-systems.html">Gameplay Systems</a>
+                            <a href="../game-design/character-progression.html">Character Progression</a>
+                            <a href="../game-design/quest-design.html">Quest Design</a>
+                            <a href="../game-design/world-design.html">World Design</a>
+                            <a href="../game-design/user-interface.html">User Interface</a>
+                            <a href="../game-design/art-audio.html">Art & Audio</a>
+                            <a href="../game-design/development-roadmap.html">Development Roadmap</a>
+                            <a href="../game-design/accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Programming & Architecture</a>
+                        <div class="dropdown-content">
+                            <a href="project-structure.html">Project Structure</a>
+                            <a href="database-integration.html">Database Integration</a>
+                            <a href="gameobject-integration.html">GameObject Integration</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                            <a href="../technical/ui-mcp-implementation.html">UI-MCP Implementation</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Programming & Architecture</a>
+            <span class="separator">></span>
+            <span class="current">Project Structure</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Programming</h3>
+                    <ul>
+                        <li><a href="project-structure.html" class="active">Project Structure</a></li>
+                        <li><a href="database-integration.html">Database Integration</a></li>
+                        <li><a href="gameobject-integration.html">GameObject Integration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Key Folders</h3>
+                    <ul>
+                        <li><a href="#assets-scripts">Assets/Scripts</a></li>
+                        <li><a href="#assets-prefabs">Assets/Prefabs</a></li>
+                        <li><a href="#assets-scenes">Assets/Scenes</a></li>
+                        <li><a href="#assets-scriptableobjects">Assets/ScriptableObjects</a></li>
+                        <li><a href="#assets-resources">Assets/Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>HomeSalad Project Structure</h1>
+                
+                <div class="alert alert-success">
+                    <p>This page provides a comprehensive breakdown of the HomeSalad project folder structure, with detailed explanations of each folder's purpose and contents. The interactive folder tree allows you to explore the project structure in detail.</p>
+                </div>
+                
+                <h2>Project Overview</h2>
+                <p>HomeSalad is built on the uMMORPG Remastered framework, which provides a solid foundation for multiplayer RPG development in Unity. The project structure follows Unity's standard organization with some additional folders specific to HomeSalad's unique requirements.</p>
+                
+                <div class="folder-controls">
+                    <button id="expandAll">Expand All</button>
+                    <button id="collapseAll">Collapse All</button>
+                    <input type="text" id="folderSearch" class="search-box" placeholder="Search folders and files...">
+                </div>
+                
+                <div class="folder-structure">
+                    <ul class="root-level">
+                        <li>
+                            <span class="folder expanded">Assets</span>
+                            <ul>
+                                <li><span class="folder">Scripts</span>
+                                    <ul class="hidden">
+                                        <li><span class="folder">Core</span>
+                                            <ul class="hidden">
+                                                <li><span class="file cs">HomeSaladPlayer.cs</span></li>
+                                                <li><span class="file cs">HomeSaladNPC.cs</span></li>
+                                                <li><span class="file cs">HomeSaladNetworkManager.cs</span></li>
+                                            </ul>
+                                        </li>
+                                        <li><span class="folder">Gardening</span></li>
+                                        <li><span class="folder">Environment</span></li>
+                                        <li><span class="folder">Community</span></li>
+                                        <li><span class="folder">Building</span></li>
+                                        <li><span class="folder">Quest</span></li>
+                                        <li><span class="folder">UI</span></li>
+                                    </ul>
+                                </li>
+                                <li><span class="folder">Prefabs</span></li>
+                                <li><span class="folder">Scenes</span></li>
+                                <li><span class="folder">ScriptableObjects</span></li>
+                                <li><span class="folder">Resources</span></li>
+                                <li><span class="folder">Animation</span></li>
+                                <li><span class="folder">Art</span></li>
+                                <li><span class="folder">Audio</span></li>
+                                <li><span class="folder">Materials</span></li>
+                                <li><span class="folder">Plugins</span></li>
+                            </ul>
+                        </li>
+                        <li><span class="folder">Packages</span></li>
+                        <li><span class="folder">ProjectSettings</span></li>
+                    </ul>
+                </div>
+                
+                <h2>Key Folders and Their Purpose</h2>
+                
+                <div id="assets-scripts" class="folder-description">
+                    <h4>Assets/Scripts</h4>
+                    <p>Contains all C# scripts organized by functional domain. This is the heart of the HomeSalad codebase.</p>
+                    <ul>
+                        <li><strong>Core:</strong> Base classes that extend uMMORPG functionality, including player, NPC, and network management.</li>
+                        <li><strong>Gardening:</strong> Scripts related to the gardening mechanics, including plant growth, watering, and harvesting.</li>
+                        <li><strong>Environment:</strong> Environmental transformation system, weather, seasons, and biodiversity tracking.</li>
+                        <li><strong>Community:</strong> Relationship management, faction systems, community events, and dialogue.</li>
+                        <li><strong>Building:</strong> Building placement, functionality, and upgrade systems.</li>
+                        <li><strong>Quest:</strong> Extended quest system with environmental and community-based objectives.</li>
+                        <li><strong>UI:</strong> User interface components for all game systems.</li>
+                    </ul>
+                    <div class="implementation-status">
+                        <div class="status-indicator status-in-progress"></div>
+                        <span class="status-text">Implementation: 85% Complete</span>
+                    </div>
+                </div>
+                
+                <div id="assets-prefabs" class="folder-description">
+                    <h4>Assets/Prefabs</h4>
+                    <p>Contains all prefabricated game objects used in the HomeSalad project.</p>
+                    <ul>
+                        <li><strong>Characters:</strong> Player and NPC prefabs with their components and settings.</li>
+                        <li><strong>Environment:</strong> Garden plots, plants, trees, and buildings.</li>
+                        <li><strong>UI:</strong> User interface prefabs for inventory, quests, dialogue, and gardening.</li>
+                        <li><strong>Systems:</strong> Manager objects for networking, environment, quests, and time.</li>
+                    </ul>
+                    <div class="implementation-status">
+                        <div class="status-indicator status-in-progress"></div>
+                        <span class="status-text">Implementation: 70% Complete</span>
+                    </div>
+                </div>
+                
+                <div id="assets-scenes" class="folder-description">
+                    <h4>Assets/Scenes</h4>
+                    <p>Contains all Unity scenes that make up the HomeSalad game world.</p>
+                    <ul>
+                        <li><strong>MainMenu.unity:</strong> The game's main menu and character selection screen.</li>
+                        <li><strong>CharacterCreation.unity:</strong> Character creation and customization.</li>
+                        <li><strong>Greenville_Town.unity:</strong> The main town area where most NPCs and shops are located.</li>
+                        <li><strong>Greenville_Outskirts.unity:</strong> The farming and gardening areas surrounding the town.</li>
+                        <li><strong>Greenville_Forest.unity:</strong> The forest area for gathering resources and exploration.</li>
+                        <li><strong>Greenville_River.unity:</strong> The river area for fishing and water-related activities.</li>
+                    </ul>
+                    <div class="implementation-status">
+                        <div class="status-indicator status-in-progress"></div>
+                        <span class="status-text">Implementation: 60% Complete</span>
+                    </div>
+                </div>
+                
+                <div id="assets-scriptableobjects" class="folder-description">
+                    <h4>Assets/ScriptableObjects</h4>
+                    <p>Contains all scriptable object assets that define game data.</p>
+                    <ul>
+                        <li><strong>Items:</strong> Definitions for all items, tools, seeds, and crafting materials.</li>
+                        <li><strong>Plants:</strong> Plant types, growth stages, and harvest yields.</li>
+                        <li><strong>Quests:</strong> Quest definitions, objectives, and rewards.</li>
+                        <li><strong>Dialogues:</strong> NPC dialogue trees and conversation options.</li>
+                        <li><strong>EnvironmentStates:</strong> Environmental state definitions and transformation rules.</li>
+                    </ul>
+                    <div class="implementation-status">
+                        <div class="status-indicator status-in-progress"></div>
+                        <span class="status-text">Implementation: 75% Complete</span>
+                    </div>
+                </div>
+                
+                <div id="assets-resources" class="folder-description">
+                    <h4>Assets/Resources</h4>
+                    <p>Contains assets that need to be loaded at runtime using Resources.Load().</p>
+                    <ul>
+                        <li><strong>Items:</strong> Runtime-loadable item assets.</li>
+                        <li><strong>Skills:</strong> Player and NPC skill definitions.</li>
+                        <li><strong>Quests:</strong> Dynamic quest templates.</li>
+                        <li><strong>Plants:</strong> Plant prefabs and growth stage visualizations.</li>
+                        <li><strong>Buildings:</strong> Building prefabs and construction templates.</li>
+                    </ul>
+                    <div class="implementation-status">
+                        <div class="status-indicator status-in-progress"></div>
+                        <span class="status-text">Implementation: 65% Complete</span>
+                    </div>
+                </div>
+                
+                <h2>Implementation Progress</h2>
+                <p>The HomeSalad project structure is designed to support the game's unique features while maintaining compatibility with the uMMORPG Remastered framework. The implementation is ongoing, with core systems and basic functionality already in place.</p>
+                
+                <p>The next steps in the implementation process include:</p>
+                <ol>
+                    <li>Completing the environmental transformation system</li>
+                    <li>Finalizing the gardening mechanics and plant growth visualization</li>
+                    <li>Implementing the community relationship system</li>
+                    <li>Enhancing the building placement and functionality</li>
+                    <li>Polishing the user interface for all game systems</li>
+                </ol>
+                
+                <div class="alert alert-info">
+                    <p>For more detailed information on specific systems and their implementation, please refer to the <a href="database-integration.html">Database Integration</a> and <a href="gameobject-integration.html">GameObject Integration</a> pages.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                        <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                        <li><a href="../game-design/world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Programming</h3>
+                    <ul>
+                        <li><a href="project-structure.html">Project Structure</a></li>
+                        <li><a href="database-integration.html">Database Integration</a></li>
+                        <li><a href="gameobject-integration.html">GameObject Integration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Game Design Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="game-overview.html">Game Overview</a>
+                            <a href="gameplay-systems.html">Gameplay Systems</a>
+                            <a href="character-progression.html">Character Progression</a>
+                            <a href="quest-design.html">Quest Design</a>
+                            <a href="world-design.html">World Design</a>
+                            <a href="user-interface.html">User Interface</a>
+                            <a href="art-audio.html">Art & Audio</a>
+                            <a href="development-roadmap.html">Development Roadmap</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <span class="current">Game Design Document</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Design Document</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="../story-bible/index.html">Story Bible</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>HomeSalad Game Design Document</h1>
+                
+                <div class="alert alert-success">
+                    <p>This Game Design Document (GDD) provides comprehensive specifications for HomeSalad's gameplay systems, character progression, quest design, world design, user interface, art direction, and more.</p>
+                </div>
+                
+                <h2>Introduction</h2>
+                <p>HomeSalad is a community-building RPG with gardening mechanics and environmental activism themes. Players transform a struggling town through sustainable practices, progressing from newcomer to community leader and environmental champion.</p>
+                
+                <p>This Game Design Document details the mechanics, systems, and design principles that will bring the HomeSalad experience to life. It serves as the blueprint for development, ensuring that all gameplay elements support the core vision and narrative themes established in the Story Bible.</p>
+                
+                <h2>Game Design Document Contents</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Game Overview</h3>
+                        <p>Core concept, target audience, platforms, and unique selling points.</p>
+                        <a href="game-overview.html" class="btn">Explore</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Gameplay Systems</h3>
+                        <p>Core loop, gardening system, community engagement, green technology, combat & conflict, and resource management.</p>
+                        <a href="gameplay-systems.html" class="btn">Explore</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Character Progression</h3>
+                        <p>Level system, specializations, skill trees, attributes, reputation, and mastery system.</p>
+                        <a href="character-progression.html" class="btn">Explore</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Quest Design</h3>
+                        <p>Quest categories, structure, dynamic generation, and reward systems.</p>
+                        <a href="quest-design.html" class="btn">Explore</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>World Design</h3>
+                        <p>Map layout, environmental states, biomes and ecosystems, weather and climate.</p>
+                        <a href="world-design.html" class="btn">Explore</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>User Interface</h3>
+                        <p>UI philosophy, garden planning interface, community management interface, and technology systems interface.</p>
+                        <a href="user-interface.html" class="btn">Explore</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Art & Audio</h3>
+                        <p>Visual style, animation and effects, audio design, and user feedback.</p>
+                        <a href="art-audio.html" class="btn">Explore</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Development Roadmap</h3>
+                        <p>Phased implementation plan from core systems to polish and integration.</p>
+                        <a href="development-roadmap.html" class="btn">Explore</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Accessibility</h3>
+                        <p>Visual, auditory, motor, and cognitive accessibility features, plus inclusive representation.</p>
+                        <a href="accessibility.html" class="btn">Explore</a>
+                    </div>
+                </div>
+                
+                <h2>Core Gameplay Experience</h2>
+                
+                <p>HomeSalad offers a unique gameplay experience centered around the transformation of both environment and community. The core gameplay loop consists of:</p>
+                
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Gather</h3>
+                        <p>Players collect resources, knowledge, and community support through exploration, conversation, research, and participation in community events. This phase emphasizes discovery and relationship building.</p>
+                        
+                        <h3>Cultivate</h3>
+                        <p>Using gathered resources, players develop gardens, infrastructure, and relationships. This phase focuses on strategic planning, resource allocation, and system design to create sustainable solutions.</p>
+                    </div>
+                    
+                    <div class="column">
+                        <h3>Defend</h3>
+                        <p>Players protect their projects from environmental threats (weather events, pests, contamination) and corporate interference. This phase involves problem-solving, community mobilization, and strategic response.</p>
+                        
+                        <h3>Expand</h3>
+                        <p>As players succeed, they grow their influence, restore new areas, and tackle larger challenges. This phase emphasizes scaling solutions, building networks, and creating lasting change in the community.</p>
+                    </div>
+                </div>
+                
+                <p>This loop repeats throughout the game, with increasing complexity and scope as players progress. Early gameplay focuses on small-scale gardening and relationship building, while later gameplay involves community-wide projects, policy changes, and confrontations with MegaGrow Industries.</p>
+                
+                <h2>Key Gameplay Systems</h2>
+                
+                <h3>Gardening System</h3>
+                <p>The gardening system is a core gameplay mechanic that allows players to transform spaces through sustainable agriculture. Players design garden plots, select appropriate crops, manage soil health, implement water systems, address pest challenges, and harvest produce.</p>
+                
+                <p>Key features include:</p>
+                <ul>
+                    <li>50+ plant varieties with unique requirements and benefits</li>
+                    <li>Seasonal cycles affecting plant growth and selection</li>
+                    <li>Soil management through composting, cover crops, and rotation</li>
+                    <li>Water conservation through irrigation, rainwater harvesting, and drought-resistant design</li>
+                    <li>Organic pest management using companion planting and beneficial insects</li>
+                    <li>Value-added processing of harvests into preserved foods, seeds, and crafted items</li>
+                </ul>
+                
+                <h3>Community Engagement System</h3>
+                <p>The community engagement system allows players to build relationships, influence factions, organize events, and coordinate volunteers. This system translates individual actions into community-wide impact.</p>
+                
+                <p>Key features include:</p>
+                <ul>
+                    <li>Relationship building with NPCs through dialogue, gifts, and assistance</li>
+                    <li>Faction standing management affecting resource access and quest availability</li>
+                    <li>Community event organization with attendance and outcomes based on player reputation</li>
+                    <li>Education programs that spread knowledge and increase community capabilities</li>
+                    <li>Volunteer coordination for larger projects requiring collective effort</li>
+                </ul>
+                
+                <h3>Environmental Transformation System</h3>
+                <p>The environmental transformation system tracks and visualizes the health of different areas in Greenville. Player actions directly affect environmental metrics, with visible changes to the landscape as areas improve.</p>
+                
+                <p>Key features include:</p>
+                <ul>
+                    <li>Environmental state tracking from degraded (0) to fully restored (10)</li>
+                    <li>Visual transformation reflecting environmental health</li>
+                    <li>Wildlife return based on habitat quality and biodiversity</li>
+                    <li>Water and soil quality improvements affecting gameplay options</li>
+                    <li>Climate resilience features that reduce impact of extreme weather events</li>
+                </ul>
+                
+                <h2>Design Pillars</h2>
+                
+                <p>HomeSalad's design is guided by five core pillars that inform all gameplay systems and mechanics:</p>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Meaningful Choice</h3>
+                        <p>Player decisions have visible consequences for the environment, community, and story. Different approaches to challenges offer distinct advantages and trade-offs rather than "right" and "wrong" answers.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Systemic Design</h3>
+                        <p>Gameplay elements interact in realistic, interconnected ways. Actions in one system (like gardening) affect others (like community relationships or environmental health), creating emergent gameplay.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Accessible Depth</h3>
+                        <p>Systems are easy to engage with initially but offer increasing complexity as players progress. Information is presented progressively to avoid overwhelming new players while satisfying experienced ones.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Tangible Progress</h3>
+                        <p>Player advancement is visible in the world through environmental transformation, community evolution, and infrastructure development, not just through abstract statistics.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Transferable Knowledge</h3>
+                        <p>Gameplay mechanics are based on real-world principles of sustainability, community organizing, and ecological restoration, allowing players to apply what they learn in their own lives.</p>
+                    </div>
+                </div>
+                
+                <div class="alert alert-warning">
+                    <p><strong>Note:</strong> This Game Design Document should be considered alongside the Story Bible and Technical Implementation Guide for a complete understanding of HomeSalad's design and development.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

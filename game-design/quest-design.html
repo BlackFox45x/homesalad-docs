@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Quest Design</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="game-overview.html">Game Overview</a>
+                            <a href="gameplay-systems.html">Gameplay Systems</a>
+                            <a href="character-progression.html">Character Progression</a>
+                            <a href="skill-tree.html">Skill Tree System</a>
+                            <a href="garden-building.html">Garden Building System</a>
+                            <a href="quest-rewards.html">Quest & Reward System</a>
+                            <a href="quest-design.html">Quest Design</a>
+                            <a href="world-design.html">World Design</a>
+                            <a href="user-interface.html">User Interface</a>
+                            <a href="art-audio.html">Art & Audio</a>
+                            <a href="development-roadmap.html">Development Roadmap</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Design Document</a>
+            <span class="separator">></span>
+            <span class="current">Quest Design</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Design Document</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li><a href="garden-building.html">Garden Building System</a></li>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li class="active"><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Quest Design</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details the quest design philosophy, structure, and systems in HomeSalad, including main storyline quests, faction quests, personal quests, and emergent objectives.</p>
+                </div>
+                
+                <h2>Quest Design Philosophy</h2>
+                <p>HomeSalad's quest design is guided by several core principles:</p>
+                
+                <ul>
+                    <li><strong>Meaningful Choices:</strong> Quests present players with decisions that have tangible consequences for the narrative, world, and relationships</li>
+                    <li><strong>Systemic Integration:</strong> Quests connect to and utilize the game's core systems rather than existing as isolated content</li>
+                    <li><strong>Multiple Solutions:</strong> Most quests can be approached in different ways based on player skills, relationships, and preferences</li>
+                    <li><strong>Environmental Context:</strong> Quests are tied to specific locations and environmental conditions, making the setting integral to the experience</li>
+                    <li><strong>Community Impact:</strong> Quest outcomes visibly affect the community and environment, providing clear feedback on player actions</li>
+                </ul>
+                
+                <h2>Quest Categories</h2>
+                <p>HomeSalad features several categories of quests, each with distinct characteristics and purposes:</p>
+                
+                <div class="quest-category">
+                    <h3>Main Story Quests</h3>
+                    <p>These quests drive the central narrative of HomeSalad, focusing on the conflict with MegaGrow Industries and the transformation of Greenville. They are structured in a three-act format corresponding to the game's three-year cycle.</p>
+                    
+                    <p><strong>Key Characteristics:</strong></p>
+                    <ul>
+                        <li>Significant narrative impact with major decision points</li>
+                        <li>Involvement of multiple factions and key characters</li>
+                        <li>Large-scale environmental and community changes</li>
+                        <li>Multi-stage objectives with varied gameplay</li>
+                        <li>Memorable set-piece moments and events</li>
+                    </ul>
+                    
+                    <p><strong>Structure:</strong> Main story quests follow a branching structure where player choices in earlier quests affect the available options and outcomes in later quests. Each year culminates in a major community event that serves as a narrative climax.</p>
+                </div>
+                
+                <div class="quest-category">
+                    <h3>Faction Quests</h3>
+                    <p>These quests are associated with specific factions in Greenville and allow players to develop their standing with these groups. Each faction offers a questline that reflects its values, goals, and methods.</p>
+                    
+                    <p><strong>Key Characteristics:</strong></p>
+                    <ul>
+                        <li>Alignment with faction values and objectives</li>
+                        <li>Reputation rewards and faction-specific benefits</li>
+                        <li>Potential conflicts with opposing faction interests</li>
+                        <li>Specialized gameplay related to faction focus</li>
+                        <li>Character development for faction members</li>
+                    </ul>
+                    
+                    <p><strong>Structure:</strong> Faction quests are organized in tiers that unlock as player reputation increases. Higher-tier quests offer more significant rewards and narrative development but may also create more tension with opposing factions.</p>
+                </div>
+                
+                <div class="quest-category">
+                    <h3>Personal Quests</h3>
+                    <p>These quests focus on individual characters and their personal stories, allowing players to develop deeper relationships with NPCs and help them overcome challenges or achieve goals.</p>
+                    
+                    <p><strong>Key Characteristics:</strong></p>
+                    <ul>
+                        <li>Character-driven narratives with emotional depth</li>
+                        <li>Relationship development and personal insights</li>
+                        <li>Smaller scale but high emotional impact</li>
+                        <li>Often tied to character backgrounds and growth</li>
+                        <li>Unique rewards including skills, items, or knowledge</li>
+                    </ul>
+                    
+                    <p><strong>Structure:</strong> Personal quests typically unfold in 3-5 stages as relationships develop, with each stage revealing more about the character and presenting new challenges or opportunities for connection.</p>
+                </div>
+                
+                <div class="quest-category">
+                    <h3>Community Projects</h3>
+                    <p>These are collaborative objectives that involve multiple community members working toward a shared goal, such as building infrastructure, organizing events, or addressing environmental challenges.</p>
+                    
+                    <p><strong>Key Characteristics:</strong></p>
+                    <ul>
+                        <li>Collective effort requiring resource contribution</li>
+                        <li>Visible progress tracking and milestone rewards</li>
+                        <li>Community-wide benefits upon completion</li>
+                        <li>Opportunities for leadership and coordination</li>
+                        <li>Integration with seasonal events and needs</li>
+                    </ul>
+                    
+                    <p><strong>Structure:</strong> Community projects have a preparation phase, a resource gathering phase, an implementation phase, and a celebration/benefit phase. Players can contribute at different stages based on their skills and interests.</p>
+                </div>
+                
+                <div class="quest-category">
+                    <h3>Emergent Quests</h3>
+                    <p>These quests arise dynamically from the game's systems and world state, responding to player actions, environmental conditions, and community needs.</p>
+                    
+                    <p><strong>Key Characteristics:</strong></p>
+                    <ul>
+                        <li>Generated based on current game state and conditions</li>
+                        <li>Responsive to player actions and environmental changes</li>
+                        <li>Often time-limited or seasonal in nature</li>
+                        <li>Varied difficulty and scope</li>
+                        <li>Integrated with environmental and community systems</li>
+                    </ul>
+                    
+                    <p><strong>Structure:</strong> Emergent quests follow templates that are populated with contextually appropriate details based on current conditions, creating unique combinations of objectives, locations, and rewards.</p>
+                </div>
+                
+                <h2>Quest Structure</h2>
+                <p>While quest structure varies by category, most quests in HomeSalad follow a general pattern:</p>
+                
+                <h3>Quest Components</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Initiation</td>
+                                <td>How the quest is discovered and started</td>
+                                <td>Conversation with NPC, bulletin board notice, environmental observation</td>
+                            </tr>
+                            <tr>
+                                <td>Context</td>
+                                <td>Background information and motivation</td>
+                                <td>Character history, community need, environmental issue</td>
+                            </tr>
+                            <tr>
+                                <td>Objectives</td>
+                                <td>Tasks that must be completed</td>
+                                <td>Gather resources, build structure, convince character, restore area</td>
+                            </tr>
+                            <tr>
+                                <td>Choices</td>
+                                <td>Decision points that affect outcomes</td>
+                                <td>Approach method, resource allocation, ethical dilemmas</td>
+                            </tr>
+                            <tr>
+                                <td>Challenges</td>
+                                <td>Obstacles that must be overcome</td>
+                                <td>Resource scarcity, time pressure, opposition, skill requirements</td>
+                            </tr>
+                            <tr>
+                                <td>Resolution</td>
+                                <td>Conclusion and outcome</td>
+                                <td>Environmental change, relationship development, community impact</td>
+                            </tr>
+                            <tr>
+                                <td>Rewards</td>
+                                <td>Benefits for completion</td>
+                                <td>Skills, knowledge, items, reputation, environmental improvements</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Quest Flow</h3>
+                <p>The typical flow of a quest in HomeSalad:</p>
+                
+                <ol>
+                    <li><strong>Discovery:</strong> Player learns about the quest through exploration, conversation, or events</li>
+                    <li><strong>Investigation:</strong> Player gathers information about the situation and possible approaches</li>
+                    <li><strong>Planning:</strong> Player decides how to approach the quest based on their skills and resources</li>
+                    <li><strong>Execution:</strong> Player carries out their chosen approach, adapting to challenges</li>
+                    <li><strong>Decision Points:</strong> Player makes key choices that affect the outcome</li>
+                    <li><strong>Resolution:</strong> The quest concludes with consequences based on player actions</li>
+                    <li><strong>Feedback:</strong> The world and characters react to the quest outcome</li>
+                    <li><strong>Integration:</strong> The results become part of the ongoing game state</li>
+                </ol>
+                
+                <h2>Quest Design Examples</h2>
+                <p>The following examples illustrate how HomeSalad's quest design principles are applied to different quest types:</p>
+                
+                <div class="example-quest">
+                    <h3>Main Story Quest Example: "Watershed Moment"</h3>
+                    <p><strong>Context:</strong> MegaGrow plans to divert water from the Green River for their industrial farm, threatening Greenville's water supply and riparian ecosystem.</p>
+                    
+                    <p><strong>Objectives:</strong></p>
+                    <ul>
+                        <li>Gather evidence of MegaGrow's water diversion plans</li>
+                        <li>Develop a community water management alternative</li>
+                        <li>Present the case at the City Council meeting</li>
+                        <li>Implement the chosen water management solution</li>
+                    </ul>
+                    
+                    <p><strong>Key Choices:</strong></p>
+                    <ul>
+                        <li>How to obtain evidence (infiltration, legal research, whistleblower)</li>
+                        <li>What alternative to propose (traditional methods, high-tech solution, hybrid approach)</li>
+                        <li>How to address MegaGrow's arguments (economic, environmental, community-focused)</li>
+                        <li>Which allies to involve (affects available resources and political support)</li>
+                    </ul>
+                    
+                    <p><strong>Outcomes:</strong> The river's fate is determined, affecting water availability, ecosystem health, and community-corporate relations. The physical environment visibly changes based on the outcome, and water-related gameplay is permanently affected.</p>
+                </div>
+                
+                <div class="example-quest">
+                    <h3>Faction Quest Example: "Green Spark Initiative"</h3>
+                    <p><strong>Context:</strong> The Green Spark Collective wants to establish a demonstration garden in Downtown Commons to showcase sustainable growing methods.</p>
+                    
+                    <p><strong>Objectives:</strong></p>
+                    <ul>
+                        <li>Secure permission from the City Council for the garden site</li>
+                        <li>Gather appropriate plants and materials</li>
+                        <li>Design and build the garden with Collective members</li>
+                        <li>Create educational materials about the techniques used</li>
+                        <li>Host a public workshop to share knowledge</li>
+                    </ul>
+                    
+                    <p><strong>Key Choices:</strong></p>
+                    <ul>
+                        <li>Garden design focus (food production, native habitat, water conservation)</li>
+                        <li>How to approach the Council (formal proposal, public pressure, individual lobbying)</li>
+                        <li>Which Collective members to involve (affects available skills and relationships)</li>
+                        <li>How to present information (technical, practical, inspirational)</li>
+                    </ul>
+                    
+                    <p><strong>Outcomes:</strong> A permanent demonstration garden in Downtown Commons, increased Green Spark reputation, new gardening knowledge, and potential conflict with MegaGrow if the garden contradicts their agricultural messaging.</p>
+                </div>
+                
+                <div class="example-quest">
+                    <h3>Personal Quest Example: "Maria's Legacy"</h3>
+                    <p><strong>Context:</strong> Elder gardener Maria Gonzalez wants to preserve her family's heirloom seed collection but fears it will be lost as younger generations leave Greenville.</p>
+                    
+                    <p><strong>Objectives:</strong></p>
+                    <ul>
+                        <li>Help Maria organize and catalog her seed collection</li>
+                        <li>Learn the stories and growing techniques for key varieties</li>
+                        <li>Find a sustainable way to maintain the collection</li>
+                        <li>Connect Maria with younger community members interested in traditional gardening</li>
+                    </ul>
+                    
+                    <p><strong>Key Choices:</strong></p>
+                    <ul>
+                        <li>How to preserve the knowledge (digital documentation, apprenticeship, community seed library)</li>
+                        <li>Which varieties to prioritize (based on cultural significance, adaptation to climate change, culinary value)</li>
+                        <li>How to engage younger generations (school program, cooking demonstrations, technology integration)</li>
+                    </ul>
+                    
+                    <p><strong>Outcomes:</strong> Preserved seed varieties become available to the player, Maria's relationship deepens, traditional knowledge is documented, and a new community tradition may be established.</p>
+                </div>
+                
+                <h2>Quest Tracking and Management</h2>
+                <p>HomeSalad provides several tools for players to track and manage quests:</p>
+                
+                <h3>Journal System</h3>
+                <p>The player's journal serves as the primary quest tracking tool, with several sections:</p>
+                <ul>
+                    <li><strong>Active Quests:</strong> Currently accepted and in-progress quests</li>
+                    <li><strong>Completed Quests:</strong> Archive of finished quests with outcomes</li>
+                    <li><strong>Available Quests:</strong> Known but not yet accepted quests</li>
+                    <li><strong>Notes:</strong> Player-created reminders and observations</li>
+                    <li><strong>Calendar:</strong> Timeline of upcoming events and deadlines</li>
+                </ul>
+                
+                <h3>Quest Markers and Indicators</h3>
+                <p>The game world includes subtle indicators for quest-related elements:</p>
+                <ul>
+                    <li><strong>Character Indicators:</strong> Visual cues for NPCs with available quests or updates</li>
+                    <li><strong>Location Highlights:</strong> Environmental cues for quest-relevant areas</li>
+                    <li><strong>Map Markers:</strong> Optional indicators on the world map (can be toggled)</li>
+                    <li><strong>Time Indicators:</strong> Warnings for time-sensitive objectives</li>
+                </ul>
+                
+                <h3>Quest Prioritization</h3>
+                <p>Players can prioritize quests in their journal, which affects:</p>
+                <ul>
+                    <li>Which quest objectives appear in the HUD</li>
+                    <li>Which quest locations are highlighted on the map</li>
+                    <li>Which quest-related dialogue options are emphasized</li>
+                    <li>Notifications for quest-relevant opportunities</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Design Note:</strong> Quest design in HomeSalad emphasizes player agency and systemic integration. Rather than treating quests as a separate content layer, they are designed to work with and highlight the game's core systems of environmental transformation, community building, and sustainable living.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="quest-rewards.html" class="prev-link">Previous: Quest & Reward System</a>
+                    <a href="world-design.html" class="next-link">Next: World Design</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

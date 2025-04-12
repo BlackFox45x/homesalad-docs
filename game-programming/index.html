@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Game Programming & Architecture</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Mermaid diagrams
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'default',
+                securityLevel: 'loose'
+            });
+            
+            // Initialize collapsible elements
+            const collapsibles = document.querySelectorAll('.collapsible-header');
+            collapsibles.forEach(header => {
+                header.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+            
+            // Initialize sortable tables
+            document.querySelectorAll('.sortable').forEach(table => {
+                const headers = table.querySelectorAll('th');
+                headers.forEach((header, index) => {
+                    if (!header.classList.contains('no-sort')) {
+                        header.addEventListener('click', () => {
+                            sortTable(table, index);
+                        });
+                        header.classList.add('sortable-header');
+                    }
+                });
+            });
+        });
+        
+        // Table sorting function
+        function sortTable(table, column) {
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const header = table.querySelectorAll('th')[column];
+            const isAscending = header.classList.contains('sort-asc');
+            
+            // Clear all sort classes
+            table.querySelectorAll('th').forEach(th => {
+                th.classList.remove('sort-asc', 'sort-desc');
+            });
+            
+            // Set new sort class
+            header.classList.add(isAscending ? 'sort-desc' : 'sort-asc');
+            
+            // Sort the rows
+            rows.sort((a, b) => {
+                const aValue = a.cells[column].textContent.trim();
+                const bValue = b.cells[column].textContent.trim();
+                
+                // Check if values are numbers
+                const aNum = parseFloat(aValue);
+                const bNum = parseFloat(bValue);
+                
+                if (!isNaN(aNum) && !isNaN(bNum)) {
+                    return isAscending ? bNum - aNum : aNum - bNum;
+                }
+                
+                // Otherwise sort as strings
+                return isAscending 
+                    ? bValue.localeCompare(aValue) 
+                    : aValue.localeCompare(bValue);
+            });
+            
+            // Reappend rows in new order
+            rows.forEach(row => tbody.appendChild(row));
+        }
+        
+        // Filter table function
+        function filterTable(input, tableId) {
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById(tableId);
+            const rows = table.getElementsByTagName('tr');
+            
+            for (let i = 1; i < rows.length; i++) {
+                let visible = false;
+                const cells = rows[i].getElementsByTagName('td');
+                
+                for (let j = 0; j < cells.length; j++) {
+                    const cell = cells[j];
+                    if (cell) {
+                        const text = cell.textContent || cell.innerText;
+                        if (text.toUpperCase().indexOf(filter) > -1) {
+                            visible = true;
+                            break;
+                        }
+                    }
+                }
+                
+                rows[i].style.display = visible ? '' : 'none';
+            }
+        }
+    </script>
+    <style>
+        /* Additional styles for Game Programming & Architecture section */
+        .collapsible-header {
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: 0.4s;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .collapsible-header:after {
+            content: '\002B';
+            color: var(--primary-color);
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+        
+        .collapsible-header.active:after {
+            content: "\2212";
+        }
+        
+        .collapsible-content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: white;
+            border-radius: 0 0 4px 4px;
+            margin-bottom: 10px;
+        }
+        
+        .folder-structure {
+            font-family: var(--code-font);
+            line-height: 1.5;
+            margin: 1rem 0;
+        }
+        
+        .folder-structure ul {
+            list-style-type: none;
+            margin-left: 1.5rem;
+        }
+        
+        .folder-structure li {
+            position: relative;
+        }
+        
+        .folder-structure li:before {
+            content: "";
+            position: absolute;
+            left: -1rem;
+            top: 0.7rem;
+            height: 1px;
+            width: 0.75rem;
+            background-color: #ccc;
+        }
+        
+        .folder-structure li:after {
+            content: "";
+            position: absolute;
+            left: -1rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: #ccc;
+        }
+        
+        .folder-structure li:last-child:after {
+            height: 0.7rem;
+        }
+        
+        .folder {
+            color: var(--primary-color);
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .file {
+            color: var(--text-color);
+        }
+        
+        .sortable-header {
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .sortable-header:after {
+            content: '⇕';
+            position: absolute;
+            right: 8px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .sort-asc:after {
+            content: '↑';
+            color: white;
+        }
+        
+        .sort-desc:after {
+            content: '↓';
+            color: white;
+        }
+        
+        .filter-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .db-table {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        
+        .db-table-header {
+            font-weight: bold;
+            color: var(--secondary-color);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+        
+        .db-field {
+            padding: 3px 0;
+            display: flex;
+        }
+        
+        .db-field-name {
+            font-weight: bold;
+            width: 150px;
+        }
+        
+        .db-field-type {
+            color: var(--accent-color);
+            width: 100px;
+        }
+        
+        .console-output {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            font-family: var(--code-font);
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .console-error {
+            color: #ff5252;
+        }
+        
+        .console-warning {
+            color: #ffb74d;
+        }
+        
+        .console-info {
+            color: #64b5f6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../game-design/index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="../game-design/game-overview.html">Game Overview</a>
+                            <a href="../game-design/gameplay-systems.html">Gameplay Systems</a>
+                            <a href="../game-design/character-progression.html">Character Progression</a>
+                            <a href="../game-design/quest-design.html">Quest Design</a>
+                            <a href="../game-design/world-design.html">World Design</a>
+                            <a href="../game-design/user-interface.html">User Interface</a>
+                            <a href="../game-design/art-audio.html">Art & Audio</a>
+                            <a href="../game-design/development-roadmap.html">Development Roadmap</a>
+                            <a href="../game-design/accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Programming & Architecture</a>
+                        <div class="dropdown-content">
+                            <a href="project-structure.html">Project Structure</a>
+                            <a href="database-integration.html">Database Integration</a>
+                            <a href="gameobject-integration.html">GameObject Integration</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                            <a href="../technical/ui-mcp-implementation.html">UI-MCP Implementation</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <span class="current">Game Programming & Architecture</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Programming</h3>
+                    <ul>
+                        <li><a href="project-structure.html">Project Structure</a></li>
+                        <li><a href="database-integration.html">Database Integration</a></li>
+                        <li><a href="gameobject-integration.html">GameObject Integration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>HomeSalad Game Programming & Architecture</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section provides a comprehensive overview of the HomeSalad project's programming architecture, database integration, and GameObject implementation. It serves as a bridge between the Game Design concepts and the Technical Implementation details.</p>
+                </div>
+                
+                <h2>Introduction</h2>
+                <p>The Game Programming & Architecture section focuses on the practical implementation aspects of HomeSalad, providing detailed insights into the project structure, database integration with uMMORPG, and GameObject implementation. This section is designed to help developers understand how the game's design concepts are translated into functional code and systems.</p>
+                
+                <p>Each page in this section includes interactive elements to help visualize complex relationships, track implementation progress, and understand the integration between different components of the HomeSalad project.</p>
+                
+                <h2>Section Contents</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Project Structure</h3>
+                        <p>Complete breakdown of the HomeSalad project folder structure with detailed explanations of each folder's purpose and contents.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <a href="project-structure.html" class="btn">Explore</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Database Integration</h3>
+                        <p>Comprehensive explanation of how the uMMORPG database is used as the backend for HomeSalad, with interactive diagrams of the database structure.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <a href="database-integration.html" class="btn">Explore</a>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>GameObject Integration</h3>
+                        <p>Detailed breakdown of each GameObject in HomeSalad, explaining how uMMORPG game assets, GameObjects, and data are being reused and extended.</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <a href="gameobject-integration.html" class="btn">Explore</a>
+                    </div>
+                </div>
+                
+                <h2>Implementation Progress Overview</h2>
+                
+                <p>The following table provides a high-level overview of the implementation progress for key components of the HomeSalad project:</p>
+                
+                <input type="text" class="filter-input" id="progressFilter" onkeyup="filterTable(this, 'progressTable')" placeholder="Filter by component name...">
+                
+                <table id="progressTable" class="sortable">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Category</th>
+                            <th>Progress</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Project Structure Documentation</td>
+                            <td>Documentation</td>
+                            <td>100%</td>
+                            <td>Complete</td>
+                        </tr>
+                        <tr>
+                            <td>Database Schema Design</td>
+                            <td>Database</td>
+                            <td>100%</td>
+                            <td>Complete</td>
+                        </tr>
+                        <tr>
+                            <td>Database Integration Implementation</td>
+                            <td>Database</td>
+                            <td>85%</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td>GameObject Hierarchy Documentation</td>
+                            <td>GameObjects</td>
+                            <td>100%</td>
+                            <td>Complete</td>
+                        </tr>
+                        <tr>
+                            <td>Player GameObject Implementation</td>
+                            <td>GameObjects</td>
+                            <td>90%</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td>NPC GameObject Implementation</td>
+                            <td>GameObjects</td>
+                            <td>75%</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td>Environment GameObject Implementation</td>
+                            <td>GameObjects</td>
+                            <td>60%</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td>Unity Console Integration</td>
+                            <td>Tools</td>
+                            <td>100%</td>
+                            <td>Complete</td>
+                        </tr>
+                        <tr>
+                            <td>Error Handling System</td>
+                            <td>Tools</td>
+                            <td>80%</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td>Real-time Progress Tracking</td>
+                            <td>Tools</td>
+                            <td>70%</td>
+                            <td>In Progress</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2>Unity Console Integration</h2>
+                
+                <p>The HomeSalad documentation includes real-time integration with the Unity Console, allowing developers to view errors, warnings, and logs directly within the documentation. This helps in identifying and resolving issues quickly during implementation.</p>
+                
+                <div class="console-output">
+                    <div class="console-info">[INFO] HomeSalad documentation system initialized</div>
+                    <div class="console-info">[INFO] Database integration documentation loaded</div>
+                    <div class="console-info">[INFO] GameObject integration documentation loaded</div>
+                    <div class="console-warning">[WARNING] Some implementation progress metrics may be outdated</div>
+                    <div class="console-info">[INFO] Project structure documentation loaded</div>
+                    <div class="console-error">[ERROR] Missing reference to EnvironmentTransformationManager in scene</div>
+                    <div class="console-info">[INFO] All documentation pages loaded successfully</div>
+                </div>
+                
+                <p>The console output above shows a sample of the types of messages that would be displayed in the documentation. In the actual implementation, these messages would be updated in real-time as changes are made to the project.</p>
+                
+                <div class="alert alert-warning">
+                    <p><strong>Note:</strong> This Game Programming & Architecture section should be used in conjunction with the Game Design Document and Technical Implementation Guide for a complete understanding of the HomeSalad project.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                        <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                        <li><a href="../game-design/world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Programming</h3>
+                    <ul>
+                        <li><a href="project-structure.html">Project Structure</a></li>
+                        <li><a href="database-integration.html">Database Integration</a></li>
+                        <li><a href="gameobject-integration.html">GameObject Integration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Skill Tree System</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="game-overview.html">Game Overview</a>
+                            <a href="gameplay-systems.html">Gameplay Systems</a>
+                            <a href="character-progression.html">Character Progression</a>
+                            <a href="skill-tree.html">Skill Tree System</a>
+                            <a href="garden-building.html">Garden Building System</a>
+                            <a href="quest-rewards.html">Quest & Reward System</a>
+                            <a href="quest-design.html">Quest Design</a>
+                            <a href="world-design.html">World Design</a>
+                            <a href="user-interface.html">User Interface</a>
+                            <a href="art-audio.html">Art & Audio</a>
+                            <a href="development-roadmap.html">Development Roadmap</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Design Document</a>
+            <span class="separator">></span>
+            <span class="current">Skill Tree System</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Design Document</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li class="active"><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li><a href="garden-building.html">Garden Building System</a></li>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Skill Tree System</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details HomeSalad's skill tree system, showing how players can develop and specialize their character's abilities through branching progression paths.</p>
+                </div>
+                
+                <h2>Skill Tree Overview</h2>
+                <p>HomeSalad's skill tree system provides a visual representation of character development paths, allowing players to plan their progression and specialization. Unlike traditional RPG skill trees that use abstract point allocation, HomeSalad's skill trees unlock through practical application and experience.</p>
+                
+                <div class="skill-tree-diagram">
+                    <img src="../images/skill-tree-overview.jpg" alt="Complete skill tree overview showing all five skill categories and their branches">
+                    <p class="caption"><strong>AI Prompt:</strong> "A comprehensive skill tree diagram for a farming/community game showing five main branches: Cultivation (green), Construction (brown), Community (blue), Conservation (teal), and Crafts (orange). Each branch has 3-4 sub-branches with 5-6 nodes each. Clean, modern design with connecting lines showing prerequisites."</p>
+                </div>
+                
+                <h2>Skill Tree Structure</h2>
+                <p>Each of the five skill categories has its own skill tree with multiple specialization branches:</p>
+                
+                <h3>Cultivation Skill Tree</h3>
+                <div class="skill-tree-section">
+                    <div class="skill-tree-diagram">
+                        <img src="../images/cultivation-skill-tree.jpg" alt="Detailed cultivation skill tree showing all branches and nodes">
+                        <p class="caption"><strong>AI Prompt:</strong> "A detailed skill tree diagram for cultivation skills in a farming game. The tree has a central 'Basic Gardening' node that branches into four paths: Crop Farming, Permaculture, Plant Breeding, and Orchard Management. Each path has 5-6 progressive skills with connecting lines showing prerequisites. Green color scheme with plant-themed icons for each skill."</p>
+                    </div>
+                    
+                    <h4>Crop Farming Branch</h4>
+                    <ul class="skill-branch">
+                        <li class="skill-node">
+                            <strong>Basic Crop Tending (Level 1)</strong>
+                            <p>Ability to grow basic crops with standard care techniques</p>
+                            <p><em>Unlocks:</em> Basic vegetable crops, simple watering techniques</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Crop Rotation (Level 2)</strong>
+                            <p>Understanding of crop families and rotation benefits</p>
+                            <p><em>Unlocks:</em> 10% yield increase, reduced pest problems</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Intensive Planting (Level 3)</strong>
+                            <p>Techniques for maximizing space through companion planting</p>
+                            <p><em>Unlocks:</em> 25% more plants per garden bed, companion benefits</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Season Extension (Level 4)</strong>
+                            <p>Methods to extend growing seasons with protection</p>
+                            <p><em>Unlocks:</em> Cold frames, row covers, early/late planting</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Master Crop Production (Level 5)</strong>
+                            <p>Advanced techniques for maximum yield and quality</p>
+                            <p><em>Unlocks:</em> 50% yield increase, premium quality crops, teaching ability</p>
+                        </li>
+                    </ul>
+                    
+                    <h4>Permaculture Branch</h4>
+                    <ul class="skill-branch">
+                        <li class="skill-node">
+                            <strong>Permaculture Basics (Level 1)</strong>
+                            <p>Understanding of core permaculture principles</p>
+                            <p><em>Unlocks:</em> Basic guild planting, water management awareness</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Guild Design (Level 2)</strong>
+                            <p>Creating plant communities that support each other</p>
+                            <p><em>Unlocks:</em> 15% reduction in maintenance, pest resistance</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Food Forest Layers (Level 3)</strong>
+                            <p>Understanding vertical space utilization in planting</p>
+                            <p><em>Unlocks:</em> Canopy, understory, shrub, herb, ground cover, root, and vine layers</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Ecological Design (Level 4)</strong>
+                            <p>Creating self-sustaining garden ecosystems</p>
+                            <p><em>Unlocks:</em> 30% water reduction, 40% maintenance reduction</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Permaculture Mastery (Level 5)</strong>
+                            <p>Advanced integration of all permaculture systems</p>
+                            <p><em>Unlocks:</em> Self-sustaining gardens, maximum biodiversity, teaching ability</p>
+                        </li>
+                    </ul>
+                    
+                    <h4>Plant Breeding Branch</h4>
+                    <ul class="skill-branch">
+                        <li class="skill-node">
+                            <strong>Seed Saving (Level 1)</strong>
+                            <p>Basic techniques for harvesting and storing seeds</p>
+                            <p><em>Unlocks:</em> Ability to save seeds from non-hybrid plants</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Selection Techniques (Level 2)</strong>
+                            <p>Identifying and selecting for desirable traits</p>
+                            <p><em>Unlocks:</em> 10% improved seed quality, trait selection</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Cross-Pollination (Level 3)</strong>
+                            <p>Controlled breeding between compatible plants</p>
+                            <p><em>Unlocks:</em> Ability to create crosses, new variety development</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Variety Stabilization (Level 4)</strong>
+                            <p>Techniques to stabilize new crosses into true-breeding varieties</p>
+                            <p><em>Unlocks:</em> Creation of stable varieties, 25% trait improvement</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Master Plant Breeder (Level 5)</strong>
+                            <p>Advanced breeding for multiple traits and local adaptation</p>
+                            <p><em>Unlocks:</em> Unique varieties, 50% improvement in selected traits, teaching ability</p>
+                        </li>
+                    </ul>
+                    
+                    <h4>Orchard Management Branch</h4>
+                    <ul class="skill-branch">
+                        <li class="skill-node">
+                            <strong>Fruit Tree Basics (Level 1)</strong>
+                            <p>Fundamental care of fruit trees and bushes</p>
+                            <p><em>Unlocks:</em> Basic fruit tree planting and care</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Pruning Techniques (Level 2)</strong>
+                            <p>Proper pruning for tree health and production</p>
+                            <p><em>Unlocks:</em> 15% increased fruit production, improved tree form</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Grafting (Level 3)</strong>
+                            <p>Joining different varieties to a single rootstock</p>
+                            <p><em>Unlocks:</em> Multi-variety trees, propagation of rare varieties</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Integrated Orchard Systems (Level 4)</strong>
+                            <p>Combining trees with complementary plants</p>
+                            <p><em>Unlocks:</em> 30% pest reduction, 25% yield increase</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Orchard Mastery (Level 5)</strong>
+                            <p>Advanced orchard design and management</p>
+                            <p><em>Unlocks:</em> Maximum fruit quality and yield, extended harvest seasons, teaching ability</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3>Construction Skill Tree</h3>
+                <div class="skill-tree-section">
+                    <div class="skill-tree-diagram">
+                        <img src="../images/construction-skill-tree.jpg" alt="Detailed construction skill tree showing all branches and nodes">
+                        <p class="caption"><strong>AI Prompt:</strong> "A detailed skill tree diagram for construction skills in a community-building game. The tree has a central 'Basic Building' node that branches into four paths: Structures, Infrastructure, Sustainable Design, and Tool Making. Each path has 5-6 progressive skills with connecting lines showing prerequisites. Brown/tan color scheme with building-themed icons for each skill."</p>
+                    </div>
+                    
+                    <h4>Structures Branch</h4>
+                    <ul class="skill-branch">
+                        <li class="skill-node">
+                            <strong>Basic Structures (Level 1)</strong>
+                            <p>Simple construction of basic buildings</p>
+                            <p><em>Unlocks:</em> Small sheds, basic shelters</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Framing Techniques (Level 2)</strong>
+                            <p>Advanced structural support methods</p>
+                            <p><em>Unlocks:</em> Larger buildings, second stories</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Natural Building (Level 3)</strong>
+                            <p>Using earth, straw, and other natural materials</p>
+                            <p><em>Unlocks:</em> Cob structures, straw bale buildings, 25% resource reduction</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Advanced Joinery (Level 4)</strong>
+                            <p>Complex wood connections without fasteners</p>
+                            <p><em>Unlocks:</em> 40% durability increase, decorative elements</p>
+                        </li>
+                        <li class="skill-node">
+                            <strong>Master Builder (Level 5)</strong>
+                            <p>Integration of multiple building techniques</p>
+                            <p><em>Unlocks:</em> Unique building designs, maximum durability, teaching ability</p>
+                        </li>
+                    </ul>
+                    
+                    <!-- Additional Construction branches would be detailed here -->
+                </div>
+                
+                <h3>Community Skill Tree</h3>
+                <div class="skill-tree-section">
+                    <div class="skill-tree-diagram">
+                        <img src="../images/community-skill-tree.jpg" alt="Detailed community skill tree showing all branches and nodes">
+                        <p class="caption"><strong>AI Prompt:</strong> "A detailed skill tree diagram for community skills in a social simulation game. The tree has a central 'Basic Communication' node that branches into four paths: Leadership, Education, Conflict Resolution, and Event Planning. Each path has 5-6 progressive skills with connecting lines showing prerequisites. Blue color scheme with social-themed icons for each skill."</p>
+                    </div>
+                    
+                    <!-- Community skill branches would be detailed here -->
+                </div>
+                
+                <h3>Conservation Skill Tree</h3>
+                <div class="skill-tree-section">
+                    <div class="skill-tree-diagram">
+                        <img src="../images/conservation-skill-tree.jpg" alt="Detailed conservation skill tree showing all branches and nodes">
+                        <p class="caption"><strong>AI Prompt:</strong> "A detailed skill tree diagram for conservation skills in an environmental game. The tree has a central 'Environmental Awareness' node that branches into four paths: Ecosystem Restoration, Water Management, Wildlife Support, and Pollution Remediation. Each path has 5-6 progressive skills with connecting lines showing prerequisites. Teal color scheme with nature-themed icons for each skill."</p>
+                    </div>
+                    
+                    <!-- Conservation skill branches would be detailed here -->
+                </div>
+                
+                <h3>Crafts Skill Tree</h3>
+                <div class="skill-tree-section">
+                    <div class="skill-tree-diagram">
+                        <img src="../images/crafts-skill-tree.jpg" alt="Detailed crafts skill tree showing all branches and nodes">
+                        <p class="caption"><strong>AI Prompt:</strong> "A detailed skill tree diagram for crafting skills in a homesteading game. The tree has a central 'Basic Crafting' node that branches into four paths: Food Preservation, Herbalism, Textiles, and Artistry. Each path has 5-6 progressive skills with connecting lines showing prerequisites. Orange/amber color scheme with craft-themed icons for each skill."</p>
+                    </div>
+                    
+                    <!-- Crafts skill branches would be detailed here -->
+                </div>
+                
+                <h2>Skill Progression Mechanics</h2>
+                <p>Skills in HomeSalad progress through practical application rather than abstract point allocation:</p>
+                
+                <h3>Experience Acquisition</h3>
+                <ul>
+                    <li><strong>Practice:</strong> Performing related activities provides skill experience</li>
+                    <li><strong>Quality Bonus:</strong> Higher quality results provide more experience</li>
+                    <li><strong>Complexity Bonus:</strong> More challenging applications provide more experience</li>
+                    <li><strong>Innovation Bonus:</strong> First-time or creative applications provide bonus experience</li>
+                    <li><strong>Teaching Bonus:</strong> Sharing knowledge with others provides experience</li>
+                </ul>
+                
+                <h3>Skill Level Thresholds</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>Experience Required</th>
+                                <th>Capabilities</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1 (Novice)</td>
+                                <td>0 XP</td>
+                                <td>Basic functionality, high failure rate, limited efficiency</td>
+                            </tr>
+                            <tr>
+                                <td>2 (Apprentice)</td>
+                                <td>100 XP</td>
+                                <td>Reliable basic techniques, moderate efficiency, occasional failures</td>
+                            </tr>
+                            <tr>
+                                <td>3 (Practitioner)</td>
+                                <td>300 XP</td>
+                                <td>Advanced techniques, good efficiency, rare failures</td>
+                            </tr>
+                            <tr>
+                                <td>4 (Expert)</td>
+                                <td>700 XP</td>
+                                <td>Specialized techniques, excellent efficiency, teaching capability</td>
+                            </tr>
+                            <tr>
+                                <td>5 (Master)</td>
+                                <td>1500 XP</td>
+                                <td>Complete mastery, maximum efficiency, innovation capability</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Specialization Choices</h3>
+                <p>As players progress, they face meaningful choices about specialization:</p>
+                <ul>
+                    <li><strong>Branch Selection:</strong> Players can focus on specific branches or spread across multiple</li>
+                    <li><strong>Time Investment:</strong> Reaching mastery in one area limits time available for others</li>
+                    <li><strong>Complementary Skills:</strong> Some skill combinations provide special synergy bonuses</li>
+                    <li><strong>Community Role:</strong> Specialization defines a player's role in the community</li>
+                    <li><strong>Teaching:</strong> Masters can accelerate others' learning in their specialty</li>
+                </ul>
+                
+                <h2>Skill Tree Interface</h2>
+                <p>The skill tree is accessed through the player's journal and provides several features:</p>
+                
+                <div class="skill-tree-interface">
+                    <img src="../images/skill-tree-interface.jpg" alt="Screenshot of the skill tree interface showing navigation and information display">
+                    <p class="caption"><strong>AI Prompt:</strong> "A clean, modern UI design for a skill tree interface in a farming/community game. The interface shows a selected skill with details panel on the right displaying prerequisites, benefits, and progress. The left side shows a navigable tree with color-coded branches and nodes. Include progress bars, unlock indicators, and a natural paper/journal aesthetic."</p>
+                </div>
+                
+                <p>The technical implementation of the skill tree interface is detailed in the <a href="../technical/ui-mcp-implementation.html">UI MCP Implementation</a> documentation, which explains how the skill system integrates with the UI architecture and player progression tracking.</p>
+                
+                <h3>Interface Features</h3>
+                <ul>
+                    <li><strong>Visual Progression:</strong> Clear visual indicators of current level and progress</li>
+                    <li><strong>Skill Details:</strong> Detailed information about each skill and its benefits</li>
+                    <li><strong>Prerequisites:</strong> Clear indication of what's needed to unlock each skill</li>
+                    <li><strong>Recommended Activities:</strong> Suggestions for activities to advance each skill</li>
+                    <li><strong>Mastery Tracking:</strong> Overall progress toward mastery in each category</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Design Note:</strong> The skill tree system is designed to encourage organic character development through gameplay rather than abstract point allocation. Players naturally develop skills in areas they enjoy and use frequently, while still having visibility into potential specialization paths.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="character-progression.html" class="prev-link">Previous: Character Progression</a>
+                    <a href="garden-building.html" class="next-link">Next: Garden Building System</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

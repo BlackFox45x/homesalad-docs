@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - World Design</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="game-overview.html">Game Overview</a>
+                            <a href="gameplay-systems.html">Gameplay Systems</a>
+                            <a href="character-progression.html">Character Progression</a>
+                            <a href="skill-tree.html">Skill Tree System</a>
+                            <a href="garden-building.html">Garden Building System</a>
+                            <a href="quest-rewards.html">Quest & Reward System</a>
+                            <a href="quest-design.html">Quest Design</a>
+                            <a href="world-design.html">World Design</a>
+                            <a href="user-interface.html">User Interface</a>
+                            <a href="art-audio.html">Art & Audio</a>
+                            <a href="development-roadmap.html">Development Roadmap</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Design Document</a>
+            <span class="separator">></span>
+            <span class="current">World Design</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Design Document</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li><a href="garden-building.html">Garden Building System</a></li>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li class="active"><a href="world-design.html">World Design</a></li>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                        <li><a href="../story-bible/environmental-systems.html">Environmental Systems</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>World Design</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details the world design of HomeSalad, including the layout of Greenville, environmental transformation systems, level design principles, and world interaction mechanics.</p>
+                </div>
+                
+                <h2>World Design Philosophy</h2>
+                <p>HomeSalad's world design is guided by several core principles:</p>
+                
+                <ul>
+                    <li><strong>Responsive Environment:</strong> The world visibly changes in response to player actions, providing clear feedback and a sense of impact</li>
+                    <li><strong>Ecological Authenticity:</strong> Environmental systems follow realistic ecological principles while remaining accessible and engaging</li>
+                    <li><strong>Meaningful Spaces:</strong> Each area serves narrative, gameplay, and aesthetic purposes rather than existing solely for exploration</li>
+                    <li><strong>Community Context:</strong> The world reflects the community's history, values, and social dynamics through its design</li>
+                    <li><strong>Layered Discovery:</strong> The environment reveals deeper levels of detail and interaction as players develop skills and relationships</li>
+                </ul>
+                
+                <h2>World Structure</h2>
+                <p>The world of HomeSalad is centered around the town of Greenville and its surrounding areas, divided into distinct districts with unique characteristics and challenges.</p>
+                
+                <h3>World Scale</h3>
+                <p>HomeSalad uses a compressed scale that balances realism with gameplay considerations:</p>
+                <ul>
+                    <li>The town of Greenville is approximately 1 square kilometer in gameplay terms</li>
+                    <li>Walking from one end of town to the other takes approximately 5-7 minutes of real time</li>
+                    <li>Each district is sized to feel distinct while allowing reasonable travel times</li>
+                    <li>Scale compression is more pronounced for agricultural and natural areas</li>
+                </ul>
+                
+                <h3>World Map</h3>
+                <p>The world map is divided into five main districts, each with distinct visual identity, gameplay opportunities, and environmental challenges:</p>
+                
+                <div class="district-section">
+                    <h4>Rust Belt District (Northwest)</h4>
+                    <p><strong>Visual Identity:</strong> Industrial decay, abandoned factories, worker housing, rusty infrastructure, sparse vegetation</p>
+                    <p><strong>Gameplay Focus:</strong> Material salvaging, building repurposing, soil remediation, industrial-scale projects</p>
+                    <p><strong>Environmental Challenges:</strong> Soil contamination, structural decay, water pollution, lack of biodiversity</p>
+                </div>
+                
+                <div class="district-section">
+                    <h4>Downtown Commons (Center)</h4>
+                    <p><strong>Visual Identity:</strong> Historic buildings, central plaza, mixed-use structures, public spaces, small businesses</p>
+                    <p><strong>Gameplay Focus:</strong> Community organizing, public demonstrations, market activities, social hub functions</p>
+                    <p><strong>Environmental Challenges:</strong> Limited green space, impervious surfaces, heat island effect, resource distribution</p>
+                </div>
+                
+                <div class="district-section">
+                    <h4>Riverside Heights (Northeast)</h4>
+                    <p><strong>Visual Identity:</strong> Older homes, established gardens, riverside paths, heritage trees, traditional architecture</p>
+                    <p><strong>Gameplay Focus:</strong> Traditional gardening, knowledge preservation, riparian restoration, community traditions</p>
+                    <p><strong>Environmental Challenges:</strong> Riverbank erosion, flooding risk, invasive species, aging infrastructure</p>
+                </div>
+                
+                <div class="district-section">
+                    <h4>Meadowbrook Suburbs (Southwest)</h4>
+                    <p><strong>Visual Identity:</strong> Post-war homes, manicured lawns, cul-de-sacs, schools, parks, uniform aesthetics</p>
+                    <p><strong>Gameplay Focus:</strong> Lawn conversion, neighborhood organizing, educational programs, family engagement</p>
+                    <p><strong>Environmental Challenges:</strong> Monoculture lawns, chemical dependencies, water waste, social conformity</p>
+                </div>
+                
+                <div class="district-section">
+                    <h4>Brightwater Shores (Southeast)</h4>
+                    <p><strong>Visual Identity:</strong> Lakeside properties, upscale homes, recreational facilities, scenic viewpoints, decorative landscaping</p>
+                    <p><strong>Gameplay Focus:</strong> Water quality improvement, sustainable luxury, influential stakeholder engagement</p>
+                    <p><strong>Environmental Challenges:</strong> Shoreline development, runoff pollution, resource-intensive lifestyles, exclusive access</p>
+                </div>
+                
+                <h3>Connectivity</h3>
+                <p>Districts are connected through several systems that facilitate movement and create a cohesive world:</p>
+                <ul>
+                    <li><strong>Road Network:</strong> Main streets and side roads that provide primary navigation routes</li>
+                    <li><strong>Green River:</strong> A waterway that flows through multiple districts, serving as both boundary and connector</li>
+                    <li><strong>Greenway Trails:</strong> Pedestrian and bicycle paths that develop as players restore natural corridors</li>
+                    <li><strong>Public Transportation:</strong> Bus routes that can be improved through community projects</li>
+                    <li><strong>Viewsheds:</strong> Scenic overlooks that provide visual connections between areas</li>
+                </ul>
+                
+                <h2>Environmental Transformation System</h2>
+                <p>A core feature of HomeSalad's world design is the Environmental Transformation System (ETS), which allows players to visibly change the environment through their actions.</p>
+                
+                <h3>Transformation Stages</h3>
+                <p>Most areas in the game can progress through five stages of environmental health:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Stage</th>
+                                <th>Visual Characteristics</th>
+                                <th>Functional Properties</th>
+                                <th>Gameplay Effects</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Degraded</td>
+                                <td>Pollution, sparse vegetation, gray/brown palette, visible damage</td>
+                                <td>Poor soil, contaminated water, minimal biodiversity, resource scarcity</td>
+                                <td>Limited production, higher resource costs, negative health effects</td>
+                            </tr>
+                            <tr>
+                                <td>Recovering</td>
+                                <td>Initial cleanup, pioneer plants, improved maintenance, hints of green</td>
+                                <td>Basic soil function, reduced contamination, early succession species</td>
+                                <td>Basic resource production, improved work efficiency, neutral health</td>
+                            </tr>
+                            <tr>
+                                <td>Functional</td>
+                                <td>Established vegetation, clean appearance, balanced built/natural elements</td>
+                                <td>Healthy soil, clean water, moderate biodiversity, resource availability</td>
+                                <td>Regular resource yields, normal work efficiency, slight health bonus</td>
+                            </tr>
+                            <tr>
+                                <td>Thriving</td>
+                                <td>Diverse vegetation, integrated systems, wildlife presence, vibrant colors</td>
+                                <td>Rich soil, purified water, high biodiversity, abundant resources</td>
+                                <td>Abundant yields, improved work efficiency, moderate health bonus</td>
+                            </tr>
+                            <tr>
+                                <td>Regenerative</td>
+                                <td>Complex ecosystems, self-sustaining systems, peak aesthetic beauty</td>
+                                <td>Living soil web, pristine water, maximum biodiversity, surplus resources</td>
+                                <td>Maximum yields, optimal efficiency, significant health bonus</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Transformation Mechanics</h3>
+                <p>Players transform the environment through several interrelated mechanics:</p>
+                
+                <ul>
+                    <li><strong>Direct Actions:</strong> Planting, building, cleaning, and restoring specific elements</li>
+                    <li><strong>System Implementation:</strong> Creating water management, soil building, and habitat systems</li>
+                    <li><strong>Maintenance Activities:</strong> Regular care that prevents degradation and supports improvement</li>
+                    <li><strong>Community Projects:</strong> Larger-scale transformations that require collective effort</li>
+                    <li><strong>Policy Changes:</strong> Working with the City Council to implement supportive regulations</li>
+                </ul>
+                
+                <p>Transformation occurs at multiple scales:</p>
+                <ul>
+                    <li><strong>Micro:</strong> Individual garden beds, rain gardens, or habitat features (immediate feedback)</li>
+                    <li><strong>Meso:</strong> Neighborhood parks, community gardens, or stream sections (medium-term projects)</li>
+                    <li><strong>Macro:</strong> District-wide green infrastructure, watershed restoration (long-term initiatives)</li>
+                </ul>
+                
+                <h3>Transformation Metrics</h3>
+                <p>The game tracks several metrics to determine environmental state:</p>
+                <ul>
+                    <li><strong>Biodiversity Index:</strong> Variety and abundance of plant and animal species</li>
+                    <li><strong>Water Quality Rating:</strong> Cleanliness and health of water bodies</li>
+                    <li><strong>Soil Health Score:</strong> Organic matter, microbial activity, and contamination levels</li>
+                    <li><strong>Carbon Sequestration:</strong> Amount of carbon stored in plants and soil</li>
+                    <li><strong>Aesthetic Quality:</strong> Visual appeal and sensory experience of the environment</li>
+                </ul>
+                
+                <h2>Level Design Principles</h2>
+                <p>While HomeSalad is not a traditional level-based game, its spaces are designed according to specific principles to create engaging gameplay environments.</p>
+                
+                <h3>Spatial Composition</h3>
+                <ul>
+                    <li><strong>Landmarks:</strong> Distinctive features that aid navigation and create memorable locations</li>
+                    <li><strong>Pathways:</strong> Clear routes that guide movement while allowing exploration choices</li>
+                    <li><strong>Nodes:</strong> Activity centers where multiple systems and interactions converge</li>
+                    <li><strong>Edges:</strong> Boundaries that define spaces and create transition opportunities</li>
+                    <li><strong>Districts:</strong> Areas with cohesive identity and consistent design language</li>
+                </ul>
+                
+                <h3>Gameplay Spaces</h3>
+                <p>Different types of spaces support specific gameplay activities:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Space Type</th>
+                                <th>Primary Function</th>
+                                <th>Design Characteristics</th>
+                                <th>Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Production Spaces</td>
+                                <td>Resource generation and cultivation</td>
+                                <td>Organized layout, resource access, tool storage, efficient workflows</td>
+                                <td>Gardens, workshops, processing areas</td>
+                            </tr>
+                            <tr>
+                                <td>Social Spaces</td>
+                                <td>Community interaction and organization</td>
+                                <td>Gathering areas, seating, visibility, acoustic properties</td>
+                                <td>Plazas, community centers, markets</td>
+                            </tr>
+                            <tr>
+                                <td>Learning Spaces</td>
+                                <td>Knowledge acquisition and sharing</td>
+                                <td>Demonstration areas, information displays, practice zones</td>
+                                <td>Workshops, libraries, experimental gardens</td>
+                            </tr>
+                            <tr>
+                                <td>Restoration Spaces</td>
+                                <td>Environmental healing and transformation</td>
+                                <td>Before/after contrast, staged progression, visible metrics</td>
+                                <td>Contaminated sites, degraded streams, barren lots</td>
+                            </tr>
+                            <tr>
+                                <td>Sanctuary Spaces</td>
+                                <td>Reflection, rest, and aesthetic enjoyment</td>
+                                <td>Sensory richness, privacy, natural elements, comfort</td>
+                                <td>Gardens, parks, viewpoints, meditation spots</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Environmental Storytelling</h3>
+                <p>The world communicates narrative through environmental elements:</p>
+                <ul>
+                    <li><strong>Historical Layers:</strong> Visible remnants of Greenville's past that reveal its history</li>
+                    <li><strong>Character Imprints:</strong> Spaces that reflect the personalities and values of their inhabitants</li>
+                    <li><strong>Ecological Narratives:</strong> Natural processes and relationships made visible through design</li>
+                    <li><strong>Social Dynamics:</strong> Spatial arrangements that reveal community relationships and power structures</li>
+                    <li><strong>Transformation Records:</strong> Before/after contrasts that show the impact of player actions</li>
+                </ul>
+                
+                <h2>World Interaction Systems</h2>
+                <p>Players interact with the world through several integrated systems:</p>
+                
+                <h3>Navigation System</h3>
+                <ul>
+                    <li><strong>World Map:</strong> Zoomable map showing districts, landmarks, and points of interest</li>
+                    <li><strong>Wayfinding:</strong> Environmental cues, signage, and landmarks that guide exploration</li>
+                    <li><strong>Fast Travel:</strong> Bicycle and public transportation options that unlock as players progress</li>
+                    <li><strong>Pathfinding:</strong> Dynamic route suggestions based on current objectives and environmental conditions</li>
+                </ul>
+                
+                <h3>Interaction System</h3>
+                <ul>
+                    <li><strong>Contextual Actions:</strong> Available interactions based on location, tools, skills, and environmental state</li>
+                    <li><strong>Tool Use:</strong> Specialized equipment for different environmental interactions</li>
+                    <li><strong>Resource Collection:</strong> Gathering materials from appropriate sources throughout the world</li>
+                    <li><strong>Object Placement:</strong> Positioning buildings, plants, and infrastructure in the environment</li>
+                    <li><strong>System Management:</strong> Controlling water, energy, and material flows in created systems</li>
+                </ul>
+                
+                <h3>Feedback System</h3>
+                <ul>
+                    <li><strong>Visual Changes:</strong> Immediate and long-term visual transformations that reflect player actions</li>
+                    <li><strong>Environmental Metrics:</strong> Measurable indicators of environmental health and function</li>
+                    <li><strong>NPC Reactions:</strong> Character responses to environmental changes and improvements</li>
+                    <li><strong>Gameplay Effects:</strong> Functional benefits from improved environmental conditions</li>
+                    <li><strong>Achievement Markers:</strong> Monuments, plaques, and other recognition of significant transformations</li>
+                </ul>
+                
+                <h2>World Building Tools</h2>
+                <p>HomeSalad provides players with several tools for shaping the world:</p>
+                
+                <h3>Building System</h3>
+                <p>Players can construct various structures and infrastructure:</p>
+                <ul>
+                    <li><strong>Buildings:</strong> Functional structures like greenhouses, workshops, and community spaces</li>
+                    <li><strong>Infrastructure:</strong> Water management, energy systems, and transportation elements</li>
+                    <li><strong>Furniture:</strong> Benches, tables, storage, and other functional objects</li>
+                    <li><strong>Decorative Elements:</strong> Aesthetic improvements like signs, art, and lighting</li>
+                </ul>
+                
+                <h3>Planting System</h3>
+                <p>Players can introduce and manage vegetation:</p>
+                <ul>
+                    <li><strong>Food Plants:</strong> Vegetables, fruits, herbs, and other edible species</li>
+                    <li><strong>Functional Plants:</strong> Species that provide specific ecosystem services</li>
+                    <li><strong>Native Habitat:</strong> Indigenous plant communities that support wildlife</li>
+                    <li><strong>Ornamental Plants:</strong> Decorative species that enhance aesthetic appeal</li>
+                </ul>
+                
+                <h3>Terraforming System</h3>
+                <p>Limited ability to modify the terrain:</p>
+                <ul>
+                    <li><strong>Soil Modification:</strong> Adding amendments, mulch, and other soil improvements</li>
+                    <li><strong>Water Features:</strong> Creating ponds, swales, and other water management elements</li>
+                    <li><strong>Landform Adjustments:</strong> Minor changes to create berms, basins, and terraces</li>
+                    <li><strong>Surface Treatments:</strong> Changing ground covers, paths, and paving</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Design Note:</strong> World design in HomeSalad emphasizes the connection between environmental health and community wellbeing. The transformation of physical spaces serves as both a gameplay mechanic and a metaphor for social transformation, with visible changes in the environment reflecting the community's journey toward sustainability and resilience.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="quest-design.html" class="prev-link">Previous: Quest Design</a>
+                    <a href="user-interface.html" class="next-link">Next: User Interface</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - UI-MCP Implementation</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../game-design/index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="../game-design/game-overview.html">Game Overview</a>
+                            <a href="../game-design/gameplay-systems.html">Gameplay Systems</a>
+                            <a href="../game-design/character-progression.html">Character Progression</a>
+                            <a href="../game-design/quest-design.html">Quest Design</a>
+                            <a href="../game-design/world-design.html">World Design</a>
+                            <a href="../game-design/user-interface.html">User Interface</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="architecture-overview.html">Architecture Overview</a>
+                            <a href="core-systems.html">Core Systems</a>
+                            <a href="specific-systems.html">Specific Systems</a>
+                            <a href="multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="development-milestones.html">Development Milestones</a>
+                            <a href="technical-challenges.html">Technical Challenges</a>
+                            <a href="ui-mcp-implementation.html">UI-MCP Implementation</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Technical Implementation Guide</a>
+            <span class="separator">></span>
+            <span class="current">UI-MCP Implementation</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="specific-systems.html">Specific Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="development-milestones.html">Development Milestones</a></li>
+                        <li><a href="technical-challenges.html">Technical Challenges</a></li>
+                        <li class="active"><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="../game-design/user-interface.html">User Interface Design</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>UI-MCP Implementation</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details the UI architecture in HomeSalad and how it integrates with the Model Context Protocol (MCP) server for Unity, including refactored components from uMMORPG.</p>
+                </div>
+                
+                <h2>UI Architecture Overview</h2>
+                <p>HomeSalad's UI system is built on a layered architecture that provides flexibility, maintainability, and clear separation of concerns. The UI framework is designed to work seamlessly with the networking layer and game systems while providing a consistent user experience.</p>
+                
+                <div class="architecture-diagram">
+                    <pre>
+┌─────────────────────────────────────────────────────────────┐
+│                     UI Canvas Manager                        │
+│  (Manages canvas layers, sorting, and visibility)            │
+├─────────────────────────────────────────────────────────────┤
+│                       UI Event System                        │
+│  (Handles UI interactions and event propagation)             │
+├─────────────────────────────────────────────────────────────┤
+│                        UI Manager                            │
+│  (Controls panel visibility and UI state)                    │
+├─────────────────────────────────────────────────────────────┤
+│                         UI Panels                            │
+│  (Individual UI screens and components)                      │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    Network Manager                           │
+│  (Handles communication with the MCP server)                 │
+└─────────────────────────────────────────────────────────────┘
+                    </pre>
+                </div>
+                
+                <h3>Key Components</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Responsibility</th>
+                                <th>Implementation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>UICanvasManager</td>
+                                <td>Manages canvas layers, sorting, and visibility</td>
+                                <td>Singleton that controls the hierarchy of UI canvases</td>
+                            </tr>
+                            <tr>
+                                <td>UIEventSystem</td>
+                                <td>Handles UI interactions and event propagation</td>
+                                <td>Extends Unity's EventSystem with custom event handling</td>
+                            </tr>
+                            <tr>
+                                <td>UIManager</td>
+                                <td>Controls panel visibility and UI state</td>
+                                <td>Manages the showing/hiding of panels and handles UI events</td>
+                            </tr>
+                            <tr>
+                                <td>UIPanel</td>
+                                <td>Base class for all UI panels</td>
+                                <td>Abstract class that provides common functionality for panels</td>
+                            </tr>
+                            <tr>
+                                <td>NetworkManagerHomeSalad</td>
+                                <td>Handles communication with the MCP server</td>
+                                <td>Extends Mirror's NetworkManager with HomeSalad-specific functionality</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2>UI Layer Organization</h2>
+                <p>The UI is organized into distinct layers, each with its own canvas and sorting order to ensure proper visibility and interaction:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Layer</th>
+                                <th>Sorting Order</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MainMenu</td>
+                                <td>0</td>
+                                <td>Main menu screens (title, character selection, options)</td>
+                            </tr>
+                            <tr>
+                                <td>HUD</td>
+                                <td>10</td>
+                                <td>In-game heads-up display (health, energy, resources)</td>
+                            </tr>
+                            <tr>
+                                <td>GameplayUI</td>
+                                <td>20</td>
+                                <td>Gameplay-related UI (inventory, crafting, building)</td>
+                            </tr>
+                            <tr>
+                                <td>SystemUI</td>
+                                <td>30</td>
+                                <td>System-level UI (pause menu, settings)</td>
+                            </tr>
+                            <tr>
+                                <td>DialoguePopup</td>
+                                <td>40</td>
+                                <td>Dialogue and notification popups</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2>MCP Server Integration</h2>
+                <p>HomeSalad integrates with Unity's Model Context Protocol (MCP) server to provide a robust and scalable multiplayer experience. The MCP server handles the communication between clients and the server, while the UI system provides the interface for players to interact with the game world.</p>
+                
+                <h3>Network Manager</h3>
+                <p>The <code>NetworkManagerHomeSalad</code> class extends Mirror's <code>NetworkManager</code> to provide HomeSalad-specific networking functionality. It handles server initialization, client connections, character management, and communication with the UI system.</p>
+                
+                <h3>UI-Network Communication Flow</h3>
+                <p>The communication between the UI and the MCP server follows a specific flow:</p>
+                
+                <ol>
+                    <li>Player interacts with the UI (clicks a button, enters text, etc.)</li>
+                    <li>UI event is captured by the <code>UIEventSystem</code></li>
+                    <li>Event is processed by the appropriate UI panel</li>
+                    <li>Panel calls a method on the player object</li>
+                    <li>Player object sends a command to the server</li>
+                    <li>Server processes the command and updates the game state</li>
+                    <li>Server sends a response back to the client</li>
+                    <li>Client updates the UI based on the response</li>
+                </ol>
+                
+                <div class="architecture-diagram">
+                    <pre>
+┌─────────┐    ┌─────────────┐    ┌──────────┐    ┌──────────────┐
+│   UI    │    │ UIEventSystem│    │ UIPanel  │    │ PlayerObject │
+│ Element │───>│ (Captures   │───>│ (Processes│───>│ (Sends       │
+│         │    │  Events)    │    │  Events)  │    │  Commands)   │
+└─────────┘    └─────────────┘    └──────────┘    └──────────────┘
+                                                          │
+                                                          ▼
+┌─────────┐    ┌─────────────┐    ┌──────────┐    ┌──────────────┐
+│   UI    │    │ UIEventSystem│    │ UIPanel  │    │ MCP Server   │
+│ Update  │<───│ (Dispatches │<───│ (Receives│<───│ (Processes   │
+│         │    │  Updates)   │    │  Updates) │    │  Commands)   │
+└─────────┘    └─────────────┘    └──────────┘    └──────────────┘
+                    </pre>
+                </div>
+                
+                <h3>Command and RPC Pattern</h3>
+                <p>HomeSalad uses Mirror's Command and RPC pattern for network communication:</p>
+                
+                <ul>
+                    <li><strong>Commands:</strong> Client-to-server calls that request actions</li>
+                    <li><strong>TargetRpc:</strong> Server-to-specific-client calls that provide responses</li>
+                    <li><strong>ClientRpc:</strong> Server-to-all-clients calls that broadcast updates</li>
+                </ul>
+                
+                <p>This pattern allows for secure and efficient communication between the client UI and the server, ensuring that all game state changes are properly validated and synchronized.</p>
+                
+                <h2>uMMORPG Component Refactoring</h2>
+                <p>HomeSalad builds upon the uMMORPG Remastered framework, refactoring and extending its components to fit the game's specific needs. This approach allows us to leverage the robust multiplayer foundation of uMMORPG while customizing it for our farming and community-focused gameplay.</p>
+                
+                <h3>Refactored Components</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>uMMORPG Component</th>
+                                <th>HomeSalad Equivalent</th>
+                                <th>Modifications</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>NetworkManager</td>
+                                <td>NetworkManagerHomeSalad</td>
+                                <td>Added support for character selection, building placement, and farming systems</td>
+                            </tr>
+                            <tr>
+                                <td>Player</td>
+                                <td>HomeSaladPlayer</td>
+                                <td>Added farming, building, and community relationship systems</td>
+                            </tr>
+                            <tr>
+                                <td>Npc</td>
+                                <td>HomeSaladNPC</td>
+                                <td>Added community interaction, gift receiving, and relationship tracking</td>
+                            </tr>
+                            <tr>
+                                <td>Combat</td>
+                                <td>Removed</td>
+                                <td>Replaced with non-violent interaction systems</td>
+                            </tr>
+                            <tr>
+                                <td>Chat</td>
+                                <td>ChatPanel</td>
+                                <td>Extended with community-focused features and emoji support</td>
+                            </tr>
+                            <tr>
+                                <td>Inventory</td>
+                                <td>InventoryPanel</td>
+                                <td>Customized for farming items, seeds, and building materials</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Integration Approach</h3>
+                <p>The integration of uMMORPG components follows these principles:</p>
+                
+                <ul>
+                    <li><strong>Inheritance:</strong> Extending base classes with HomeSalad-specific functionality</li>
+                    <li><strong>Composition:</strong> Adding HomeSalad components to framework entities</li>
+                    <li><strong>Replacement:</strong> Replacing certain framework systems with custom implementations</li>
+                    <li><strong>Adaptation:</strong> Modifying existing systems to fit HomeSalad's gameplay focus</li>
+                </ul>
+                
+                <h2>UI Panel Implementation</h2>
+                <p>HomeSalad's UI panels are implemented using a common base class (<code>UIPanel</code>) that provides shared functionality for initialization, visibility control, and event handling. Specific panel implementations extend this base class to provide specialized functionality for different game features.</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Panel Type</th>
+                                <th>Purpose</th>
+                                <th>Key Features</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CharacterPanel</td>
+                                <td>Display and manage character information</td>
+                                <td>Stats display, equipment management, skill allocation</td>
+                            </tr>
+                            <tr>
+                                <td>InventoryPanel</td>
+                                <td>Manage player inventory</td>
+                                <td>Item sorting, categorization, usage, and transfer</td>
+                            </tr>
+                            <tr>
+                                <td>BuildingManagementPanel</td>
+                                <td>Manage player buildings</td>
+                                <td>Building selection, placement, upgrade, and demolition</td>
+                            </tr>
+                            <tr>
+                                <td>FieldManagementPanel</td>
+                                <td>Manage farming fields</td>
+                                <td>Crop planting, watering, fertilizing, and harvesting</td>
+                            </tr>
+                            <tr>
+                                <td>RelationshipPanel</td>
+                                <td>View and manage NPC relationships</td>
+                                <td>Relationship status, gift preferences, interaction history</td>
+                            </tr>
+                            <tr>
+                                <td>QuestLogPanel</td>
+                                <td>Track and manage quests</td>
+                                <td>Quest tracking, objective display, reward preview</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2>Event-Driven Communication</h2>
+                <p>HomeSalad uses an event-driven architecture for communication between UI components and game systems. This approach decouples the UI from the underlying systems, making it easier to maintain and extend.</p>
+                
+                <p>The event system follows a publish-subscribe pattern:</p>
+                <ul>
+                    <li>UI components register for events they're interested in</li>
+                    <li>Game systems trigger events when state changes</li>
+                    <li>UI components handle events to update their display</li>
+                </ul>
+                
+                <h2>Conclusion</h2>
+                <p>The UI-MCP implementation in HomeSalad provides a robust and flexible framework for player interaction with the game world. By leveraging the strengths of uMMORPG's networking foundation and extending it with custom UI components, we've created a system that supports the unique gameplay features of HomeSalad while maintaining performance and scalability.</p>
+                
+                <p>The layered architecture, event-driven communication, and clear separation of concerns make the system maintainable and extensible, allowing for future enhancements and additions as the game evolves.</p>
+                
+                <div class="alert alert-info">
+                    <p><strong>Technical Note:</strong> When implementing new UI features, always follow the established patterns for panel creation, event registration, and network communication to ensure consistency and compatibility with the existing systems.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="technical-challenges.html" class="prev-link">Previous: Technical Challenges</a>
+                    <a href="index.html" class="next-link">Next: Technical Guide</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                        <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                        <li><a href="../game-design/world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="specific-systems.html">Specific Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

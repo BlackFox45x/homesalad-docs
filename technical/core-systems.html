@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Core Systems</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../game-design/index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="../game-design/game-overview.html">Game Overview</a>
+                            <a href="../game-design/gameplay-systems.html">Gameplay Systems</a>
+                            <a href="../game-design/character-progression.html">Character Progression</a>
+                            <a href="../game-design/quest-design.html">Quest Design</a>
+                            <a href="../game-design/world-design.html">World Design</a>
+                            <a href="../game-design/user-interface.html">User Interface</a>
+                            <a href="../game-design/art-audio.html">Art & Audio</a>
+                            <a href="../game-design/development-roadmap.html">Development Roadmap</a>
+                            <a href="../game-design/accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="architecture-overview.html">Architecture Overview</a>
+                            <a href="core-systems.html">Core Systems</a>
+                            <a href="specific-systems.html">Specific Systems</a>
+                            <a href="multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="development-milestones.html">Development Milestones</a>
+                            <a href="technical-challenges.html">Technical Challenges</a>
+                            <a href="ui-mcp-implementation.html">UI-MCP Implementation</a>
+                            <a href="ui-mcp-implementation.html">UI-MCP Implementation</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Technical Implementation Guide</a>
+            <span class="separator">></span>
+            <span class="current">Core Systems</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html" class="active">Core Systems</a></li>
+                        <li><a href="specific-systems.html">Specific Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="development-milestones.html">Development Milestones</a></li>
+                        <li><a href="technical-challenges.html">Technical Challenges</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>On This Page</h3>
+                    <ul>
+                        <li><a href="#network-manager">NetworkManager</a></li>
+                        <li><a href="#player-system">Player System</a></li>
+                        <li><a href="#npc-system">NPC System</a></li>
+                        <li><a href="#database-system">Database System</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="specific-systems.html">Specific Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Core Systems Refactoring</h1>
+                
+                <p>This section details how to extend and modify the core systems of uMMORPG Remastered to support HomeSalad's unique gameplay features. The approach focuses on extending existing classes rather than replacing them, maintaining compatibility with the base framework while adding new functionality.</p>
+                
+                <h2 id="network-manager">NetworkManager</h2>
+                
+                <p>The NetworkManagerHomeSalad class will extend uMMORPG's NetworkManager to handle HomeSalad-specific networking needs. For details on UI integration with the MCP server, see the <a href="ui-mcp-implementation.html">UI-MCP Implementation</a> page.</p>
+                
+                <h3>Key Responsibilities</h3>
+                
+                <ul>
+                    <li>Initialization of HomeSalad systems (TimeSystem, EnvironmentalSystem, etc.)</li>
+                    <li>Custom message handlers for plant actions, building actions, and environmental queries</li>
+                    <li>Synchronization of environmental state and plant growth across clients</li>
+                    <li>Management of HomeSalad-specific network messages</li>
+                </ul>
+                
+                <h3>Implementation</h3>
+                
+                <pre><code class="language-csharp">using Mirror;
+using UnityEngine;
+using HomeSalad.Core;
+using HomeSalad.Gameplay;
+
+namespace HomeSalad.Networking
+{
+    public class NetworkManagerHomeSalad : NetworkManager
+    {
+        // HomeSalad systems
+        [Header("HomeSalad Systems")]
+        public TimeSystem timeSystem;
+        public EnvironmentalSystem environmentalSystem;
+        public GardeningSystem gardeningSystem;
+        public BuildingSystem buildingSystem;
+        public CommunitySystem communitySystem;
+        
+        // Override OnStartServer to initialize HomeSalad systems
+        public override void OnStartServer()
+        {
+            base.OnStartServer();
+            
+            // Initialize HomeSalad systems
+            InitializeHomeSaladSystems();
+            
+            // Register custom message handlers
+            NetworkServer.RegisterHandler&lt;PlantActionMessage&gt;(OnPlantActionMessage);
+            NetworkServer.RegisterHandler&lt;BuildingActionMessage&gt;(OnBuildingActionMessage);
+            NetworkServer.RegisterHandler&lt;EnvironmentalQueryMessage&gt;(OnEnvironmentalQueryMessage);
+        }
+        
+        // Initialize HomeSalad systems
+        private void InitializeHomeSaladSystems()
+        {
+            // Initialize time system
+            if (timeSystem != null)
+            {
+                timeSystem.Initialize();
+            }
+            
+            // Initialize environmental system
+            if (environmentalSystem != null)
+            {
+                environmentalSystem.Initialize();
+            }
+            
+            // Initialize gardening system
+            if (gardeningSystem != null)
+            {
+                gardeningSystem.Initialize();
+            }
+            
+            // Initialize building system
+            if (buildingSystem != null)
+            {
+                buildingSystem.Initialize();
+            }
+            
+            // Initialize community system
+            if (communitySystem != null)
+            {
+                communitySystem.Initialize();
+            }
+        }
+        
+        // Handle plant action messages
+        private void OnPlantActionMessage(NetworkConnectionToClient conn, PlantActionMessage message)
+        {
+            // Get player from connection
+            HomeSaladPlayer player = conn.identity.GetComponent&lt;HomeSaladPlayer&gt;();
+            
+            // Validate player
+            if (player == null) return;
+            
+            // Process plant action based on message type
+            switch (message.actionType)
+            {
+                case PlantActionType.Plant:
+                    gardeningSystem.PlantSeed(player, message.position, message.plantType);
+                    break;
+                    
+                case PlantActionType.Water:
+                    gardeningSystem.WaterPlant(player, message.plantId);
+                    break;
+                    
+                case PlantActionType.Fertilize:
+                    gardeningSystem.FertilizePlant(player, message.plantId, message.itemId);
+                    break;
+                    
+                case PlantActionType.Harvest:
+                    gardeningSystem.HarvestPlant(player, message.plantId);
+                    break;
+            }
+        }
+        
+        // Handle building action messages
+        private void OnBuildingActionMessage(NetworkConnectionToClient conn, BuildingActionMessage message)
+        {
+            // Implementation similar to plant action handling
+        }
+        
+        // Handle environmental query messages
+        private void OnEnvironmentalQueryMessage(NetworkConnectionToClient conn, EnvironmentalQueryMessage message)
+        {
+            // Implementation for environmental queries
+        }
+    }
+}</code></pre>
+                
+                <h3>Integration with uMMORPG</h3>
+                
+                <p>To integrate the NetworkManagerHomeSalad with uMMORPG:</p>
+                
+                <ol>
+                    <li>Create a new prefab based on the uMMORPG NetworkManager prefab</li>
+                    <li>Replace the NetworkManager component with NetworkManagerHomeSalad</li>
+                    <li>Assign references to HomeSalad systems in the inspector</li>
+                    <li>Update any scene references to use the new NetworkManagerHomeSalad prefab</li>
+                </ol>
+                
+                <div class="alert alert-warning">
+                    <p><strong>Important:</strong> Ensure that all HomeSalad systems are properly initialized before use. The NetworkManagerHomeSalad handles this initialization on the server, but client-side initialization may require additional steps.</p>
+                </div>
+                
+                <h2 id="player-system">Player System</h2>
+                
+                <p>The HomeSaladPlayer class extends uMMORPG's Player class with gardening skills, building capabilities, community reputation, and other HomeSalad-specific features.</p>
+                
+                <h3>Key Additions</h3>
+                
+                <ul>
+                    <li>Gardening skills and statistics</li>
+                    <li>Building capabilities</li>
+                    <li>Community reputation and relationships</li>
+                    <li>Extended inventory for seeds, plants, and building materials</li>
+                    <li>Commands for planting, harvesting, and building actions</li>
+                </ul>
+                
+                <h3>Implementation</h3>
+                
+                <pre><code class="language-csharp">using Mirror;
+using UnityEngine;
+using System.Collections.Generic;
+using HomeSalad.Core;
+
+namespace HomeSalad.Gameplay
+{
+    public class HomeSaladPlayer : Player
+    {
+        // Gardening skills
+        [Header("Gardening Skills")]
+        [SyncVar] public float gardeningSkill;
+        [SyncVar] public float wateringEfficiency;
+        [SyncVar] public float harvestYieldBonus;
+        
+        // Building capabilities
+        [Header("Building Capabilities")]
+        [SyncVar] public float buildingSkill;
+        [SyncVar] public int maxBuildingComplexity;
+        
+        // Community reputation
+        [Header("Community")]
+        [SyncVar] public float communityReputation;
+        [SyncVar] public Dictionary&lt;string, float&gt; factionStanding = new Dictionary&lt;string, float&gt;();
+        [SyncVar] public Dictionary&lt;string, float&gt; npcRelationships = new Dictionary&lt;string, float&gt;();
+        
+        // Extended inventory
+        [Header("Extended Inventory")]
+        public SeedInventory seedInventory;
+        public BuildingMaterialInventory buildingMaterialInventory;
+        
+        // Override OnStartServer to initialize HomeSalad player data
+        public override void OnStartServer()
+        {
+            base.OnStartServer();
+            
+            // Initialize HomeSalad player data if new character
+            if (isNewCharacter)
+            {
+                InitializeHomeSaladPlayerData();
+            }
+        }
+        
+        // Initialize HomeSalad player data
+        [Server]
+        private void InitializeHomeSaladPlayerData()
+        {
+            // Initialize gardening skills
+            gardeningSkill = 1.0f;
+            wateringEfficiency = 1.0f;
+            harvestYieldBonus = 0.0f;
+            
+            // Initialize building capabilities
+            buildingSkill = 1.0f;
+            maxBuildingComplexity = 1;
+            
+            // Initialize community reputation
+            communityReputation = 0.0f;
+            
+            // Initialize faction standing
+            factionStanding.Add("GreenSpark", 10.0f);
+            factionStanding.Add("MegaGrow", 0.0f);
+            factionStanding.Add("CityCouncil", 5.0f);
+            factionStanding.Add("ScienceInstitute", 5.0f);
+            
+            // Initialize seed inventory
+            seedInventory.Initialize();
+            
+            // Initialize building material inventory
+            buildingMaterialInventory.Initialize();
+        }
+        
+        // Command to plant a seed
+        [Command]
+        public void CmdPlantSeed(Vector3 position, int plantTypeId)
+        {
+            // Get plant type from ID
+            PlantType plantType = PlantDatabase.GetPlantType(plantTypeId);
+            
+            // Check if player has the seed
+            if (seedInventory.HasSeed(plantTypeId))
+            {
+                // Get gardening system
+                GardeningSystem gardeningSystem = NetworkManager.singleton.GetComponent&lt;NetworkManagerHomeSalad&gt;().gardeningSystem;
+                
+                // Attempt to plant seed
+                bool success = gardeningSystem.PlantSeed(this, position, plantType);
+                
+                // If successful, remove seed from inventory
+                if (success)
+                {
+                    seedInventory.RemoveSeed(plantTypeId, 1);
+                }
+            }
+        }
+        
+        // Command to harvest a plant
+        [Command]
+        public void CmdHarvestPlant(string plantId)
+        {
+            // Get gardening system
+            GardeningSystem gardeningSystem = NetworkManager.singleton.GetComponent&lt;NetworkManagerHomeSalad&gt;().gardeningSystem;
+            
+            // Attempt to harvest plant
+            gardeningSystem.HarvestPlant(this, plantId);
+        }
+        
+        // Command to place a building
+        [Command]
+        public void CmdPlaceBuilding(Vector3 position, int buildingTypeId)
+        {
+            // Implementation for building placement
+        }
+        
+        // Method to modify faction standing
+        [Server]
+        public void ModifyFactionStanding(string factionId, float amount)
+        {
+            // Check if faction exists in dictionary
+            if (factionStanding.ContainsKey(factionId))
+            {
+                // Modify faction standing
+                factionStanding[factionId] += amount;
+                
+                // Clamp to valid range (0-100)
+                factionStanding[factionId] = Mathf.Clamp(factionStanding[factionId], 0f, 100f);
+            }
+        }
+        
+        // Method to modify NPC relationship
+        [Server]
+        public void ModifyNpcRelationship(string npcId, float amount)
+        {
+            // Implementation for NPC relationship modification
+        }
+        
+        // Override OnDatabaseSave to save HomeSalad player data
+        protected override void OnDatabaseSave()
+        {
+            base.OnDatabaseSave();
+            
+            // Save HomeSalad player data
+            SaveHomeSaladPlayerData();
+        }
+        
+        // Save HomeSalad player data
+        private void SaveHomeSaladPlayerData()
+        {
+            // Implementation for saving HomeSalad player data
+        }
+    }
+}</code></pre>
+                
+                <h3>Integration with uMMORPG</h3>
+                
+                <p>To integrate the HomeSaladPlayer with uMMORPG:</p>
+                
+                <ol>
+                    <li>Create a new prefab based on the uMMORPG Player prefab</li>
+                    <li>Replace the Player component with HomeSaladPlayer</li>
+                    <li>Add any additional components required for HomeSalad functionality</li>
+                    <li>Update the NetworkManagerHomeSalad to use the new HomeSaladPlayer prefab</li>
+                    <li>Update any UI elements to display HomeSalad-specific player information</li>
+                </ol>
+                
+                <div class="alert alert-success">
+                    <p><strong>Note:</strong> For more detailed information on the NPC System and Database System, please see the complete documentation.</p>
+                </div>
+                
+                <footer>
+                    <div class="container">
+                        <div class="footer-content">
+                            <div class="footer-section">
+                                <h3>Story Bible</h3>
+                                <ul>
+                                    <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                                    <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                                    <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                                    <li><a href="../story-bible/characters.html">Characters</a></li>
+                                    <li><a href="../story-bible/locations.html">Locations</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="footer-section">
+                                <h3>Game Design</h3>
+                                <ul>
+                                    <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                                    <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                                    <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                                    <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                                    <li><a href="../game-design/world-design.html">World Design</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="footer-section">
+                                <h3>Technical Guide</h3>
+                                <ul>
+                                    <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                                    <li><a href="core-systems.html">Core Systems</a></li>
+                                    <li><a href="specific-systems.html">Specific Systems</a></li>
+                                    <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                                    <li><a href="development-milestones.html">Development Milestones</a></li>
+                                    <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="copyright">
+                            <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

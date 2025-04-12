@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Development Milestones</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../game-design/index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="../game-design/game-overview.html">Game Overview</a>
+                            <a href="../game-design/gameplay-systems.html">Gameplay Systems</a>
+                            <a href="../game-design/character-progression.html">Character Progression</a>
+                            <a href="../game-design/quest-design.html">Quest Design</a>
+                            <a href="../game-design/world-design.html">World Design</a>
+                            <a href="../game-design/user-interface.html">User Interface</a>
+                            <a href="../game-design/art-audio.html">Art & Audio</a>
+                            <a href="../game-design/development-roadmap.html">Development Roadmap</a>
+                            <a href="../game-design/accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="architecture-overview.html">Architecture Overview</a>
+                            <a href="core-systems.html">Core Systems</a>
+                            <a href="specific-systems.html">Specific Systems</a>
+                            <a href="multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="development-milestones.html">Development Milestones</a>
+                            <a href="technical-challenges.html">Technical Challenges</a>
+                            <a href="ui-mcp-implementation.html">UI-MCP Implementation</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Technical Implementation Guide</a>
+            <span class="separator">></span>
+            <span class="current">Development Milestones</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="specific-systems.html">Specific Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li class="active"><a href="development-milestones.html">Development Milestones</a></li>
+                        <li><a href="technical-challenges.html">Technical Challenges</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="../game-design/development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="technical-challenges.html">Technical Challenges</a></li>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Development Milestones</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section outlines the technical development milestones for HomeSalad, including prototype phases, system implementation targets, and technical validation criteria.</p>
+                </div>
+                
+                <h2>Technical Development Phases</h2>
+                <p>HomeSalad's technical development is organized into six major phases, each with specific goals and deliverables:</p>
+                
+                <div class="milestone-section">
+                    <h3>Phase 1: Technical Foundation (Months 1-2)</h3>
+                    <p><strong>Focus:</strong> Establishing the core technical architecture and framework integration</p>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Description</th>
+                                    <th>Validation Criteria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Framework Selection</td>
+                                    <td>Evaluate and select the uMMORPG Remastered framework</td>
+                                    <td>Framework successfully imported and running basic functionality</td>
+                                </tr>
+                                <tr>
+                                    <td>Architecture Design</td>
+                                    <td>Define system architecture, component relationships, and data flow</td>
+                                    <td>Architecture documentation approved by technical lead</td>
+                                </tr>
+                                <tr>
+                                    <td>Development Environment</td>
+                                    <td>Set up Unity project, version control, and build pipeline</td>
+                                    <td>Team members can successfully clone, build, and run the project</td>
+                                </tr>
+                                <tr>
+                                    <td>Core Systems Prototype</td>
+                                    <td>Implement basic versions of NetworkManager, Player, and Time systems</td>
+                                    <td>Simple multiplayer scene with synchronized movement and time</td>
+                                </tr>
+                                <tr>
+                                    <td>Technical Specification</td>
+                                    <td>Document technical requirements, constraints, and implementation approach</td>
+                                    <td>Technical specification document reviewed and approved</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="milestone-section">
+                    <h3>Phase 2: Core Systems Implementation (Months 3-5)</h3>
+                    <p><strong>Focus:</strong> Building the fundamental systems that power gameplay</p>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Description</th>
+                                    <th>Validation Criteria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Player Controller</td>
+                                    <td>Implement character movement, camera, and input handling</td>
+                                    <td>Smooth, responsive player control with network synchronization</td>
+                                </tr>
+                                <tr>
+                                    <td>Time System</td>
+                                    <td>Implement day/night cycle, seasons, and game time management</td>
+                                    <td>Time progression with visual feedback and network synchronization</td>
+                                </tr>
+                                <tr>
+                                    <td>Inventory System</td>
+                                    <td>Implement item storage, categorization, and management</td>
+                                    <td>Players can store, move, and use items with network synchronization</td>
+                                </tr>
+                                <tr>
+                                    <td>Save System</td>
+                                    <td>Implement data persistence for player and world state</td>
+                                    <td>Game state can be saved and loaded with data integrity</td>
+                                </tr>
+                                <tr>
+                                    <td>Event System</td>
+                                    <td>Implement global event bus for system communication</td>
+                                    <td>Systems can publish and subscribe to events with proper synchronization</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="milestone-section">
+                    <h3>Phase 3: Gameplay Systems Prototype (Months 6-8)</h3>
+                    <p><strong>Focus:</strong> Implementing initial versions of key gameplay systems</p>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Description</th>
+                                    <th>Validation Criteria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Gardening System</td>
+                                    <td>Implement basic plant growth, interaction, and harvesting</td>
+                                    <td>Players can plant, water, and harvest with visible growth stages</td>
+                                </tr>
+                                <tr>
+                                    <td>Building System</td>
+                                    <td>Implement building placement, construction, and functionality</td>
+                                    <td>Players can place, build, and interact with basic structures</td>
+                                </tr>
+                                <tr>
+                                    <td>Environmental System</td>
+                                    <td>Implement environmental state tracking and visual feedback</td>
+                                    <td>Environment responds to player actions with visual changes</td>
+                                </tr>
+                                <tr>
+                                    <td>NPC System</td>
+                                    <td>Implement basic NPC behavior, pathfinding, and interaction</td>
+                                    <td>NPCs move through the world and respond to player interaction</td>
+                                </tr>
+                                <tr>
+                                    <td>Quest System</td>
+                                    <td>Implement quest tracking, objectives, and rewards</td>
+                                    <td>Players can accept, track progress, and complete simple quests</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="milestone-section">
+                    <h3>Phase 4: System Integration and Refinement (Months 9-12)</h3>
+                    <p><strong>Focus:</strong> Connecting systems and refining interactions between them</p>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Description</th>
+                                    <th>Validation Criteria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>System Integration</td>
+                                    <td>Connect all gameplay systems with proper dependencies and interactions</td>
+                                    <td>Systems respond to each other's events and state changes</td>
+                                </tr>
+                                <tr>
+                                    <td>Multiplayer Synchronization</td>
+                                    <td>Implement robust network synchronization for all gameplay systems</td>
+                                    <td>Consistent experience across clients with minimal desynchronization</td>
+                                </tr>
+                                <tr>
+                                    <td>Performance Optimization</td>
+                                    <td>Identify and address performance bottlenecks</td>
+                                    <td>Stable 60 FPS on target hardware with multiple players</td>
+                                </tr>
+                                <tr>
+                                    <td>Error Handling</td>
+                                    <td>Implement robust error handling and recovery mechanisms</td>
+                                    <td>System can recover from common failure scenarios</td>
+                                </tr>
+                                <tr>
+                                    <td>Technical Debt Reduction</td>
+                                    <td>Refactor code, improve documentation, and address technical issues</td>
+                                    <td>Code quality metrics meet established standards</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="milestone-section">
+                    <h3>Phase 5: Content Implementation (Months 13-18)</h3>
+                    <p><strong>Focus:</strong> Building tools and systems for content creation and management</p>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Description</th>
+                                    <th>Validation Criteria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Content Creation Tools</td>
+                                    <td>Develop editor tools for quest, NPC, and environment creation</td>
+                                    <td>Content creators can efficiently create and edit game content</td>
+                                </tr>
+                                <tr>
+                                    <td>Asset Pipeline</td>
+                                    <td>Implement efficient asset processing and management</td>
+                                    <td>Assets are properly optimized and loaded with minimal performance impact</td>
+                                </tr>
+                                <tr>
+                                    <td>Procedural Systems</td>
+                                    <td>Implement procedural generation for terrain, vegetation, and variation</td>
+                                    <td>System can generate varied, consistent content based on parameters</td>
+                                </tr>
+                                <tr>
+                                    <td>Localization Framework</td>
+                                    <td>Implement text and asset localization system</td>
+                                    <td>All text and relevant assets can be localized without code changes</td>
+                                </tr>
+                                <tr>
+                                    <td>Content Validation</td>
+                                    <td>Implement automated testing for content integrity and performance</td>
+                                    <td>Content issues are automatically detected during build process</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="milestone-section">
+                    <h3>Phase 6: Polish and Optimization (Months 19-24)</h3>
+                    <p><strong>Focus:</strong> Final technical refinements, optimizations, and platform support</p>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Milestone</th>
+                                    <th>Description</th>
+                                    <th>Validation Criteria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Performance Profiling</td>
+                                    <td>Comprehensive performance analysis and optimization</td>
+                                    <td>Game meets performance targets across all supported platforms</td>
+                                </tr>
+                                <tr>
+                                    <td>Memory Management</td>
+                                    <td>Optimize memory usage and address leaks</td>
+                                    <td>Stable memory usage within target limits during extended play</td>
+                                </tr>
+                                <tr>
+                                    <td>Platform Support</td>
+                                    <td>Implement and test platform-specific features and optimizations</td>
+                                    <td>Game runs correctly on all target platforms</td>
+                                </tr>
+                                <tr>
+                                    <td>Server Infrastructure</td>
+                                    <td>Finalize server deployment, monitoring, and management</td>
+                                    <td>Servers can be deployed, monitored, and managed efficiently</td>
+                                </tr>
+                                <tr>
+                                    <td>Technical Documentation</td>
+                                    <td>Complete comprehensive technical documentation</td>
+                                    <td>Documentation covers all systems with sufficient detail for maintenance</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <h2>Technical Validation Process</h2>
+                <p>Each milestone undergoes a structured validation process:</p>
+                
+                <ol>
+                    <li><strong>Implementation Review:</strong> Code review by technical lead to ensure quality and adherence to architecture</li>
+                    <li><strong>Unit Testing:</strong> Automated tests for individual components and functions</li>
+                    <li><strong>Integration Testing:</strong> Testing interaction between systems</li>
+                    <li><strong>Performance Testing:</strong> Measuring performance impact and optimization opportunities</li>
+                    <li><strong>Multiplayer Testing:</strong> Verifying correct behavior in multiplayer scenarios</li>
+                    <li><strong>Documentation Review:</strong> Ensuring proper documentation of APIs, behaviors, and usage</li>
+                </ol>
+                
+                <h2>Technical Debt Management</h2>
+                <p>Throughout development, technical debt is managed through:</p>
+                
+                <ul>
+                    <li><strong>Regular Refactoring Sprints:</strong> Dedicated time for code improvement and cleanup</li>
+                    <li><strong>Technical Debt Tracking:</strong> Systematic recording and prioritization of technical issues</li>
+                    <li><strong>Code Quality Metrics:</strong> Automated analysis of code quality and complexity</li>
+                    <li><strong>Architecture Reviews:</strong> Periodic reviews to ensure adherence to architectural principles</li>
+                    <li><strong>Documentation Updates:</strong> Keeping documentation synchronized with implementation</li>
+                </ul>
+                
+                <h2>Risk Management</h2>
+                <p>Key technical risks are identified and managed:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Risk</th>
+                                <th>Mitigation Strategy</th>
+                                <th>Contingency Plan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Framework Integration Challenges</td>
+                                <td>Early prototyping, dedicated integration team, regular framework updates</td>
+                                <td>Fallback to custom implementation for problematic components</td>
+                            </tr>
+                            <tr>
+                                <td>Performance Issues</td>
+                                <td>Regular profiling, performance budgets, optimization guidelines</td>
+                                <td>Scope reduction for performance-intensive features, LOD strategies</td>
+                            </tr>
+                            <tr>
+                                <td>Multiplayer Synchronization Problems</td>
+                                <td>Robust synchronization architecture, extensive testing, fallback strategies</td>
+                                <td>Simplify synchronization model, reduce state complexity</td>
+                            </tr>
+                            <tr>
+                                <td>Content Pipeline Bottlenecks</td>
+                                <td>Early tool development, automation, content validation</td>
+                                <td>Manual content processing, scope reduction</td>
+                            </tr>
+                            <tr>
+                                <td>Technical Skill Gaps</td>
+                                <td>Training programs, documentation, knowledge sharing</td>
+                                <td>External consultants, simplified implementation approaches</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2>Development Tools and Infrastructure</h2>
+                <p>The following tools and infrastructure support the development process:</p>
+                
+                <h3>Development Environment</h3>
+                <ul>
+                    <li><strong>Engine:</strong> Unity 2022.3 LTS or newer stable version</li>
+                    <li><strong>IDE:</strong> Visual Studio 2022 or JetBrains Rider with Unity integration</li>
+                    <li><strong>Version Control:</strong> Git with GitHub for repository hosting</li>
+                    <li><strong>Project Management:</strong> Jira for task tracking and sprint planning</li>
+                    <li><strong>Documentation:</strong> Confluence for internal documentation, DocFX for API docs</li>
+                </ul>
+                
+                <h3>Testing Infrastructure</h3>
+                <ul>
+                    <li><strong>Unit Testing:</strong> Unity Test Framework for component and system testing</li>
+                    <li><strong>Integration Testing:</strong> Automated test scenes for system interaction</li>
+                    <li><strong>Performance Testing:</strong> Unity Profiler and custom performance benchmarks</li>
+                    <li><strong>Multiplayer Testing:</strong> Automated client simulation for network testing</li>
+                    <li><strong>Continuous Integration:</strong> GitHub Actions for automated builds and tests</li>
+                </ul>
+                
+                <h3>Deployment Pipeline</h3>
+                <ul>
+                    <li><strong>Build Automation:</strong> Jenkins for build generation and distribution</li>
+                    <li><strong>Asset Bundling:</strong> Addressables for efficient content packaging</li>
+                    <li><strong>Versioning:</strong> Semantic versioning with automated version tracking</li>
+                    <li><strong>Distribution:</strong> Steam for PC distribution, custom launcher for testing</li>
+                    <li><strong>Server Deployment:</strong> Docker containers for server instances</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Technical Note:</strong> The development milestones are designed to prioritize early validation of core technical challenges while maintaining flexibility for design iteration. The phased approach allows for regular evaluation and adjustment of technical direction based on gameplay feedback.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="multiplayer-sync.html" class="prev-link">Previous: Multiplayer Synchronization</a>
+                    <a href="technical-challenges.html" class="next-link">Next: Technical Challenges</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                        <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                        <li><a href="../game-design/world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="specific-systems.html">Specific Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

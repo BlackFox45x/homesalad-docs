@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Accessibility</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="game-overview.html">Game Overview</a>
+                            <a href="gameplay-systems.html">Gameplay Systems</a>
+                            <a href="character-progression.html">Character Progression</a>
+                            <a href="skill-tree.html">Skill Tree System</a>
+                            <a href="garden-building.html">Garden Building System</a>
+                            <a href="quest-rewards.html">Quest & Reward System</a>
+                            <a href="quest-design.html">Quest Design</a>
+                            <a href="world-design.html">World Design</a>
+                            <a href="user-interface.html">User Interface</a>
+                            <a href="art-audio.html">Art & Audio</a>
+                            <a href="development-roadmap.html">Development Roadmap</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Design Document</a>
+            <span class="separator">></span>
+            <span class="current">Accessibility</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Design Document</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li><a href="garden-building.html">Garden Building System</a></li>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="development-roadmap.html">Development Roadmap</a></li>
+                        <li class="active"><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Accessibility</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details HomeSalad's accessibility features and design considerations, ensuring the game is playable and enjoyable for players with diverse abilities and needs.</p>
+                </div>
+                
+                <h2>Accessibility Philosophy</h2>
+                <p>HomeSalad's approach to accessibility is guided by several core principles:</p>
+                
+                <ul>
+                    <li><strong>Inclusive Design:</strong> Considering accessibility from the beginning of development rather than as an afterthought</li>
+                    <li><strong>Flexible Experience:</strong> Providing options that allow players to customize their experience based on their needs</li>
+                    <li><strong>Minimal Barriers:</strong> Identifying and removing unnecessary obstacles to gameplay enjoyment</li>
+                    <li><strong>Equivalent Experience:</strong> Ensuring that accessibility options don't diminish the core gameplay experience</li>
+                    <li><strong>Community Input:</strong> Involving players with disabilities in testing and feedback throughout development</li>
+                </ul>
+                
+                <p>These principles align with HomeSalad's themes of community inclusion and sustainability, extending the game's values to its design approach.</p>
+                
+                <h2>Visual Accessibility</h2>
+                <p>Features and options for players with visual impairments or processing differences:</p>
+                
+                <h3>Color and Contrast</h3>
+                <ul>
+                    <li><strong>Color Blind Modes:</strong> Preset color palettes optimized for protanopia, deuteranopia, and tritanopia</li>
+                    <li><strong>High Contrast Mode:</strong> Enhanced visual distinction between interactive and non-interactive elements</li>
+                    <li><strong>Custom Color Filters:</strong> Player-adjustable color settings for UI and game world</li>
+                    <li><strong>Non-Color Indicators:</strong> Shapes, patterns, and icons used in addition to color for critical information</li>
+                    <li><strong>Contrast Sliders:</strong> Adjustable contrast for text, UI elements, and environmental features</li>
+                </ul>
+                
+                <h3>Text and UI</h3>
+                <ul>
+                    <li><strong>Scalable Text:</strong> Adjustable text size throughout all game interfaces</li>
+                    <li><strong>Readable Fonts:</strong> Clear, sans-serif fonts with good letter distinction</li>
+                    <li><strong>Text Background Options:</strong> Adjustable opacity for text backgrounds to improve readability</li>
+                    <li><strong>UI Scaling:</strong> Resizable interface elements independent of resolution</li>
+                    <li><strong>Screen Reader Support:</strong> Full compatibility with screen readers for menus and UI</li>
+                </ul>
+                
+                <p>These accessibility features are implemented through the game's UI architecture, which is built on a flexible framework that allows for customization and adaptation. For technical details on how these features are implemented, see the <a href="../technical/ui-mcp-implementation.html">UI MCP Implementation</a> documentation.</p>
+                
+                <h3>Visual Effects and Camera</h3>
+                <ul>
+                    <li><strong>Reduced Motion Mode:</strong> Option to minimize screen movement, animations, and effects</li>
+                    <li><strong>Camera Shake Controls:</strong> Adjustable or removable camera shake effects</li>
+                    <li><strong>Flash Reduction:</strong> Option to reduce or eliminate screen flashes and bright effects</li>
+                    <li><strong>Zoom Function:</strong> Ability to zoom in on areas of interest</li>
+                    <li><strong>Field of View Adjustment:</strong> Customizable FOV to reduce motion sickness</li>
+                </ul>
+                
+                <h2>Auditory Accessibility</h2>
+                <p>Features and options for players who are deaf, hard of hearing, or have auditory processing differences:</p>
+                
+                <h3>Subtitles and Captions</h3>
+                <ul>
+                    <li><strong>Comprehensive Subtitles:</strong> Text for all spoken dialogue with speaker identification</li>
+                    <li><strong>Closed Captions:</strong> Descriptions of significant environmental and gameplay sounds</li>
+                    <li><strong>Customizable Caption Display:</strong> Options for text size, background opacity, and position</li>
+                    <li><strong>Caption Styles:</strong> Multiple visual styles for different reading preferences</li>
+                    <li><strong>Direction Indicators:</strong> Visual cues for the source of important sounds</li>
+                </ul>
+                
+                <h3>Audio Controls</h3>
+                <ul>
+                    <li><strong>Volume Mixing:</strong> Separate volume controls for dialogue, effects, ambient, and music</li>
+                    <li><strong>Mono Audio Option:</strong> Converting stereo to mono for players using one earphone</li>
+                    <li><strong>Frequency Adjustment:</strong> Options to adjust audio frequency ranges for better distinction</li>
+                    <li><strong>Audio Cue Alternatives:</strong> Visual or haptic alternatives for important audio cues</li>
+                    <li><strong>Background Noise Reduction:</strong> Option to lower or mute non-essential ambient sounds</li>
+                </ul>
+                
+                <h2>Motor Accessibility</h2>
+                <p>Features and options for players with motor impairments or who use alternative input methods:</p>
+                
+                <h3>Input Customization</h3>
+                <ul>
+                    <li><strong>Full Remapping:</strong> Complete customization of all controls across input devices</li>
+                    <li><strong>Input Method Flexibility:</strong> Support for keyboard, mouse, controller, and assistive devices</li>
+                    <li><strong>Toggle Options:</strong> Ability to toggle actions rather than hold buttons</li>
+                    <li><strong>Adjustable Sensitivity:</strong> Customizable sensitivity for all input methods</li>
+                    <li><strong>Multi-Input Support:</strong> Simultaneous support for multiple input devices</li>
+                </ul>
+                
+                <h3>Simplified Controls</h3>
+                <ul>
+                    <li><strong>One-Button Mode:</strong> Option to play core gameplay with simplified controls</li>
+                    <li><strong>Auto-Complete Actions:</strong> Assistance for complex action sequences</li>
+                    <li><strong>Reduced Precision Requirements:</strong> Adjustable targeting and interaction areas</li>
+                    <li><strong>Movement Assistance:</strong> Options for auto-navigation to objectives</li>
+                    <li><strong>Action Queuing:</strong> Ability to queue commands rather than execute them immediately</li>
+                </ul>
+                
+                <h3>Timing and Difficulty</h3>
+                <ul>
+                    <li><strong>Adjustable Game Speed:</strong> Option to slow down overall gameplay pace</li>
+                    <li><strong>No Time Pressure Mode:</strong> Removal of time limits for activities</li>
+                    <li><strong>Fail-Safe Options:</strong> Prevention of critical failures due to timing issues</li>
+                    <li><strong>Difficulty Customization:</strong> Granular control over challenge factors</li>
+                    <li><strong>Checkpoint Frequency:</strong> Adjustable save point frequency</li>
+                </ul>
+                
+                <h2>Cognitive Accessibility</h2>
+                <p>Features and options for players with cognitive differences, learning disabilities, or who benefit from additional clarity:</p>
+                
+                <h3>Game Information</h3>
+                <ul>
+                    <li><strong>Comprehensive Tutorial:</strong> Step-by-step introduction to game mechanics with practice options</li>
+                    <li><strong>Contextual Help:</strong> On-demand explanations of current game elements</li>
+                    <li><strong>Glossary and Reference:</strong> Searchable database of game terms and mechanics</li>
+                    <li><strong>Progress Tracking:</strong> Clear indicators of completion status and next steps</li>
+                    <li><strong>Reminder System:</strong> Optional prompts for ongoing tasks and objectives</li>
+                </ul>
+                
+                <h3>Cognitive Load Management</h3>
+                <ul>
+                    <li><strong>Adjustable Complexity:</strong> Options to simplify gameplay systems</li>
+                    <li><strong>Information Density Controls:</strong> Adjustable HUD with options to show only essential information</li>
+                    <li><strong>Task Breakdown:</strong> Complex objectives divided into manageable steps</li>
+                    <li><strong>Predictable Patterns:</strong> Consistent design patterns throughout the interface</li>
+                    <li><strong>Focus Mode:</strong> Option to reduce distractions and highlight current objective</li>
+                </ul>
+                
+                <h3>Reading and Language</h3>
+                <ul>
+                    <li><strong>Adjustable Text Presentation:</strong> Options for spacing, line height, and reading pace</li>
+                    <li><strong>Plain Language Option:</strong> Simplified text version with reduced complexity</li>
+                    <li><strong>Text-to-Speech:</strong> Option to have text read aloud</li>
+                    <li><strong>Visual Supports:</strong> Icons and images accompanying text instructions</li>
+                    <li><strong>Multiple Language Support:</strong> Localization with cultural considerations</li>
+                </ul>
+                
+                <h2>Content Considerations</h2>
+                <p>Options and information related to potentially sensitive content:</p>
+                
+                <h3>Content Warnings</h3>
+                <ul>
+                    <li><strong>Pre-Game Notifications:</strong> Clear information about potentially sensitive content</li>
+                    <li><strong>Specific Warnings:</strong> Detailed options to enable/disable warnings for specific content types</li>
+                    <li><strong>Just-in-Time Alerts:</strong> Optional warnings before encountering sensitive content</li>
+                    <li><strong>Content Intensity Scale:</strong> Rating system for emotional or thematic intensity</li>
+                </ul>
+                
+                <h3>Content Modification</h3>
+                <ul>
+                    <li><strong>Reduced Intensity Mode:</strong> Option to soften potentially distressing narrative elements</li>
+                    <li><strong>Alternative Framing:</strong> Options to reframe challenging themes</li>
+                    <li><strong>Content Skipping:</strong> Ability to skip certain non-essential content</li>
+                    <li><strong>Safe Mode:</strong> Comprehensive option to minimize potentially triggering content</li>
+                </ul>
+                
+                <h2>Implementation Approach</h2>
+                <p>HomeSalad's accessibility features are implemented through a structured approach:</p>
+                
+                <h3>Accessibility Menu</h3>
+                <p>A dedicated, easy-to-find accessibility menu with:</p>
+                <ul>
+                    <li><strong>Categorized Options:</strong> Clear organization by accessibility type</li>
+                    <li><strong>Presets:</strong> Pre-configured settings packages for common needs</li>
+                    <li><strong>Real-Time Preview:</strong> Immediate feedback when changing settings</li>
+                    <li><strong>Searchable Interface:</strong> Ability to quickly find specific options</li>
+                    <li><strong>Settings Profiles:</strong> Save and load different accessibility configurations</li>
+                </ul>
+                
+                <h3>Testing and Validation</h3>
+                <p>Rigorous testing process including:</p>
+                <ul>
+                    <li><strong>Expert Consultation:</strong> Working with accessibility specialists throughout development</li>
+                    <li><strong>User Testing:</strong> Playtesting with players who have diverse accessibility needs</li>
+                    <li><strong>Compliance Checking:</strong> Verification against established accessibility guidelines</li>
+                    <li><strong>Assistive Technology Testing:</strong> Compatibility testing with common assistive devices</li>
+                    <li><strong>Ongoing Improvement:</strong> Continued refinement based on community feedback</li>
+                </ul>
+                
+                <h3>Documentation</h3>
+                <p>Comprehensive accessibility information including:</p>
+                <ul>
+                    <li><strong>Accessibility Guide:</strong> Detailed documentation of all accessibility features</li>
+                    <li><strong>Setup Tutorials:</strong> Step-by-step guides for configuring accessibility options</li>
+                    <li><strong>Known Limitations:</strong> Transparent information about any unresolved accessibility challenges</li>
+                    <li><strong>Feedback Channels:</strong> Clear methods for reporting accessibility issues</li>
+                    <li><strong>External Resources:</strong> Links to additional accessibility support</li>
+                </ul>
+                
+                <h2>Specific Game Features</h2>
+                <p>Accessibility considerations for HomeSalad's core gameplay systems:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Gameplay System</th>
+                                <th>Accessibility Features</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Gardening</td>
+                                <td>
+                                    <ul>
+                                        <li>Visual guides for optimal plant placement</li>
+                                        <li>Simplified planting patterns for reduced precision requirements</li>
+                                        <li>Auto-watering option for motor accessibility</li>
+                                        <li>Clear visual indicators of plant health and needs</li>
+                                        <li>Adjustable time scales for plant growth</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Building</td>
+                                <td>
+                                    <ul>
+                                        <li>Snap-to-grid options with adjustable sensitivity</li>
+                                        <li>Blueprint mode with high-contrast visualization</li>
+                                        <li>Material substitution suggestions for easier resource gathering</li>
+                                        <li>Simplified building templates for quick construction</li>
+                                        <li>Auto-completion options for repetitive building tasks</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Social Interactions</td>
+                                <td>
+                                    <ul>
+                                        <li>Clear relationship status indicators</li>
+                                        <li>Dialogue summaries for text-heavy conversations</li>
+                                        <li>Extended dialogue timers or removal of time pressure</li>
+                                        <li>Relationship memory system to track previous interactions</li>
+                                        <li>Simplified dialogue options with consistent positioning</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Environmental Systems</td>
+                                <td>
+                                    <ul>
+                                        <li>Visual overlays showing system connections</li>
+                                        <li>Color-independent indicators of environmental health</li>
+                                        <li>Simplified visualization modes for complex systems</li>
+                                        <li>Auto-management options for routine maintenance</li>
+                                        <li>Clear cause-and-effect demonstrations</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Quest System</td>
+                                <td>
+                                    <ul>
+                                        <li>Multi-format quest instructions (text, audio, visual)</li>
+                                        <li>Adjustable waypoint visibility and frequency</li>
+                                        <li>Quest difficulty customization</li>
+                                        <li>Alternative completion paths for different abilities</li>
+                                        <li>Detailed quest log with progress tracking</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="alert alert-info">
+                    <p><strong>Design Note:</strong> HomeSalad's accessibility features are designed to be integrated seamlessly with the core gameplay experience rather than feeling like separate accommodations. The goal is to create a game that is inherently accessible while maintaining its creative vision and gameplay depth.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="development-roadmap.html" class="prev-link">Previous: Development Roadmap</a>
+                    <a href="../technical/index.html" class="next-link">Next: Technical Guide</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

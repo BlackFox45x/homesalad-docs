@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Multiplayer Synchronization</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../game-design/index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="../game-design/game-overview.html">Game Overview</a>
+                            <a href="../game-design/gameplay-systems.html">Gameplay Systems</a>
+                            <a href="../game-design/character-progression.html">Character Progression</a>
+                            <a href="../game-design/quest-design.html">Quest Design</a>
+                            <a href="../game-design/world-design.html">World Design</a>
+                            <a href="../game-design/user-interface.html">User Interface</a>
+                            <a href="../game-design/art-audio.html">Art & Audio</a>
+                            <a href="../game-design/development-roadmap.html">Development Roadmap</a>
+                            <a href="../game-design/accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="architecture-overview.html">Architecture Overview</a>
+                            <a href="core-systems.html">Core Systems</a>
+                            <a href="specific-systems.html">Specific Systems</a>
+                            <a href="multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="development-milestones.html">Development Milestones</a>
+                            <a href="technical-challenges.html">Technical Challenges</a>
+                            <a href="ui-mcp-implementation.html">UI-MCP Implementation</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Technical Implementation Guide</a>
+            <span class="separator">></span>
+            <span class="current">Multiplayer Synchronization</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="specific-systems.html">Specific Systems</a></li>
+                        <li class="active"><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="development-milestones.html">Development Milestones</a></li>
+                        <li><a href="technical-challenges.html">Technical Challenges</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Multiplayer Synchronization</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details HomeSalad's multiplayer implementation, including network architecture, synchronization strategies, and cooperative gameplay features.</p>
+                </div>
+                
+                <h2>Networking Architecture</h2>
+                <p>HomeSalad uses a client-server architecture based on the uMMORPG Remastered framework with custom extensions:</p>
+                
+                <h3>Server Architecture</h3>
+                <ul>
+                    <li><strong>Dedicated Server:</strong> HomeSalad can run as a dedicated server or as a host-client hybrid</li>
+                    <li><strong>Authority Model:</strong> Server has authority over game state and validates all client actions</li>
+                    <li><strong>Instance Management:</strong> Server manages multiple game instances with separate world states</li>
+                    <li><strong>Persistence Layer:</strong> Server handles saving and loading of world and player data</li>
+                    <li><strong>Authentication:</strong> Server validates player identities and permissions</li>
+                </ul>
+                
+                <h3>Client Architecture</h3>
+                <ul>
+                    <li><strong>Prediction:</strong> Client predicts results of local actions for responsive gameplay</li>
+                    <li><strong>Reconciliation:</strong> Client adjusts local state when server corrections are received</li>
+                    <li><strong>Input Buffering:</strong> Client buffers inputs to handle network latency</li>
+                    <li><strong>State Interpolation:</strong> Client smoothly interpolates between received state updates</li>
+                    <li><strong>Connection Management:</strong> Client handles reconnection and state recovery</li>
+                </ul>
+                
+                <h3>Network Protocol</h3>
+                <p>HomeSalad uses a custom protocol built on top of Unity's networking layer:</p>
+                <ul>
+                    <li><strong>Transport Layer:</strong> Unity Transport Package with fallback options for different network environments</li>
+                    <li><strong>Message Types:</strong> State updates, commands, events, and reliable transactions</li>
+                    <li><strong>Serialization:</strong> Custom binary serialization for bandwidth efficiency</li>
+                    <li><strong>Compression:</strong> Delta compression for state updates to minimize bandwidth</li>
+                    <li><strong>Security:</strong> Encrypted communication and server-side validation</li>
+                </ul>
+                
+                <div class="code-block">
+                    <pre>
+// Example NetworkManager extension for HomeSalad (see UI-MCP Implementation for details)
+// For more information, see <a href="ui-mcp-implementation.html">UI-MCP Implementation</a>
+public class NetworkManagerHomeSalad : NetworkManager
+{
+    // Custom connection configuration
+    [Header("HomeSalad Network Settings")]
+    public int tickRate = 20;
+    public float clientPredictionThreshold = 0.1f;
+    public bool enableCompression = true;
+    
+    // Instance management
+    private Dictionary<int, WorldInstance> worldInstances = new Dictionary<int, WorldInstance>();
+    
+    // Custom message handlers
+    protected override void RegisterServerHandlers()
+    {
+        base.RegisterServerHandlers();
+        NetworkServer.RegisterHandler<EnvironmentalActionMessage>(OnEnvironmentalAction);
+        NetworkServer.RegisterHandler<BuildingPlacementMessage>(OnBuildingPlacement);
+        NetworkServer.RegisterHandler<PlantInteractionMessage>(OnPlantInteraction);
+        // Additional custom message handlers
+    }
+    
+    // Server-side validation example
+    private void OnBuildingPlacement(NetworkConnection conn, BuildingPlacementMessage message)
+    {
+        // Get player from connection
+        var player = conn.identity.GetComponent<Player>();
+        
+        // Validate player can place building
+        if (!player.CanPlaceBuilding(message.buildingType))
+        {
+            // Send rejection message
+            conn.Send(new BuildingRejectionMessage { reason = "Cannot place building" });
+            return;
+        }
+        
+        // Validate placement location
+        if (!IsValidPlacement(message.position, message.rotation, message.buildingType))
+        {
+            // Send rejection message
+            conn.Send(new BuildingRejectionMessage { reason = "Invalid placement location" });
+            return;
+        }
+        
+        // Process valid building placement
+        ProcessBuildingPlacement(player, message);
+    }
+}
+                    </pre>
+                </div>
+                
+                <h2>Synchronization Strategies</h2>
+                <p>Different game elements use different synchronization strategies based on their requirements:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Game Element</th>
+                                <th>Sync Strategy</th>
+                                <th>Implementation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Player Movement</td>
+                                <td>Client Prediction with Server Reconciliation</td>
+                                <td>Client predicts movement, server validates and corrects if needed</td>
+                            </tr>
+                            <tr>
+                                <td>Player Actions</td>
+                                <td>Command Pattern</td>
+                                <td>Client sends action commands, server validates and broadcasts results</td>
+                            </tr>
+                            <tr>
+                                <td>Environmental State</td>
+                                <td>Server Authority with Delta Updates</td>
+                                <td>Server sends compressed delta updates when environment changes</td>
+                            </tr>
+                            <tr>
+                                <td>Plant Growth</td>
+                                <td>Deterministic Simulation with Checkpoints</td>
+                                <td>Clients run same simulation with periodic server checkpoints</td>
+                            </tr>
+                            <tr>
+                                <td>Building Construction</td>
+                                <td>State Replication with Owner Authority</td>
+                                <td>Building owner has temporary authority, validated by server</td>
+                            </tr>
+                            <tr>
+                                <td>NPC Behavior</td>
+                                <td>Server Authority with Client Prediction</td>
+                                <td>Server controls NPCs with client-side animation prediction</td>
+                            </tr>
+                            <tr>
+                                <td>Quest Progress</td>
+                                <td>Server Authority with Client Caching</td>
+                                <td>Server tracks quest state, clients cache for UI updates</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>SyncVar Usage</h3>
+                <p>The uMMORPG SyncVar system is extended for HomeSalad's specific needs:</p>
+                <ul>
+                    <li><strong>Custom SyncVar Types:</strong> Extended to support HomeSalad-specific data types</li>
+                    <li><strong>Change Detection:</strong> Optimized to only sync when values actually change</li>
+                    <li><strong>Hooks:</strong> Custom hooks for visual updates when synchronized values change</li>
+                    <li><strong>Batching:</strong> Related SyncVars are batched for efficient network usage</li>
+                    <li><strong>Prioritization:</strong> Critical SyncVars have higher update priority</li>
+                </ul>
+                
+                <div class="code-block">
+                    <pre>
+// Example of SyncVar usage in a plant component
+public class Plant : NetworkBehavior
+{
+    // Growth progress synced with custom hook for visual updates
+    [SyncVar(hook = nameof(OnGrowthProgressChanged))]
+    private float growthProgress;
+    
+    // Plant health with custom serialization for efficiency
+    [SyncVar(hook = nameof(OnHealthChanged))]
+    private PlantHealth health;
+    
+    // Current growth stage with importance for prioritization
+    [SyncVar(hook = nameof(OnGrowthStageChanged))]
+    [SerializeField]
+    private byte growthStage;
+    
+    // Visual update hook example
+    void OnGrowthStageChanged(byte oldStage, byte newStage)
+    {
+        // Update visual representation based on new growth stage
+        visualController.UpdateGrowthStage(newStage);
+        
+        // Trigger effects for stage transition
+        if (oldStage < newStage)
+        {
+            effectsController.PlayGrowthEffect();
+        }
+    }
+}
+                    </pre>
+                </div>
+                
+                <h3>Interest Management</h3>
+                <p>HomeSalad implements a custom interest management system to optimize network traffic:</p>
+                <ul>
+                    <li><strong>Spatial Partitioning:</strong> World is divided into grid cells for relevance determination</li>
+                    <li><strong>Distance-Based Relevance:</strong> Objects farther from player have reduced update frequency</li>
+                    <li><strong>Visibility Culling:</strong> Objects not visible to player have minimal updates</li>
+                    <li><strong>Interaction Relevance:</strong> Objects player is interacting with have highest priority</li>
+                    <li><strong>Area of Interest:</strong> Players receive updates primarily for their current region</li>
+                </ul>
+                
+                <h2>Cooperative Gameplay</h2>
+                <p>HomeSalad's multiplayer is designed around cooperative gameplay with these key features:</p>
+                
+                <h3>Player Interaction</h3>
+                <ul>
+                    <li><strong>Shared Projects:</strong> Players can collaborate on building and environmental projects</li>
+                    <li><strong>Resource Sharing:</strong> Players can exchange resources and items</li>
+                    <li><strong>Skill Complementarity:</strong> Different player skills can complement each other</li>
+                    <li><strong>Group Activities:</strong> Certain activities are more efficient with multiple players</li>
+                    <li><strong>Communication Tools:</strong> In-game chat, emotes, and ping system</li>
+                </ul>
+                
+                <h3>Shared World State</h3>
+                <p>The world state is shared among all players with these considerations:</p>
+                <ul>
+                    <li><strong>Environmental Persistence:</strong> Environmental changes are visible to all players</li>
+                    <li><strong>Building Ownership:</strong> Buildings have ownership but can be used by others with permission</li>
+                    <li><strong>Resource Respawning:</strong> Resources respawn based on global timers and environmental health</li>
+                    <li><strong>NPC Interactions:</strong> NPCs remember interactions with all players</li>
+                    <li><strong>Community Projects:</strong> Large-scale projects track contributions from all players</li>
+                </ul>
+                
+                <h3>Conflict Resolution</h3>
+                <p>The system handles potential conflicts between players:</p>
+                <ul>
+                    <li><strong>Building Placement:</strong> Grid-based system prevents overlapping structures</li>
+                    <li><strong>Resource Gathering:</strong> Resources are instanced per player for a short time after spawning</li>
+                    <li><strong>Quest Objectives:</strong> Quest objectives can be shared or individually tracked</li>
+                    <li><strong>NPC Interactions:</strong> NPCs can interact with multiple players simultaneously</li>
+                    <li><strong>Land Management:</strong> Community voting system for disputed areas</li>
+                </ul>
+                
+                <h2>Technical Optimizations</h2>
+                <p>Several optimizations are implemented to ensure smooth multiplayer performance:</p>
+                
+                <h3>Bandwidth Optimization</h3>
+                <ul>
+                    <li><strong>Delta Compression:</strong> Only sending changes rather than full state</li>
+                    <li><strong>Quantization:</strong> Reducing precision of values that don't need high precision</li>
+                    <li><strong>Update Frequency Scaling:</strong> Less important objects update less frequently</li>
+                    <li><strong>Batching:</strong> Combining multiple small updates into larger packets</li>
+                    <li><strong>Prioritization:</strong> Critical updates sent first, cosmetic updates delayed if needed</li>
+                </ul>
+                
+                <h3>Latency Handling</h3>
+                <ul>
+                    <li><strong>Input Prediction:</strong> Predicting results of player input locally</li>
+                    <li><strong>Entity Interpolation:</strong> Smooth movement between received positions</li>
+                    <li><strong>Lag Compensation:</strong> Accounting for latency in interaction timing</li>
+                    <li><strong>Adaptive Timing:</strong> Adjusting simulation based on connection quality</li>
+                    <li><strong>Client-Side Animation:</strong> Running animations locally for responsiveness</li>
+                </ul>
+                
+                <h3>Server Performance</h3>
+                <ul>
+                    <li><strong>Load Balancing:</strong> Distributing players across server instances</li>
+                    <li><strong>Simulation Optimization:</strong> Simplified physics and AI for distant objects</li>
+                    <li><strong>Background Processing:</strong> Non-critical updates processed in background threads</li>
+                    <li><strong>Region-Based Processing:</strong> Only active regions fully simulated</li>
+                    <li><strong>Adaptive Tick Rate:</strong> Server adjusts update frequency based on load</li>
+                </ul>
+                
+                <h2>Deployment Architecture</h2>
+                <p>HomeSalad's multiplayer infrastructure is designed for flexible deployment:</p>
+                
+                <h3>Hosting Options</h3>
+                <ul>
+                    <li><strong>Self-Hosted:</strong> Players can host their own servers for private games</li>
+                    <li><strong>Dedicated Servers:</strong> Official servers hosted in multiple regions</li>
+                    <li><strong>Cloud Deployment:</strong> Scalable server instances in cloud infrastructure</li>
+                    <li><strong>Peer-to-Peer Fallback:</strong> Limited P2P functionality for LAN play</li>
+                </ul>
+                
+                <h3>Server Requirements</h3>
+                <p>Recommended specifications for server hosting:</p>
+                <ul>
+                    <li><strong>CPU:</strong> 4+ cores at 2.5GHz or higher</li>
+                    <li><strong>RAM:</strong> 4GB minimum, 8GB recommended</li>
+                    <li><strong>Network:</strong> 10Mbps upload minimum, low latency connection</li>
+                    <li><strong>Storage:</strong> 10GB for server installation, plus save data</li>
+                    <li><strong>Operating System:</strong> Windows, Linux, or macOS with Mono support</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Technical Note:</strong> The multiplayer implementation prioritizes a smooth cooperative experience with minimal conflicts. The architecture is designed to scale from small friend groups to larger community servers while maintaining consistent gameplay.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="specific-systems.html" class="prev-link">Previous: Specific Systems</a>
+                    <a href="development-milestones.html" class="next-link">Next: Development Milestones</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                        <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                        <li><a href="../game-design/world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="core-systems.html">Core Systems</a></li>
+                        <li><a href="specific-systems.html">Specific Systems</a></li>
+                        <li><a href="multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="development-milestones.html">Development Milestones</a></li>
+                        <li><a href="ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

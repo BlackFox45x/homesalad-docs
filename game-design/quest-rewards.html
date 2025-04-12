@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Quest & Reward System</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="game-overview.html">Game Overview</a>
+                            <a href="gameplay-systems.html">Gameplay Systems</a>
+                            <a href="character-progression.html">Character Progression</a>
+                            <a href="skill-tree.html">Skill Tree System</a>
+                            <a href="garden-building.html">Garden Building System</a>
+                            <a href="quest-rewards.html">Quest & Reward System</a>
+                            <a href="quest-design.html">Quest Design</a>
+                            <a href="world-design.html">World Design</a>
+                            <a href="user-interface.html">User Interface</a>
+                            <a href="art-audio.html">Art & Audio</a>
+                            <a href="development-roadmap.html">Development Roadmap</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Design Document</a>
+            <span class="separator">></span>
+            <span class="current">Quest & Reward System</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Design Document</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li><a href="garden-building.html">Garden Building System</a></li>
+                        <li class="active"><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Quest & Reward System</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details HomeSalad's quest and reward systems, including quest progression, reward types, leveling mechanics, and how these systems integrate with character development.</p>
+                </div>
+                
+                <h2>Quest Progression System</h2>
+                <p>HomeSalad's quest system is structured to provide a clear sense of progression while maintaining player freedom and supporting multiple playstyles.</p>
+                
+                <div class="quest-progression-diagram">
+                    <img src="../images/quest-progression-diagram.jpg" alt="Diagram showing the quest progression structure with main storyline and branching paths">
+                    <p class="caption"><strong>AI Prompt:</strong> "A flowchart diagram showing quest progression in a community-building game. The diagram shows a central 'Main Story' path with three years/chapters, with multiple branches for faction quests, personal quests, and community projects. Show how these paths interconnect, with decision points and alternative routes. Use different colors for different quest types and include small icons representing quest outcomes."</p>
+                </div>
+                
+                <h3>Quest Tiers</h3>
+                <p>Quests are organized into five tiers of increasing complexity and impact:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tier</th>
+                                <th>Description</th>
+                                <th>Examples</th>
+                                <th>Typical Rewards</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tier 1<br>(Introduction)</td>
+                                <td>Simple tasks to introduce basic gameplay mechanics and characters</td>
+                                <td>Planting first garden, meeting neighbors, basic harvesting</td>
+                                <td>Basic tools, seeds, small knowledge gains</td>
+                            </tr>
+                            <tr>
+                                <td>Tier 2<br>(Establishment)</td>
+                                <td>More complex tasks requiring basic skills and resource management</td>
+                                <td>Building garden beds, community introductions, simple events</td>
+                                <td>Improved tools, uncommon seeds, skill experience</td>
+                            </tr>
+                            <tr>
+                                <td>Tier 3<br>(Development)</td>
+                                <td>Multi-stage quests requiring planning and skill application</td>
+                                <td>Neighborhood projects, faction introductions, specialized gardens</td>
+                                <td>Specialized equipment, rare seeds, blueprint unlocks</td>
+                            </tr>
+                            <tr>
+                                <td>Tier 4<br>(Challenge)</td>
+                                <td>Complex quests with significant choices and consequences</td>
+                                <td>Major community projects, faction conflicts, environmental challenges</td>
+                                <td>Unique items, land access, relationship milestones</td>
+                            </tr>
+                            <tr>
+                                <td>Tier 5<br>(Culmination)</td>
+                                <td>Major storyline events with far-reaching impact on the game world</td>
+                                <td>Seasonal festivals, corporate confrontations, community transformation</td>
+                                <td>Transformative upgrades, permanent world changes, legacy items</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Quest Tracks</h3>
+                <p>Quests are organized into parallel tracks that players can progress through simultaneously:</p>
+                
+                <div class="quest-track">
+                    <h4>Main Storyline</h4>
+                    <p>The central narrative of HomeSalad follows the community's three-year journey to transform Greenville and confront MegaGrow Industries.</p>
+                    
+                    <div class="progression-path">
+                        <div class="progression-node">
+                            <h5>Year 1: Establishment</h5>
+                            <p><strong>Focus:</strong> Setting up initial gardens, meeting key community members, learning about Greenville's challenges</p>
+                            <p><strong>Culmination:</strong> First Harvest Festival with community recognition</p>
+                            <p><strong>Key Rewards:</strong> Home base expansion, core tool set, community standing</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Year 2: Development</h5>
+                            <p><strong>Focus:</strong> Expanding influence, addressing MegaGrow's plans, building community resilience</p>
+                            <p><strong>Culmination:</strong> City Council showdown over land use policies</p>
+                            <p><strong>Key Rewards:</strong> Access to new areas, advanced systems, political influence</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Year 3: Transformation</h5>
+                            <p><strong>Focus:</strong> Implementing community vision, final confrontation with MegaGrow, securing Greenville's future</p>
+                            <p><strong>Culmination:</strong> Greenville Transformation Celebration</p>
+                            <p><strong>Key Rewards:</strong> Legacy items, permanent world changes, epilogue content</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quest-track">
+                    <h4>Faction Questlines</h4>
+                    <p>Each faction offers a questline that reflects its values and goals, with reputation-based progression.</p>
+                    
+                    <div class="progression-path">
+                        <div class="progression-node">
+                            <h5>Introduction (Neutral)</h5>
+                            <p><strong>Focus:</strong> Meeting faction members, learning about their philosophy</p>
+                            <p><strong>Gating:</strong> Available upon discovering the faction</p>
+                            <p><strong>Key Rewards:</strong> Basic faction-specific items, initial reputation</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Assistance (Friendly)</h5>
+                            <p><strong>Focus:</strong> Helping with faction projects, demonstrating alignment</p>
+                            <p><strong>Gating:</strong> Requires Friendly reputation level</p>
+                            <p><strong>Key Rewards:</strong> Specialized techniques, faction-specific blueprints</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Collaboration (Allied)</h5>
+                            <p><strong>Focus:</strong> Deep involvement in faction activities, representing faction interests</p>
+                            <p><strong>Gating:</strong> Requires Allied reputation level</p>
+                            <p><strong>Key Rewards:</strong> Unique faction items, special abilities, faction perks</p>
+                        </div>
+                        
+                        <div class="progression-node">
+                            <h5>Leadership (Trusted)</h5>
+                            <p><strong>Focus:</strong> Guiding faction direction, resolving internal conflicts</p>
+                            <p><strong>Gating:</strong> Requires Trusted reputation level</p>
+                            <p><strong>Key Rewards:</strong> Faction leadership role, exclusive content, legacy impact</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quest-track">
+                    <h4>Personal Questlines</h4>
+                    <p>Character-specific quests that develop relationships with individual NPCs.</p>
+                    
+                    <!-- Personal Questlines progression path would be detailed here -->
+                </div>
+                
+                <div class="quest-track">
+                    <h4>Community Projects</h4>
+                    <p>Collaborative endeavors that improve Greenville's infrastructure and environment.</p>
+                    
+                    <!-- Community Projects progression path would be detailed here -->
+                </div>
+                
+                <div class="quest-track">
+                    <h4>Seasonal Events</h4>
+                    <p>Time-limited quests tied to the seasonal cycle and calendar events.</p>
+                    
+                    <!-- Seasonal Events progression path would be detailed here -->
+                </div>
+                
+                <h2>Reward System</h2>
+                <p>HomeSalad's reward system is designed to provide meaningful progression while maintaining balance and supporting multiple playstyles.</p>
+                
+                <h3>Reward Categories</h3>
+                <p>Quests provide various types of rewards that contribute to different aspects of progression:</p>
+                
+                <div class="reward-category">
+                    <h4>Material Rewards</h4>
+                    <ul>
+                        <li><strong>Tools:</strong> Equipment that enables new activities or improves efficiency</li>
+                        <li><strong>Seeds:</strong> New plant varieties with different properties and uses</li>
+                        <li><strong>Resources:</strong> Building materials, soil amendments, crafting ingredients</li>
+                        <li><strong>Unique Items:</strong> Special objects with rare properties or functions</li>
+                        <li><strong>Currency:</strong> Community credits for trading and purchasing</li>
+                    </ul>
+                    
+                    <div class="reward-progression">
+                        <h5>Tool Progression Example</h5>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tier</th>
+                                        <th>Tool</th>
+                                        <th>Properties</th>
+                                        <th>Acquisition</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Basic Watering Can</td>
+                                        <td>Small capacity, slow watering</td>
+                                        <td>Starting equipment</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Copper Watering Can</td>
+                                        <td>Medium capacity, moderate speed</td>
+                                        <td>Tier 2 community quest reward</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Rainwater Watering Can</td>
+                                        <td>Large capacity, plant health bonus</td>
+                                        <td>Green Spark Collective faction quest</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Precision Watering Can</td>
+                                        <td>Adjustable flow, water conservation</td>
+                                        <td>Science Institute faction quest</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Living Water Can</td>
+                                        <td>Self-filling, growth acceleration</td>
+                                        <td>Year 3 main quest reward</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reward-category">
+                    <h4>Knowledge Rewards</h4>
+                    <ul>
+                        <li><strong>Techniques:</strong> New methods for gardening, building, or crafting</li>
+                        <li><strong>Blueprints:</strong> Designs for structures, garden layouts, or systems</li>
+                        <li><strong>Recipes:</strong> Formulas for creating food, medicine, or crafted items</li>
+                        <li><strong>Lore:</strong> Background information about the world and characters</li>
+                        <li><strong>Skill Experience:</strong> Direct advancement in specific skill areas</li>
+                    </ul>
+                </div>
+                
+                <div class="reward-category">
+                    <h4>Social Rewards</h4>
+                    <ul>
+                        <li><strong>Reputation:</strong> Improved standing with factions and groups</li>
+                        <li><strong>Relationships:</strong> Deeper connections with individual characters</li>
+                        <li><strong>Community Status:</strong> Recognition and influence in Greenville</li>
+                        <li><strong>Access:</strong> Entry to restricted areas or exclusive events</li>
+                        <li><strong>Assistance:</strong> Help from NPCs with various activities</li>
+                    </ul>
+                </div>
+                
+                <div class="reward-category">
+                    <h4>Environmental Rewards</h4>
+                    <ul>
+                        <li><strong>Land Access:</strong> New areas for gardening and building</li>
+                        <li><strong>Environmental Healing:</strong> Visible improvements to degraded areas</li>
+                        <li><strong>Infrastructure:</strong> Community improvements like water systems</li>
+                        <li><strong>Biodiversity:</strong> New plant and animal species in the environment</li>
+                        <li><strong>Climate Effects:</strong> Positive changes to local weather patterns</li>
+                    </ul>
+                </div>
+                
+                <h2>Leveling and Progression</h2>
+                <p>HomeSalad uses a multi-faceted progression system rather than traditional character levels:</p>
+                
+                <div class="progression-system">
+                    <h3>Community Influence</h3>
+                    <p>The primary measure of overall progression is Community Influence, which reflects the player's impact on Greenville.</p>
+                    
+                    <div class="level-progression">
+                        <img src="../images/influence-progression.jpg" alt="Chart showing Community Influence levels and their benefits">
+                        <p class="caption"><strong>AI Prompt:</strong> "A progression chart showing 10 levels of 'Community Influence' in a community-building game. Each level shows the influence points required, title earned (like 'Newcomer' to 'Community Leader'), and key benefits unlocked. Use a clean, infographic style with icons representing each benefit type."</p>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Influence Level</th>
+                                    <th>Title</th>
+                                    <th>Points Required</th>
+                                    <th>Key Unlocks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Newcomer</td>
+                                    <td>0</td>
+                                    <td>Basic tools, home garden plot, introductory quests</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Neighbor</td>
+                                    <td>100</td>
+                                    <td>Community garden access, basic blueprints, neighborhood quests</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Community Member</td>
+                                    <td>300</td>
+                                    <td>Home expansion, faction introductions, community board access</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Local Advocate</td>
+                                    <td>600</td>
+                                    <td>Workshop access, advanced blueprints, district projects</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Respected Voice</td>
+                                    <td>1000</td>
+                                    <td>City Council access, rare seeds, leadership opportunities</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Community Organizer</td>
+                                    <td>1500</td>
+                                    <td>Additional land, specialized equipment, policy influence</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Local Leader</td>
+                                    <td>2200</td>
+                                    <td>District representation, unique blueprints, mentor abilities</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Town Visionary</td>
+                                    <td>3000</td>
+                                    <td>City-wide projects, legacy planning, advanced systems</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Community Pillar</td>
+                                    <td>4000</td>
+                                    <td>Major infrastructure, rare techniques, festival planning</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>Greenville Legend</td>
+                                    <td>5500</td>
+                                    <td>City transformation options, legendary items, endgame content</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <h3>Influence Acquisition</h3>
+                <p>Players gain Community Influence through various activities:</p>
+                <ul>
+                    <li><strong>Quest Completion:</strong> Primary source of influence points</li>
+                    <li><strong>Environmental Improvement:</strong> Transforming degraded areas</li>
+                    <li><strong>Community Projects:</strong> Contributing to shared initiatives</li>
+                    <li><strong>Relationship Building:</strong> Developing connections with NPCs</li>
+                    <li><strong>Knowledge Sharing:</strong> Teaching skills to community members</li>
+                    <li><strong>Sustainable Practices:</strong> Demonstrating ecological principles</li>
+                </ul>
+                
+                <h3>Parallel Progression Systems</h3>
+                <p>In addition to Community Influence, players progress through several parallel systems:</p>
+                
+                <ul>
+                    <li><strong>Skill Advancement:</strong> Individual skills progress through practice (see Skill Tree)</li>
+                    <li><strong>Faction Reputation:</strong> Standing with each faction has its own progression track</li>
+                    <li><strong>NPC Relationships:</strong> Individual relationships develop through interaction</li>
+                    <li><strong>Environmental Transformation:</strong> Areas progress through stages of ecological health</li>
+                    <li><strong>Knowledge Collection:</strong> Encyclopedia of discovered information expands</li>
+                </ul>
+                
+                <h2>Quest and Reward Interface</h2>
+                <p>The quest and reward systems are presented through several interface elements:</p>
+                
+                <div class="interface-screenshot">
+                    <img src="../images/quest-journal-interface.jpg" alt="Screenshot of the quest journal interface">
+                    <p class="caption"><strong>AI Prompt:</strong> "A UI design for a quest journal interface in a community-building game. Show a page with a selected quest displaying objectives, rewards, and progress. Include a quest list on the left side categorized by type (main story, faction, personal, etc.) with color coding and status indicators. Use a natural paper/journal aesthetic with handwritten-style fonts and botanical decorative elements."</p>
+                </div>
+                
+                <p>For details on how the quest journal and reward interfaces are implemented in the game's technical architecture, refer to the <a href="../technical/ui-mcp-implementation.html">UI MCP Implementation</a> documentation, which covers the integration with the game's networking and data systems.</p>
+                
+                <h3>Quest Journal</h3>
+                <ul>
+                    <li><strong>Quest Tracking:</strong> List of active, available, and completed quests</li>
+                    <li><strong>Objective Display:</strong> Current steps and progress for active quests</li>
+                    <li><strong>Reward Preview:</strong> Information about potential quest rewards</li>
+                    <li><strong>Quest Map:</strong> Spatial representation of quest locations</li>
+                    <li><strong>Quest History:</strong> Record of completed quests and choices made</li>
+                </ul>
+                
+                <h3>Community Board</h3>
+                <ul>
+                    <li><strong>Available Quests:</strong> New opportunities posted by community members</li>
+                    <li><strong>Project Status:</strong> Progress of ongoing community initiatives</li>
+                    <li><strong>Event Calendar:</strong> Upcoming time-limited activities and quests</li>
+                    <li><strong>Request System:</strong> Player-initiated help requests for multiplayer</li>
+                    <li><strong>Achievement Display:</strong> Community accomplishments and milestones</li>
+                </ul>
+                
+                <h3>Influence Panel</h3>
+                <ul>
+                    <li><strong>Current Level:</strong> Visual representation of Community Influence</li>
+                    <li><strong>Progress Tracking:</strong> Bar showing advancement toward next level</li>
+                    <li><strong>Recent Gains:</strong> Log of recently acquired influence points</li>
+                    <li><strong>Unlocked Benefits:</strong> List of capabilities gained through influence</li>
+                    <li><strong>Future Previews:</strong> Upcoming rewards for continued progression</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Design Note:</strong> The quest and reward systems are designed to create a sense of meaningful progression without relying on traditional RPG leveling mechanics. By tying advancement to community impact rather than combat or grinding, the game reinforces its themes of cooperation, sustainability, and positive change.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="garden-building.html" class="prev-link">Previous: Garden Building System</a>
+                    <a href="quest-design.html" class="next-link">Next: Quest Design</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

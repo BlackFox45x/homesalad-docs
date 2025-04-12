@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Art & Audio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="game-overview.html">Game Overview</a>
+                            <a href="gameplay-systems.html">Gameplay Systems</a>
+                            <a href="character-progression.html">Character Progression</a>
+                            <a href="skill-tree.html">Skill Tree System</a>
+                            <a href="garden-building.html">Garden Building System</a>
+                            <a href="quest-rewards.html">Quest & Reward System</a>
+                            <a href="quest-design.html">Quest Design</a>
+                            <a href="world-design.html">World Design</a>
+                            <a href="user-interface.html">User Interface</a>
+                            <a href="art-audio.html">Art & Audio</a>
+                            <a href="development-roadmap.html">Development Roadmap</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Design Document</a>
+            <span class="separator">></span>
+            <span class="current">Art & Audio</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Design Document</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li><a href="garden-building.html">Garden Building System</a></li>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li class="active"><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="world-design.html">World Design</a></li>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Art & Audio</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details the art direction, visual style, audio design, and music composition for HomeSalad, establishing the aesthetic foundation for the game's world and experience.</p>
+                </div>
+                
+                <h2>Art Direction</h2>
+                <p>HomeSalad's art direction is guided by several core principles that reflect the game's themes and gameplay focus:</p>
+                
+                <ul>
+                    <li><strong>Natural Authenticity:</strong> Representing plants, ecosystems, and natural processes with biological accuracy while maintaining visual clarity</li>
+                    <li><strong>Transformative Contrast:</strong> Creating clear visual distinction between degraded and restored environments to highlight player impact</li>
+                    <li><strong>Community Character:</strong> Expressing diverse cultural influences and personal touches in the built environment</li>
+                    <li><strong>Functional Beauty:</strong> Emphasizing how sustainable systems can be both practical and aesthetically pleasing</li>
+                    <li><strong>Seasonal Dynamism:</strong> Showcasing the changing beauty of environments through seasonal cycles</li>
+                </ul>
+                
+                <h2>Visual Style</h2>
+                <p>HomeSalad employs a stylized realism approach that balances authenticity with visual clarity and performance considerations.</p>
+                
+                <h3>Overall Aesthetic</h3>
+                <p>The game's visual style can be characterized as:</p>
+                <ul>
+                    <li><strong>Semi-Realistic Proportions:</strong> Slightly exaggerated forms that maintain recognizable shapes</li>
+                    <li><strong>Rich Color Palette:</strong> Vibrant but naturalistic colors with seasonal variations</li>
+                    <li><strong>Textural Detail:</strong> Emphasis on material qualities and surface characteristics</li>
+                    <li><strong>Atmospheric Lighting:</strong> Dynamic lighting that enhances mood and time of day</li>
+                    <li><strong>Organic Composition:</strong> Flowing lines and natural arrangements rather than rigid geometry</li>
+                </ul>
+                
+                <p>The style draws inspiration from sources including:</p>
+                <ul>
+                    <li>Contemporary permaculture and sustainable design photography</li>
+                    <li>Studio Ghibli's depiction of natural environments</li>
+                    <li>Traditional botanical illustration and nature journals</li>
+                    <li>Community garden and urban renewal documentation</li>
+                    <li>Solarpunk artistic movement and aesthetic principles</li>
+                </ul>
+                
+                <h3>Character Design</h3>
+                <p>Character designs follow these guidelines:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Approach</th>
+                                <th>Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Proportions</td>
+                                <td>Slightly stylized with realistic body types and diverse physiques</td>
+                                <td>Range of heights, weights, ages, and physical capabilities</td>
+                            </tr>
+                            <tr>
+                                <td>Clothing</td>
+                                <td>Practical, layered, with personal expression and cultural influences</td>
+                                <td>Work clothes, handmade items, upcycled fashion, cultural garments</td>
+                            </tr>
+                            <tr>
+                                <td>Animation</td>
+                                <td>Naturalistic movement with subtle exaggeration for readability</td>
+                                <td>Tool use, gardening actions, building activities, social gestures</td>
+                            </tr>
+                            <tr>
+                                <td>Customization</td>
+                                <td>Extensive options for player character with cultural sensitivity</td>
+                                <td>Diverse hairstyles, skin tones, facial features, body types, clothing</td>
+                            </tr>
+                            <tr>
+                                <td>Expression</td>
+                                <td>Emotive faces and body language that convey personality</td>
+                                <td>Readable emotions, character-specific gestures, relationship indicators</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Environment Design</h3>
+                <p>Environmental art follows these principles:</p>
+                
+                <ul>
+                    <li><strong>Transformation States:</strong> Each area has multiple visual states representing environmental health</li>
+                    <li><strong>Seasonal Variation:</strong> All environments change appearance through the four seasons</li>
+                    <li><strong>District Identity:</strong> Each district has a distinct visual language and architectural style</li>
+                    <li><strong>Natural Integration:</strong> Built and natural elements blend in organic, harmonious ways</li>
+                    <li><strong>Visual Storytelling:</strong> Environments contain visual cues about history and community</li>
+                </ul>
+                
+                <p>Key environmental elements include:</p>
+                <ul>
+                    <li><strong>Plant Life:</strong> Diverse, botanically-accurate species with growth stages and seasonal changes</li>
+                    <li><strong>Buildings:</strong> Architectural styles ranging from historic to contemporary with adaptive reuse</li>
+                    <li><strong>Water Systems:</strong> Rivers, ponds, rain gardens with varying states of health and function</li>
+                    <li><strong>Infrastructure:</strong> Conventional and sustainable systems showing transition and integration</li>
+                    <li><strong>Wildlife:</strong> Animals and insects that appear based on habitat quality and biodiversity</li>
+                </ul>
+                
+                <h3>UI Art Style</h3>
+                <p>User interface visuals follow these guidelines:</p>
+                <ul>
+                    <li><strong>Organic Frames:</strong> UI elements with natural, flowing shapes rather than sharp corners</li>
+                    <li><strong>Hand-Crafted Textures:</strong> Subtle paper, wood, and fabric textures for UI backgrounds</li>
+                    <li><strong>Nature-Inspired Icons:</strong> Iconography based on natural forms and materials</li>
+                    <li><strong>Earth-Tone Palette:</strong> Color scheme using natural pigment colors with seasonal accents</li>
+                    <li><strong>Botanical Decorations:</strong> Subtle plant motifs and natural elements as decorative touches</li>
+                </ul>
+                
+                <p>For details on how these UI art style guidelines are implemented in the game's technical architecture, refer to the <a href="../technical/ui-mcp-implementation.html">UI MCP Implementation</a> documentation.</p>
+                
+                <h3>Technical Art Specifications</h3>
+                <p>Technical guidelines for art production:</p>
+                <ul>
+                    <li><strong>Poly Budget:</strong> Low to medium polygon density with detail in textures</li>
+                    <li><strong>Texture Approach:</strong> PBR workflow with shared material libraries</li>
+                    <li><strong>Animation System:</strong> Blend tree-based character animation with procedural elements</li>
+                    <li><strong>Shader Strategy:</strong> Custom shaders for plants, water, and environmental transformation</li>
+                    <li><strong>Optimization:</strong> LOD system, texture atlasing, and instance batching for performance</li>
+                </ul>
+                
+                <h2>Audio Design</h2>
+                <p>HomeSalad's audio design creates an immersive soundscape that reflects the game's themes and supports gameplay.</p>
+                
+                <h3>Sound Design Philosophy</h3>
+                <p>The audio approach is guided by these principles:</p>
+                <ul>
+                    <li><strong>Environmental Storytelling:</strong> Using sound to convey ecosystem health and activity</li>
+                    <li><strong>Seasonal Variation:</strong> Changing soundscapes that reflect the time of year</li>
+                    <li><strong>Material Authenticity:</strong> Realistic interaction sounds based on material properties</li>
+                    <li><strong>Emotional Resonance:</strong> Audio that enhances the emotional impact of gameplay moments</li>
+                    <li><strong>Spatial Awareness:</strong> Sound design that helps players navigate and understand the world</li>
+                </ul>
+                
+                <h3>Ambient Sound</h3>
+                <p>The ambient audio system creates dynamic environmental soundscapes:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Layer</th>
+                                <th>Components</th>
+                                <th>Variation Factors</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Weather</td>
+                                <td>Wind, rain, thunder, snow, fog effects</td>
+                                <td>Intensity, direction, surface interaction</td>
+                            </tr>
+                            <tr>
+                                <td>Wildlife</td>
+                                <td>Birds, insects, small animals, aquatic life</td>
+                                <td>Time of day, season, biodiversity level</td>
+                            </tr>
+                            <tr>
+                                <td>Vegetation</td>
+                                <td>Rustling leaves, creaking wood, plant movement</td>
+                                <td>Wind strength, plant density, season</td>
+                            </tr>
+                            <tr>
+                                <td>Water</td>
+                                <td>Flowing, dripping, splashing, bubbling</td>
+                                <td>Water body size, flow rate, containment</td>
+                            </tr>
+                            <tr>
+                                <td>Human Activity</td>
+                                <td>Distant voices, tools, machinery, movement</td>
+                                <td>Population density, time of day, events</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p>The ambient system responds to environmental transformation, with degraded areas featuring sparse, harsh soundscapes that become richer and more harmonious as they are restored.</p>
+                
+                <h3>Interactive Audio</h3>
+                <p>Sound effects for player actions and interactions:</p>
+                <ul>
+                    <li><strong>Tool Use:</strong> Distinct sounds for different tools interacting with various materials</li>
+                    <li><strong>Movement:</strong> Footsteps that vary by surface, clothing rustle, breathing</li>
+                    <li><strong>Object Interaction:</strong> Picking up, placing, manipulating different object types</li>
+                    <li><strong>Building:</strong> Construction sounds based on materials and techniques</li>
+                    <li><strong>Gardening:</strong> Planting, watering, harvesting with appropriate tactile sounds</li>
+                </ul>
+                
+                <h3>UI Audio</h3>
+                <p>Sound design for user interface elements:</p>
+                <ul>
+                    <li><strong>Menu Navigation:</strong> Subtle organic sounds for selection and confirmation</li>
+                    <li><strong>Notifications:</strong> Distinctive audio cues for different alert types</li>
+                    <li><strong>Achievements:</strong> Rewarding sounds for milestones and accomplishments</li>
+                    <li><strong>System Feedback:</strong> Audio indicators for game state changes</li>
+                    <li><strong>Tutorial Elements:</strong> Attention-directing sounds for guidance</li>
+                </ul>
+                
+                <p>The technical implementation of these UI audio elements is detailed in the <a href="../technical/ui-mcp-implementation.html">UI MCP Implementation</a> documentation, which explains how the audio system integrates with the UI architecture.</p>
+                
+                <h3>Voice Design</h3>
+                <p>Approach to character vocalization:</p>
+                <ul>
+                    <li><strong>Dialogue Style:</strong> Non-verbal vocalizations rather than fully voiced dialogue</li>
+                    <li><strong>Emotional Range:</strong> Expressive sounds conveying character feelings and reactions</li>
+                    <li><strong>Character Identity:</strong> Distinct vocal characteristics for different NPCs</li>
+                    <li><strong>Cultural Sensitivity:</strong> Thoughtful representation of diverse character backgrounds</li>
+                    <li><strong>Player Character:</strong> Customizable voice options with minimal vocalizations</li>
+                </ul>
+                
+                <h2>Music</h2>
+                <p>HomeSalad's musical score enhances the gameplay experience and emotional journey.</p>
+                
+                <h3>Musical Style</h3>
+                <p>The soundtrack combines several influences:</p>
+                <ul>
+                    <li><strong>Folk Traditions:</strong> Acoustic instruments and melodic structures from various cultures</li>
+                    <li><strong>Ambient Electronic:</strong> Subtle synthesized textures and processed natural sounds</li>
+                    <li><strong>Environmental Recording:</strong> Integrated field recordings and found sounds</li>
+                    <li><strong>Minimalist Composition:</strong> Evolving patterns and gradual development</li>
+                    <li><strong>World Fusion:</strong> Blending of diverse musical traditions and instruments</li>
+                </ul>
+                
+                <h3>Adaptive Music System</h3>
+                <p>The music system responds dynamically to gameplay:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Adaptation Factor</th>
+                                <th>Musical Response</th>
+                                <th>Implementation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Location</td>
+                                <td>District-specific instrumentation and themes</td>
+                                <td>Crossfading between area-based compositions</td>
+                            </tr>
+                            <tr>
+                                <td>Time of Day</td>
+                                <td>Changing mood and energy based on daylight cycle</td>
+                                <td>Layered tracks that shift in prominence</td>
+                            </tr>
+                            <tr>
+                                <td>Season</td>
+                                <td>Seasonal variations on core themes</td>
+                                <td>Quarterly alternate arrangements of base compositions</td>
+                            </tr>
+                            <tr>
+                                <td>Activity</td>
+                                <td>Task-appropriate musical elements</td>
+                                <td>Activity-triggered musical layers and motifs</td>
+                            </tr>
+                            <tr>
+                                <td>Environmental State</td>
+                                <td>Harmonic development reflecting restoration progress</td>
+                                <td>Gradual introduction of additional instruments and harmonies</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Key Musical Themes</h3>
+                <p>Recurring musical elements that support the narrative:</p>
+                <ul>
+                    <li><strong>Community Theme:</strong> Warm, inclusive melody representing Greenville's spirit</li>
+                    <li><strong>Growth Motif:</strong> Ascending pattern symbolizing environmental restoration</li>
+                    <li><strong>Corporate Theme:</strong> Mechanical, structured theme associated with MegaGrow</li>
+                    <li><strong>Heritage Melody:</strong> Traditional-inspired theme connecting to the town's past</li>
+                    <li><strong>Transformation Progression:</strong> Evolving harmonic sequence that develops throughout the game</li>
+                </ul>
+                
+                <h3>Musical Moments</h3>
+                <p>Special musical compositions for significant events:</p>
+                <ul>
+                    <li><strong>Seasonal Festivals:</strong> Celebratory, culturally-influenced pieces for community events</li>
+                    <li><strong>Milestone Achievements:</strong> Rewarding musical moments for major accomplishments</li>
+                    <li><strong>Environmental Breakthroughs:</strong> Revealing compositions for ecosystem restoration</li>
+                    <li><strong>Narrative Climaxes:</strong> Emotionally resonant pieces for story high points</li>
+                    <li><strong>Community Gatherings:</strong> Participatory music for collective activities</li>
+                </ul>
+                
+                <h2>Art Pipeline</h2>
+                <p>The production workflow for HomeSalad's visual and audio assets:</p>
+                
+                <h3>Visual Asset Pipeline</h3>
+                <ol>
+                    <li><strong>Concept Art:</strong> Exploration of visual ideas and establishment of style guides</li>
+                    <li><strong>Reference Collection:</strong> Gathering botanical, architectural, and cultural reference material</li>
+                    <li><strong>3D Modeling:</strong> Creation of base assets with transformation state variations</li>
+                    <li><strong>Texturing:</strong> Development of material libraries and texture sets</li>
+                    <li><strong>Animation:</strong> Character and environmental movement creation</li>
+                    <li><strong>VFX:</strong> Particle systems and shader effects for environmental processes</li>
+                    <li><strong>Integration:</strong> Implementation in Unity with proper LODs and optimization</li>
+                    <li><strong>Lighting:</strong> Setup of global illumination and time-of-day systems</li>
+                </ol>
+                
+                <h3>Audio Asset Pipeline</h3>
+                <ol>
+                    <li><strong>Field Recording:</strong> Collection of natural and environmental sounds</li>
+                    <li><strong>Sound Design:</strong> Creation and processing of interactive audio elements</li>
+                    <li><strong>Music Composition:</strong> Development of adaptive musical score</li>
+                    <li><strong>Voice Recording:</strong> Capture of character vocalizations</li>
+                    <li><strong>Implementation:</strong> Integration with FMOD for dynamic audio behavior</li>
+                    <li><strong>Mixing:</strong> Balancing of audio elements for optimal experience</li>
+                    <li><strong>Optimization:</strong> Audio compression and memory management</li>
+                    <li><strong>Localization:</strong> Preparation for international adaptation</li>
+                </ol>
+                
+                <div class="alert alert-info">
+                    <p><strong>Design Note:</strong> The art and audio direction for HomeSalad emphasizes the beauty of sustainable systems and the transformation of environments through community action. The aesthetic approach aims to make ecological principles visually engaging and emotionally resonant, helping players connect with the game's themes through sensory experience.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="user-interface.html" class="prev-link">Previous: User Interface</a>
+                    <a href="development-roadmap.html" class="next-link">Next: Development Roadmap</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

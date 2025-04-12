@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Character Progression</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../images/image.png">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="game-overview.html">Game Overview</a>
+                            <a href="gameplay-systems.html">Gameplay Systems</a>
+                            <a href="character-progression.html">Character Progression</a>
+                            <a href="skill-tree.html">Skill Tree System</a>
+                            <a href="garden-building.html">Garden Building System</a>
+                            <a href="quest-rewards.html">Quest & Reward System</a>
+                            <a href="quest-design.html">Quest Design</a>
+                            <a href="world-design.html">World Design</a>
+                            <a href="user-interface.html">User Interface</a>
+                            <a href="art-audio.html">Art & Audio</a>
+                            <a href="development-roadmap.html">Development Roadmap</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Design Document</a>
+            <span class="separator">></span>
+            <span class="current">Character Progression</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Design Document</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li class="active"><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li><a href="garden-building.html">Garden Building System</a></li>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                        <li><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Character Progression</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details the character progression systems in HomeSalad, including skills, knowledge, relationships, and reputation mechanics that allow players to develop their character throughout the game.</p>
+                </div>
+                
+                <!-- Image: Progression Overview -->
+                <figure class="image-container">
+                    <img src="../images/image.png" alt="Conceptual illustration showing multiple progression paths in a vibrant community setting">
+                    <figcaption>
+                        <strong>AI Prompt:</strong> “A vibrant stylized farmstead scene illustrating multiple progression paths within an eco-focused community; characters engaged in planting, building, teaching, and crafting simultaneously; bright sunlight cascading over lush greenery; warm and inviting color palette; high-resolution concept art style.”
+                    </figcaption>
+                </figure>
+
+                <h2>Progression Philosophy</h2>
+                <p>Character progression in HomeSalad is designed around several core principles:</p>
+                
+                <ul>
+                    <li><strong>Learning by Doing:</strong> Skills improve primarily through practice and application rather than abstract point allocation</li>
+                    <li><strong>Multiple Progression Paths:</strong> Players can advance through various complementary systems rather than a single linear path</li>
+                    <li><strong>Meaningful Choices:</strong> Specialization requires investment and trade-offs, making character build decisions significant</li>
+                    <li><strong>Visible Impact:</strong> Progression visibly affects the game world, character capabilities, and social dynamics</li>
+                    <li><strong>Community Connection:</strong> Individual progression is tied to community development, emphasizing interdependence</li>
+                </ul>
+                
+                <h2>Skill System</h2>
+                <p>The skill system represents the player character's practical abilities and technical knowledge. Skills improve through use and application in relevant activities.</p>
+                
+                <!-- Image: Skill System Diagram -->
+                <figure class="image-container">
+                    <img src="../images/skill-system-diagram.jpg" alt="A stylized flowchart illustrating the five skill categories in HomeSalad">
+                    <figcaption>
+                        <strong>AI Prompt:</strong> “A colorful, cleanly illustrated flowchart diagram highlighting five distinct skill categories—Cultivation, Construction, Community, Conservation, and Crafts—with arrows representing interplay between these skills; modern infographic style, with icons for each skill.”
+                    </figcaption>
+                </figure>
+
+                <h3>Skill Categories</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Skills</th>
+                                <th>Primary Activities</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cultivation</td>
+                                <td>Gardening, Composting, Seed Saving, Pest Management, Plant Breeding</td>
+                                <td>Growing food, managing soil health, developing plant varieties</td>
+                            </tr>
+                            <tr>
+                                <td>Construction</td>
+                                <td>Building, Crafting, Tool Making, Salvaging, Design</td>
+                                <td>Creating structures, tools, and infrastructure</td>
+                            </tr>
+                            <tr>
+                                <td>Community</td>
+                                <td>Leadership, Teaching, Negotiation, Event Planning, Conflict Resolution</td>
+                                <td>Organizing people, sharing knowledge, building relationships</td>
+                            </tr>
+                            <tr>
+                                <td>Conservation</td>
+                                <td>Ecosystem Restoration, Water Management, Wildlife Support, Pollution Remediation</td>
+                                <td>Restoring natural systems and environmental health</td>
+                            </tr>
+                            <tr>
+                                <td>Crafts</td>
+                                <td>Cooking, Preservation, Textiles, Herbalism, Artistry</td>
+                                <td>Creating useful and beautiful items from natural materials</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Skill Levels</h3>
+                <p>Each skill progresses through five levels of mastery:</p>
+                
+                <ol>
+                    <li><strong>Novice:</strong> Basic understanding and capability, occasional failures, limited efficiency</li>
+                    <li><strong>Apprentice:</strong> Reliable performance of standard techniques, improved resource efficiency</li>
+                    <li><strong>Practitioner:</strong> Expanded techniques, good resource efficiency, ability to teach basics</li>
+                    <li><strong>Expert:</strong> Advanced techniques, excellent resource efficiency, ability to innovate</li>
+                    <li><strong>Master:</strong> Complete mastery, maximum efficiency, ability to create unique solutions</li>
+                </ol>
+                
+                <h3>Skill Progression Mechanics</h3>
+                <p>Skills improve through several mechanisms:</p>
+                
+                <ul>
+                    <li><strong>Practice:</strong> Performing activities related to the skill (primary method)</li>
+                    <li><strong>Learning:</strong> Reading books, attending workshops, or being taught by NPCs</li>
+                    <li><strong>Experimentation:</strong> Trying new approaches or combinations of techniques</li>
+                    <li><strong>Teaching:</strong> Sharing knowledge with NPCs or other players</li>
+                    <li><strong>Challenges:</strong> Completing specific skill-related tasks or quests</li>
+                </ul>
+                
+                <p>Skill progression follows a curve where early levels are achieved relatively quickly, while mastery requires significant dedication and practice.</p>
+                
+                <h2>Knowledge System</h2>
+                <p>The knowledge system represents information, insights, and understanding that the player character accumulates. Unlike skills, knowledge is not measured in levels but as discrete pieces of information that can be collected, connected, and applied.</p>
+                
+                <h3>Knowledge Categories</h3>
+                <ul>
+                    <li><strong>Ecological:</strong> Information about local ecosystems, species interactions, and environmental processes</li>
+                    <li><strong>Technical:</strong> Specific techniques, recipes, blueprints, and methodologies</li>
+                    <li><strong>Cultural:</strong> Local history, traditions, stories, and community knowledge</li>
+                    <li><strong>Personal:</strong> Information about specific characters, their preferences, histories, and relationships</li>
+                    <li><strong>Systemic:</strong> Understanding of how different systems interact and affect each other</li>
+                </ul>
+                
+                <h3>Knowledge Acquisition</h3>
+                <p>Players can gain knowledge through:</p>
+                <ul>
+                    <li>Conversations with NPCs</li>
+                    <li>Reading books and documents</li>
+                    <li>Observation of natural phenomena</li>
+                    <li>Experimentation and testing</li>
+                    <li>Attending community events and workshops</li>
+                    <li>Completing quests and challenges</li>
+                </ul>
+                
+                <h3>Knowledge Web</h3>
+                <p>Knowledge in HomeSalad is represented as an interconnected web rather than a linear progression. As players discover new information, they can connect it to existing knowledge to unlock insights, new dialogue options, and special actions.</p>
+                
+                <p>The Knowledge Web is visualized in the player's journal, showing connections between different pieces of information and highlighting areas where knowledge is incomplete.</p>
+                
+                <!-- Image: Knowledge Web Diagram -->
+                <figure class="image-container">
+                    <img src="../images/knowledge-web.jpg" alt="A complex, interconnected web diagram representing various knowledge nodes and relationships">
+                    <figcaption>
+                        <strong>AI Prompt:</strong> “A high-detail illustration of a ‘knowledge web’ with interconnected nodes labeled ‘Ecological,’ ‘Technical,’ ‘Cultural,’ ‘Personal,’ and ‘Systemic.’ Lines and icons demonstrate how discovered information links together; modern UI/UX style, bright and engaging.”
+                    </figcaption>
+                </figure>
+                
+                <h2>Relationship System</h2>
+                <p>The relationship system tracks the player's connections with individual NPCs and factions, reflecting how their actions and choices affect their standing in the community.</p>
+                
+                <h3>Individual Relationships</h3>
+                <p>Relationships with individual NPCs are measured along three dimensions:</p>
+                
+                <ul>
+                    <li><strong>Trust:</strong> How much the NPC believes in the player's reliability and intentions</li>
+                    <li><strong>Respect:</strong> How much the NPC values the player's skills and accomplishments</li>
+                    <li><strong>Affinity:</strong> How much the NPC personally likes and connects with the player</li>
+                </ul>
+                
+                <p>These dimensions can develop independently based on player actions. For example, an NPC might respect the player's gardening skills while not fully trusting their intentions, or might have high affinity but low respect.</p>
+                
+                <h3>Relationship Development</h3>
+                <p>Relationships develop through:</p>
+                <ul>
+                    <li>Dialogue choices that reveal character values and perspectives</li>
+                    <li>Completing personal quests for NPCs</li>
+                    <li>Including NPCs in community projects</li>
+                    <li>Regular interactions and activities</li>
+                    <li>Gift-giving based on NPC preferences</li>
+                    <li>Supporting (or opposing) NPC goals and values</li>
+                </ul>
+                
+                <h3>Relationship Benefits</h3>
+                <p>Strong relationships provide:</p>
+                <ul>
+                    <li>Access to unique skills and knowledge</li>
+                    <li>Special items and resources</li>
+                    <li>Additional quest opportunities</li>
+                    <li>Support during community events and challenges</li>
+                    <li>Deeper narrative content and character development</li>
+                    <li>Assistance with projects and tasks</li>
+                </ul>
+                
+                <!-- Image: Community Interaction -->
+                <figure class="image-container">
+                    <img src="../images/community-relationships.jpg" alt="A warm, lively scene depicting the player character interacting with multiple NPCs in a communal space">
+                    <figcaption>
+                        <strong>AI Prompt:</strong> “A cozy village square where diverse NPCs gather, representing different factions; the protagonist conversing and collaborating with them; a sense of warmth, mutual trust, and active engagement; dynamic lighting and painterly detail.”
+                    </figcaption>
+                </figure>
+                
+                <h2>Faction Reputation</h2>
+                <p>Faction reputation represents the player's standing with the major groups in Greenville. Each faction has its own values, goals, and evaluation criteria.</p>
+                
+                <h3>Reputation Levels</h3>
+                <ol>
+                    <li><strong>Hostile:</strong> Faction actively works against player, blocks access to resources</li>
+                    <li><strong>Suspicious:</strong> Limited interaction, higher costs for services, restricted information</li>
+                    <li><strong>Neutral:</strong> Basic services available, standard pricing, no special benefits</li>
+                    <li><strong>Friendly:</strong> Discounted services, occasional assistance, some exclusive options</li>
+                    <li><strong>Allied:</strong> Full access to faction resources, regular support, unique quests and rewards</li>
+                    <li><strong>Leadership:</strong> Ability to direct faction activities, represent in negotiations, maximum benefits</li>
+                </ol>
+                
+                <h3>Building Reputation</h3>
+                <p>Players can improve their standing with factions through:</p>
+                <ul>
+                    <li>Completing faction-specific quests</li>
+                    <li>Supporting faction interests in council meetings</li>
+                    <li>Developing projects that align with faction values</li>
+                    <li>Building personal relationships with faction members</li>
+                    <li>Trading resources valued by the faction</li>
+                    <li>Defending faction interests against opponents</li>
+                </ul>
+                
+                <div class="alert alert-warning">
+                    <p><strong>Note:</strong> Improving reputation with one faction may damage relationships with opposing factions. Players must make strategic choices about which alliances to prioritize.</p>
+                </div>
+                
+                <h2>Character Customization</h2>
+                <p>Beyond skills and relationships, players can customize their character through several systems:</p>
+                
+                <h3>Appearance</h3>
+                <ul>
+                    <li><strong>Physical Traits:</strong> Body type, skin tone, facial features, hair style/color</li>
+                    <li><strong>Clothing:</strong> Outfits with functional benefits (weather protection, tool storage) and aesthetic options</li>
+                    <li><strong>Accessories:</strong> Hats, backpacks, tools, and decorative items</li>
+                </ul>
+                
+                <h3>Specializations</h3>
+                <p>As players advance in skills, they can choose specializations that provide unique abilities and bonuses:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Skill Category</th>
+                                <th>Specializations</th>
+                                <th>Special Abilities</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cultivation</td>
+                                <td>Master Gardener, Plant Breeder, Soil Specialist</td>
+                                <td>Unique crop varieties, superior soil fertility, reduced water needs</td>
+                            </tr>
+                            <tr>
+                                <td>Construction</td>
+                                <td>Architect, Craftsperson, Salvage Expert</td>
+                                <td>Unique building designs, high-quality tools, efficient material recovery</td>
+                            </tr>
+                            <tr>
+                                <td>Community</td>
+                                <td>Leader, Mediator, Educator</td>
+                                <td>Improved group coordination, conflict resolution, knowledge sharing</td>
+                            </tr>
+                            <tr>
+                                <td>Conservation</td>
+                                <td>Ecologist, Water Steward, Restoration Expert</td>
+                                <td>Enhanced biodiversity, water purification, accelerated ecosystem recovery</td>
+                            </tr>
+                            <tr>
+                                <td>Crafts</td>
+                                <td>Chef, Herbalist, Artisan</td>
+                                <td>Superior food benefits, medicinal preparations, valuable artistic creations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Home Base</h3>
+                <p>Players can customize their home in Greenville, which serves as both a personal space and a functional base for their activities:</p>
+                <ul>
+                    <li><strong>Location:</strong> Players can choose from available properties in different districts</li>
+                    <li><strong>Layout:</strong> Interior and exterior spaces can be arranged to suit player preferences</li>
+                    <li><strong>Functionality:</strong> Specialized areas for crafting, storage, research, and social gatherings</li>
+                    <li><strong>Aesthetics:</strong> Decorative elements that reflect player style and achievements</li>
+                    <li><strong>Sustainability:</strong> Systems for energy, water, and waste that reflect player values</li>
+                </ul>
+                
+                <!-- Image: Home Base Customization -->
+                <figure class="image-container">
+                    <img src="../images/home-base-customization.jpg" alt="An eco-friendly custom-built home base with gardens and various crafting stations">
+                    <figcaption>
+                        <strong>AI Prompt:</strong> “A concept art illustration of a customizable eco-friendly home base in a lush environment, featuring solar panels, rainwater collection systems, diverse gardens, and interior crafting stations; inviting style with subtle, warm colors and detailed design elements.”
+                    </figcaption>
+                </figure>
+                
+                <h2>Progression Balancing</h2>
+                <p>HomeSalad's progression systems are balanced to provide several key experiences:</p>
+                
+                <h3>Early Game (Year 1)</h3>
+                <ul>
+                    <li>Rapid initial skill development to give players a sense of accomplishment</li>
+                    <li>Multiple accessible paths to build initial relationships</li>
+                    <li>Clear feedback on how actions affect reputation and relationships</li>
+                    <li>Basic knowledge acquisition that introduces key concepts</li>
+                </ul>
+                
+                <h3>Mid Game (Year 2)</h3>
+                <ul>
+                    <li>Increasing specialization requirements that encourage strategic choices</li>
+                    <li>Deeper relationship development with key NPCs</li>
+                    <li>Faction tensions that require balancing competing interests</li>
+                    <li>Knowledge connections that reveal deeper systemic insights</li>
+                </ul>
+                
+                <h3>Late Game (Year 3)</h3>
+                <ul>
+                    <li>Mastery challenges that test advanced skills</li>
+                    <li>Leadership opportunities within factions</li>
+                    <li>Resolution of key relationship arcs</li>
+                    <li>Integration of knowledge into transformative projects</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Design Note:</strong> Character progression in HomeSalad is designed to feel organic and integrated with the narrative and world. Rather than abstract "leveling up," advancement is tied to visible changes in the character's capabilities, relationships, and impact on the community.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="gameplay-systems.html" class="prev-link">Previous: Gameplay Systems</a>
+                    <a href="skill-tree.html" class="next-link">Next: Skill Tree System</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

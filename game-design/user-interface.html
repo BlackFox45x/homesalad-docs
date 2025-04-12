@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - User Interface</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="game-overview.html">Game Overview</a>
+                            <a href="gameplay-systems.html">Gameplay Systems</a>
+                            <a href="character-progression.html">Character Progression</a>
+                            <a href="skill-tree.html">Skill Tree System</a>
+                            <a href="garden-building.html">Garden Building System</a>
+                            <a href="quest-rewards.html">Quest & Reward System</a>
+                            <a href="quest-design.html">Quest Design</a>
+                            <a href="world-design.html">World Design</a>
+                            <a href="user-interface.html">User Interface</a>
+                            <a href="art-audio.html">Art & Audio</a>
+                            <a href="development-roadmap.html">Development Roadmap</a>
+                            <a href="accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                            <a href="../technical/ui-mcp-implementation.html">UI-MCP Implementation</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Design Document</a>
+            <span class="separator">></span>
+            <span class="current">User Interface</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Design Document</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="skill-tree.html">Skill Tree System</a></li>
+                        <li><a href="garden-building.html">Garden Building System</a></li>
+                        <li><a href="quest-rewards.html">Quest & Reward System</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                        <li class="active"><a href="user-interface.html">User Interface</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="development-roadmap.html">Development Roadmap</a></li>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="accessibility.html">Accessibility</a></li>
+                        <li><a href="art-audio.html">Art & Audio</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/ui-mcp-implementation.html">UI-MCP Implementation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>User Interface</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details the user interface design for HomeSalad, including UI philosophy, HUD elements, menus, controls, and information visualization systems.</p>
+                </div>
+                
+                <h2>UI Design Philosophy</h2>
+                <p>HomeSalad's user interface is designed around several core principles:</p>
+                
+                <ul>
+                    <li><strong>Environmental Integration:</strong> UI elements that blend with and complement the game world rather than obscuring it</li>
+                    <li><strong>Contextual Information:</strong> Providing relevant information based on current activities and player focus</li>
+                    <li><strong>Visual Clarity:</strong> Clear, readable elements with consistent visual language and intuitive iconography</li>
+                    <li><strong>Progressive Disclosure:</strong> Revealing complexity as needed rather than overwhelming players with options</li>
+                    <li><strong>Customization:</strong> Allowing players to adjust UI elements to suit their preferences and needs</li>
+                </ul>
+                
+                <p>The UI aesthetic draws inspiration from natural systems, sustainable design, and community bulletin boards, using organic shapes, earthy colors, and handcrafted textures to reinforce the game's themes.</p>
+                
+                <h2>HUD (Heads-Up Display)</h2>
+                <p>HomeSalad features a minimalist HUD that provides essential information while maintaining immersion in the game world.</p>
+                
+                <h3>Core HUD Elements</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Description</th>
+                                <th>Position</th>
+                                <th>Behavior</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Status Indicators</td>
+                                <td>Player energy, time of day, season, weather conditions</td>
+                                <td>Top right corner</td>
+                                <td>Always visible, subtle design that expands on hover</td>
+                            </tr>
+                            <tr>
+                                <td>Contextual Actions</td>
+                                <td>Available interactions with nearby objects or characters</td>
+                                <td>Bottom center</td>
+                                <td>Appears when interaction is possible, fades when not needed</td>
+                            </tr>
+                            <tr>
+                                <td>Quick Access Bar</td>
+                                <td>Equipped tools, frequently used items, quick actions</td>
+                                <td>Bottom of screen</td>
+                                <td>Customizable slots, visual feedback on selection</td>
+                            </tr>
+                            <tr>
+                                <td>Minimap</td>
+                                <td>Local area map showing nearby points of interest</td>
+                                <td>Top right corner</td>
+                                <td>Toggleable, can be expanded to larger view</td>
+                            </tr>
+                            <tr>
+                                <td>Objective Tracker</td>
+                                <td>Current quest objectives and progress</td>
+                                <td>Top left corner</td>
+                                <td>Shows prioritized quest, can be expanded to show more</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Contextual HUD Elements</h3>
+                <p>Additional HUD elements appear based on current activities:</p>
+                <ul>
+                    <li><strong>Gardening Overlay:</strong> Plant information, growth stages, soil conditions when gardening</li>
+                    <li><strong>Building Grid:</strong> Placement guides, resource requirements when constructing</li>
+                    <li><strong>Social Indicators:</strong> Relationship status, conversation options during interactions</li>
+                    <li><strong>Environmental Metrics:</strong> Biodiversity, water quality, soil health in relevant contexts</li>
+                    <li><strong>System Monitors:</strong> Energy flow, water management, resource cycles for created systems</li>
+                </ul>
+                
+                <h3>HUD Customization</h3>
+                <p>Players can customize their HUD through several options:</p>
+                <ul>
+                    <li><strong>Opacity Settings:</strong> Adjust transparency of HUD elements</li>
+                    <li><strong>Scale Options:</strong> Change the size of UI components</li>
+                    <li><strong>Position Adjustments:</strong> Move certain elements to preferred locations</li>
+                    <li><strong>Information Density:</strong> Toggle between minimal and detailed information displays</li>
+                    <li><strong>Color Schemes:</strong> Select from accessibility-focused color options</li>
+                </ul>
+                
+                <h2>Menu Systems</h2>
+                <p>HomeSalad features several menu systems for different aspects of gameplay:</p>
+                
+                <h3>Main Menu</h3>
+                <p>The entry point to the game with options for:</p>
+                <ul>
+                    <li>Continue Game (loads most recent save)</li>
+                    <li>New Game (starts character creation)</li>
+                    <li>Load Game (access to save files)</li>
+                    <li>Multiplayer (host or join options)</li>
+                    <li>Settings (game options and customization)</li>
+                    <li>Credits (acknowledgments and team information)</li>
+                    <li>Exit Game (returns to desktop)</li>
+                </ul>
+                
+                <h3>In-Game Menu (Pause)</h3>
+                <p>Accessed during gameplay with options for:</p>
+                <ul>
+                    <li>Resume Game (returns to gameplay)</li>
+                    <li>Save Game (creates save file)</li>
+                    <li>Load Game (access to save files)</li>
+                    <li>Settings (game options and customization)</li>
+                    <li>Help (tutorials and guidance)</li>
+                    <li>Return to Main Menu (exits current game)</li>
+                </ul>
+                
+                <h3>Player Journal</h3>
+                <p>A multi-tabbed interface that serves as the main information hub:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tab</th>
+                                <th>Content</th>
+                                <th>Functionality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Quests</td>
+                                <td>Active, available, and completed quests</td>
+                                <td>Track progress, set priorities, review outcomes</td>
+                            </tr>
+                            <tr>
+                                <td>Map</td>
+                                <td>Full world map with discovered locations</td>
+                                <td>Fast travel, location information, custom markers</td>
+                            </tr>
+                            <tr>
+                                <td>Skills</td>
+                                <td>Character skills and knowledge</td>
+                                <td>Track progression, review techniques, plan development</td>
+                            </tr>
+                            <tr>
+                                <td>Relationships</td>
+                                <td>NPC and faction relationships</td>
+                                <td>View standings, gift preferences, conversation history</td>
+                            </tr>
+                            <tr>
+                                <td>Calendar</td>
+                                <td>Seasonal events, schedules, deadlines</td>
+                                <td>Plan activities, track time-sensitive events</td>
+                            </tr>
+                            <tr>
+                                <td>Collections</td>
+                                <td>Discovered plants, recipes, building designs</td>
+                                <td>Review collected knowledge, track completion</td>
+                            </tr>
+                            <tr>
+                                <td>Notes</td>
+                                <td>Player-created notes and observations</td>
+                                <td>Record ideas, create to-do lists, save information</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Inventory System</h3>
+                <p>Manages player items and resources:</p>
+                <ul>
+                    <li><strong>Carried Items:</strong> Personal inventory with weight/space limitations</li>
+                    <li><strong>Storage Systems:</strong> Home storage, community storage, specialized containers</li>
+                    <li><strong>Categorization:</strong> Items sorted by type, function, and source</li>
+                    <li><strong>Item Information:</strong> Detailed descriptions, properties, and usage options</li>
+                    <li><strong>Resource Management:</strong> Tracking of bulk materials and their quantities</li>
+                </ul>
+                
+                <h3>Building Interface</h3>
+                <p>Used for construction and placement activities:</p>
+                <ul>
+                    <li><strong>Blueprint Selection:</strong> Categories of available structures and objects</li>
+                    <li><strong>Resource Requirements:</strong> Materials needed for construction</li>
+                    <li><strong>Placement Grid:</strong> Visual guides for positioning and orientation</li>
+                    <li><strong>Preview System:</strong> See how items will look before finalizing</li>
+                    <li><strong>Modification Tools:</strong> Options to adjust, move, or remove existing elements</li>
+                </ul>
+                
+                <h3>Community Board</h3>
+                <p>Central hub for community information and activities:</p>
+                <ul>
+                    <li><strong>Event Calendar:</strong> Upcoming community events and activities</li>
+                    <li><strong>Project Tracking:</strong> Status of ongoing community initiatives</li>
+                    <li><strong>Resource Exchange:</strong> Requests and offers for materials and assistance</li>
+                    <li><strong>Voting System:</strong> Community decisions and policy proposals</li>
+                    <li><strong>Announcements:</strong> Important information and updates</li>
+                </ul>
+                
+                <h2>Control Scheme</h2>
+                <p>HomeSalad supports multiple input methods with customizable controls:</p>
+                
+                <h3>Keyboard and Mouse</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Control</th>
+                                <th>Default Mapping</th>
+                                <th>Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>WASD</td>
+                                <td>W, A, S, D keys</td>
+                                <td>Character movement</td>
+                            </tr>
+                            <tr>
+                                <td>Camera Control</td>
+                                <td>Mouse movement</td>
+                                <td>Look around, adjust view</td>
+                            </tr>
+                            <tr>
+                                <td>Interact</td>
+                                <td>E key</td>
+                                <td>Use objects, talk to NPCs</td>
+                            </tr>
+                            <tr>
+                                <td>Primary Action</td>
+                                <td>Left mouse button</td>
+                                <td>Use equipped tool, select items</td>
+                            </tr>
+                            <tr>
+                                <td>Secondary Action</td>
+                                <td>Right mouse button</td>
+                                <td>Alternative tool function, context menu</td>
+                            </tr>
+                            <tr>
+                                <td>Jump/Climb</td>
+                                <td>Space bar</td>
+                                <td>Traverse obstacles</td>
+                            </tr>
+                            <tr>
+                                <td>Sprint</td>
+                                <td>Left Shift</td>
+                                <td>Move faster (uses energy)</td>
+                            </tr>
+                            <tr>
+                                <td>Crouch</td>
+                                <td>Left Control</td>
+                                <td>Move carefully, access small spaces</td>
+                            </tr>
+                            <tr>
+                                <td>Inventory</td>
+                                <td>I key</td>
+                                <td>Open inventory screen</td>
+                            </tr>
+                            <tr>
+                                <td>Journal</td>
+                                <td>J key</td>
+                                <td>Open player journal</td>
+                            </tr>
+                            <tr>
+                                <td>Map</td>
+                                <td>M key</td>
+                                <td>Open full map view</td>
+                            </tr>
+                            <tr>
+                                <td>Quick Menu</td>
+                                <td>Q key</td>
+                                <td>Access frequently used items/actions</td>
+                            </tr>
+                            <tr>
+                                <td>Build Mode</td>
+                                <td>B key</td>
+                                <td>Enter building interface</td>
+                            </tr>
+                            <tr>
+                                <td>Take Screenshot</td>
+                                <td>F12 key</td>
+                                <td>Capture current view</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Controller Support</h3>
+                <p>Full controller support with mappings for:</p>
+                <ul>
+                    <li><strong>Movement:</strong> Left analog stick</li>
+                    <li><strong>Camera:</strong> Right analog stick</li>
+                    <li><strong>Actions:</strong> Face buttons (A, B, X, Y or equivalent)</li>
+                    <li><strong>Menu Access:</strong> D-pad directions for quick access</li>
+                    <li><strong>Tool Selection:</strong> Shoulder buttons and triggers</li>
+                    <li><strong>Special Functions:</strong> Button combinations for advanced actions</li>
+                </ul>
+                
+                <h3>Touch Controls</h3>
+                <p>Mobile-optimized interface with:</p>
+                <ul>
+                    <li><strong>Virtual Joystick:</strong> Movement control</li>
+                    <li><strong>Swipe Gestures:</strong> Camera control and menu navigation</li>
+                    <li><strong>Context-Sensitive Buttons:</strong> Actions based on current situation</li>
+                    <li><strong>Multi-Touch Support:</strong> Pinch to zoom, two-finger rotation</li>
+                    <li><strong>Tap Interactions:</strong> Direct object selection and manipulation</li>
+                </ul>
+                
+                <h2>Information Visualization</h2>
+                <p>HomeSalad uses several visualization systems to communicate complex information:</p>
+                
+                <h3>Environmental Indicators</h3>
+                <ul>
+                    <li><strong>Soil Health Visualization:</strong> Color gradients showing soil quality and composition</li>
+                    <li><strong>Water Flow Indicators:</strong> Animated lines showing water movement and drainage</li>
+                    <li><strong>Biodiversity Highlights:</strong> Visual indicators of species presence and interactions</li>
+                    <li><strong>Pollution Representation:</strong> Visual effects showing contamination levels and spread</li>
+                    <li><strong>Growth Potential:</strong> Overlays showing suitability for different plants and systems</li>
+                </ul>
+                
+                <h3>Relationship Visualization</h3>
+                <ul>
+                    <li><strong>Social Network Map:</strong> Interactive diagram of character relationships</li>
+                    <li><strong>Faction Standing Meters:</strong> Visual representation of reputation with groups</li>
+                    <li><strong>Relationship Dimensions:</strong> Multi-axis display of trust, respect, and affinity</li>
+                    <li><strong>Influence Flows:</strong> Visualization of how relationships affect community dynamics</li>
+                    <li><strong>Gift Impact Preview:</strong> Indication of how actions will affect relationships</li>
+                </ul>
+                
+                <h3>System Diagrams</h3>
+                <ul>
+                    <li><strong>Resource Cycles:</strong> Flowcharts showing material and energy movement</li>
+                    <li><strong>Ecological Webs:</strong> Visualizations of species interactions and dependencies</li>
+                    <li><strong>Community Networks:</strong> Maps of social connections and resource sharing</li>
+                    <li><strong>Seasonal Patterns:</strong> Circular diagrams showing yearly cycles and events</li>
+                    <li><strong>Progress Tracking:</strong> Visual representations of transformation over time</li>
+                </ul>
+                
+                <h2>Feedback Systems</h2>
+                <p>HomeSalad uses multiple channels to provide feedback to players:</p>
+                
+                <h3>Visual Feedback</h3>
+                <ul>
+                    <li><strong>Interaction Highlights:</strong> Subtle outlines around interactive objects</li>
+                    <li><strong>Action Effects:</strong> Visual representations of player actions and their impacts</li>
+                    <li><strong>Status Changes:</strong> Color shifts and animations showing state transitions</li>
+                    <li><strong>Progress Indicators:</strong> Fill bars, growing elements, and completion markers</li>
+                    <li><strong>Notification Icons:</strong> Symbols indicating new information or opportunities</li>
+                </ul>
+                
+                <h3>Audio Feedback</h3>
+                <ul>
+                    <li><strong>Interaction Sounds:</strong> Distinct audio for different actions and materials</li>
+                    <li><strong>Success/Failure Cues:</strong> Tones indicating outcome of actions</li>
+                    <li><strong>Ambient Changes:</strong> Shifting soundscapes reflecting environmental health</li>
+                    <li><strong>UI Navigation Sounds:</strong> Subtle audio cues for menu interaction</li>
+                    <li><strong>Notification Alerts:</strong> Distinctive sounds for different types of updates</li>
+                </ul>
+                
+                <h3>Haptic Feedback</h3>
+                <ul>
+                    <li><strong>Tool Use:</strong> Vibration patterns matching different activities</li>
+                    <li><strong>Environmental Conditions:</strong> Subtle feedback reflecting terrain and weather</li>
+                    <li><strong>System States:</strong> Pulses indicating resource flows and system functions</li>
+                    <li><strong>Notification Emphasis:</strong> Haptic alerts for important information</li>
+                    <li><strong>Contextual Resistance:</strong> Variable feedback based on materials and conditions</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Design Note:</strong> The UI design for HomeSalad emphasizes the connection between player and environment, using natural metaphors and organic design elements to reinforce the game's themes of sustainability and community. The interface aims to be both functional and educational, helping players understand complex systems while maintaining an intuitive and accessible experience.</p>
+                </div>
+                
+                <h2>Technical Implementation</h2>
+                <p>The user interface design described in this document is implemented using a robust technical architecture that integrates with Unity's Model Context Protocol (MCP) server. This implementation provides the foundation for the UI's functionality, responsiveness, and multiplayer capabilities.</p>
+                
+                <h3>Implementation Highlights</h3>
+                <ul>
+                    <li><strong>Layered Architecture:</strong> The UI is built on a layered architecture with clear separation of concerns between canvas management, event handling, UI state management, and panel implementation</li>
+                    <li><strong>MCP Server Integration:</strong> Integration with Unity's MCP server enables seamless multiplayer functionality and state synchronization</li>
+                    <li><strong>Event-Driven Communication:</strong> An event-driven architecture allows for decoupled communication between UI components and game systems</li>
+                    <li><strong>uMMORPG Component Refactoring:</strong> The UI system builds upon and extends the uMMORPG Remastered framework, customized for HomeSalad's specific needs</li>
+                </ul>
+                <p>For detailed information about the technical implementation of the UI system, including architecture diagrams, component descriptions, and integration details, please refer to the <a href="../technical/ui-mcp-implementation.html">UI-MCP Implementation</a> documentation in the Technical Guide.</p>
+                
+                <div class="alert alert-info">
+                    <p><strong>Implementation Note:</strong> When designing new UI features, consult both this design document and the technical implementation guide to ensure that your designs align with the established architecture and technical capabilities of the system.</p>
+                </div>
+                
+                <div class="navigation-links">
+                    <a href="world-design.html" class="prev-link">Previous: World Design</a>
+                    <a href="art-audio.html" class="next-link">Next: Art & Audio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="game-overview.html">Game Overview</a></li>
+                        <li><a href="gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="character-progression.html">Character Progression</a></li>
+                        <li><a href="quest-design.html">Quest Design</a></li>
+                        <li><a href="world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
