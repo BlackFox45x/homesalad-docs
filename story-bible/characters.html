@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - Characters</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="world-overview.html">World Overview</a>
+                            <a href="narrative-structure.html">Narrative Structure</a>
+                            <a href="factions.html">Factions & Organizations</a>
+                            <a href="characters.html">Characters</a>
+                            <a href="locations.html">Locations</a>
+                            <a href="cultural-elements.html">Cultural Elements</a>
+                            <a href="environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../game-design/index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="../game-design/game-overview.html">Game Overview</a>
+                            <a href="../game-design/gameplay-systems.html">Gameplay Systems</a>
+                            <a href="../game-design/character-progression.html">Character Progression</a>
+                            <a href="../game-design/quest-design.html">Quest Design</a>
+                            <a href="../game-design/world-design.html">World Design</a>
+                            <a href="../game-design/user-interface.html">User Interface</a>
+                            <a href="../game-design/art-audio.html">Art & Audio</a>
+                            <a href="../game-design/development-roadmap.html">Development Roadmap</a>
+                            <a href="../game-design/accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Story Bible</a>
+            <span class="separator">></span>
+            <span class="current">Characters</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="world-overview.html">World Overview</a></li>
+                        <li><a href="narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="factions.html">Factions & Organizations</a></li>
+                        <li class="active"><a href="characters.html">Characters</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="cultural-elements.html">Cultural Elements</a></li>
+                        <li><a href="environmental-systems.html">Environmental Systems</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Related Sections</h3>
+                    <ul>
+                        <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                        <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>Characters</h1>
+                
+                <div class="alert alert-success">
+                    <p>This section details the player character options, major NPCs, character archetypes, and the concept of community as character in HomeSalad.</p>
+                </div>
+                
+                <h2>Player Character</h2>
+                <p>In HomeSalad, players create their own character who arrives in Greenville with skills in sustainability and community building. The player character is customizable but has a defined role in the narrative.</p>
+                
+                <h3>Character Creation</h3>
+                <p>Players can customize their character with the following options:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Customization Category</th>
+                                <th>Options</th>
+                                <th>Gameplay Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Appearance</td>
+                                <td>Gender, body type, skin tone, hair style/color, facial features, clothing</td>
+                                <td>Primarily cosmetic, affects how NPCs initially address the character</td>
+                            </tr>
+                            <tr>
+                                <td>Background</td>
+                                <td>Urban Planner, Environmental Scientist, Community Organizer, Permaculture Designer, Traditional Farmer</td>
+                                <td>Provides starting skill bonuses and unique dialogue options</td>
+                            </tr>
+                            <tr>
+                                <td>Specialization</td>
+                                <td>Gardening, Building, Social, Technology, Crafting</td>
+                                <td>Determines initial skill levels and starting equipment</td>
+                            </tr>
+                            <tr>
+                                <td>Motivation</td>
+                                <td>Environmental Restoration, Community Building, Personal Growth, Economic Opportunity, Family Connection</td>
+                                <td>Influences relationship development with certain NPCs and faction reputation gains</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>Character Role</h3>
+                <p>Regardless of customization choices, the player character has a defined role in the narrative:</p>
+                <ul>
+                    <li>A newcomer to Greenville with expertise in sustainable practices</li>
+                    <li>Someone seeking to put their knowledge into practice in a real community</li>
+                    <li>A potential bridge between different factions and community members</li>
+                    <li>A catalyst for change who can inspire others to action</li>
+                </ul>
+                
+                <p>The player's choices throughout the game will determine how this role evolves, from community member to potential leader of the Green Spark Collective or even a reformer within MegaGrow Industries.</p>
+                
+                <h2>Major NPCs</h2>
+                <p>HomeSalad features a cast of fully developed NPCs who drive the narrative and provide gameplay opportunities. Each major NPC has:</p>
+                <ul>
+                    <li>A personal history tied to Greenville</li>
+                    <li>A unique perspective on the community's challenges</li>
+                    <li>Special skills or resources they can share</li>
+                    <li>A personal quest line that develops their character</li>
+                    <li>A relationship system with the player that evolves over time</li>
+                </ul>
+                
+                <div class="character-profiles">
+                    <div class="character-card">
+                        <h3>Elena Chen</h3>
+                        <div class="character-details">
+                            <div class="character-info">
+                                <p><strong>Role:</strong> Founder of the Green Spark Collective</p>
+                                <p><strong>Age:</strong> 35</p>
+                                <p><strong>Location:</strong> The Greenhouse (Downtown Commons)</p>
+                                <p><strong>Faction:</strong> Green Spark Collective</p>
+                            </div>
+                            <div class="character-description">
+                                <p>A former environmental scientist who returned to her hometown after witnessing ecological destruction in her research work. Elena founded the Green Spark Collective to create practical solutions to environmental problems. She's passionate, knowledgeable, and sometimes struggles with balancing idealism and pragmatism.</p>
+                                <p>Elena serves as an early mentor to the player, introducing them to the community and the basics of sustainable practices. Her personal quest line involves reconciling with her father, who works for MegaGrow, and finding ways to make the Collective more inclusive and effective.</p>
+                                <h4>Gameplay Contributions:</h4>
+                                <ul>
+                                    <li>Teaches advanced gardening techniques</li>
+                                    <li>Provides access to rare seeds and plants</li>
+                                    <li>Connects player with environmental networks</li>
+                                    <li>Offers strategic guidance for community organizing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <h3>Victor Reynolds</h3>
+                        <div class="character-details">
+                            <div class="character-info">
+                                <p><strong>Role:</strong> CEO of MegaGrow Industries</p>
+                                <p><strong>Age:</strong> 52</p>
+                                <p><strong>Location:</strong> Corporate Tower (visits Downtown office)</p>
+                                <p><strong>Faction:</strong> MegaGrow Industries</p>
+                            </div>
+                            <div class="character-description">
+                                <p>A charismatic business leader who believes that corporate efficiency and technology are the solutions to environmental and economic challenges. Victor grew up in a farming community that struggled with traditional methods, shaping his belief in industrial agriculture. He's not villainous but represents a fundamentally different approach to sustainability.</p>
+                                <p>Victor initially appears as an antagonist but can become a complex ally if the player chooses to work with MegaGrow to reform it from within. His personal quest line explores his growing awareness of the limitations of purely technological solutions and his relationship with his daughter, who secretly supports the Green Spark Collective.</p>
+                                <h4>Gameplay Contributions:</h4>
+                                <ul>
+                                    <li>Provides access to advanced agricultural technology</li>
+                                    <li>Offers corporate funding for large projects</li>
+                                    <li>Controls access to significant land resources</li>
+                                    <li>Influences city council decisions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <h3>Maria Gonzalez</h3>
+                        <div class="character-details">
+                            <div class="character-info">
+                                <p><strong>Role:</strong> Community Elder and Master Gardener</p>
+                                <p><strong>Age:</strong> 78</p>
+                                <p><strong>Location:</strong> Riverside Heights</p>
+                                <p><strong>Faction:</strong> Riverside Elders Association</p>
+                            </div>
+                            <div class="character-description">
+                                <p>A respected elder who has maintained traditional gardening practices throughout her life. Maria's family has lived in Greenville for generations, and she carries knowledge of heirloom crops, seasonal rhythms, and cultural traditions. She's warm but can be skeptical of new approaches that dismiss traditional wisdom.</p>
+                                <p>Maria serves as a connection to Greenville's past and a source of deep agricultural knowledge. Her personal quest line involves documenting her knowledge for future generations and reconciling traditional practices with new sustainable techniques.</p>
+                                <h4>Gameplay Contributions:</h4>
+                                <ul>
+                                    <li>Provides heirloom seeds with unique properties</li>
+                                    <li>Teaches companion planting and natural pest control</li>
+                                    <li>Shares stories that reveal Greenville's history</li>
+                                    <li>Connects player with elder community members</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <h3>Jackson Reed</h3>
+                        <div class="character-details">
+                            <div class="character-info">
+                                <p><strong>Role:</strong> Former Factory Worker, Maker</p>
+                                <p><strong>Age:</strong> 42</p>
+                                <p><strong>Location:</strong> The Workshop (Rust Belt District)</p>
+                                <p><strong>Faction:</strong> Rust Belt Reclamation Crew</p>
+                            </div>
+                            <div class="character-description">
+                                <p>A skilled craftsman who lost his manufacturing job when the factories closed. Jackson has adapted by learning to repurpose industrial materials into useful tools and structures. He's practical, resourceful, and sometimes bitter about the economic changes that have affected his community.</p>
+                                <p>Jackson represents the working-class perspective in Greenville and the potential for industrial skills to be repurposed for sustainability. His personal quest line involves developing a worker-owned cooperative to create green infrastructure and finding new purpose in the changing economy.</p>
+                                <h4>Gameplay Contributions:</h4>
+                                <ul>
+                                    <li>Teaches building and crafting techniques</li>
+                                    <li>Provides access to salvaged materials</li>
+                                    <li>Helps construct larger community projects</li>
+                                    <li>Connects player with former factory workers</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="character-card">
+                        <h3>Mayor Robert Thompson</h3>
+                        <div class="character-details">
+                            <div class="character-info">
+                                <p><strong>Role:</strong> Mayor of Greenville</p>
+                                <p><strong>Age:</strong> 61</p>
+                                <p><strong>Location:</strong> City Hall (Downtown Commons)</p>
+                                <p><strong>Faction:</strong> Greenville City Council</p>
+                            </div>
+                            <div class="character-description">
+                                <p>A career politician trying to balance competing interests in a struggling town. Mayor Thompson genuinely wants what's best for Greenville but is caught between MegaGrow's promises of economic revival and grassroots demands for community control. He's diplomatic, cautious, and sometimes indecisive.</p>
+                                <p>The Mayor serves as a gatekeeper to official resources and approvals. His personal quest line involves finding his political courage and deciding what legacy he wants to leave for Greenville.</p>
+                                <h4>Gameplay Contributions:</h4>
+                                <ul>
+                                    <li>Controls access to public land and resources</li>
+                                    <li>Influences council votes on player projects</li>
+                                    <li>Provides official recognition for initiatives</li>
+                                    <li>Connects player with regional political networks</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>Character Archetypes</h2>
+                <p>In addition to the major NPCs, HomeSalad features several character archetypes that appear throughout the game. These characters share certain traits but have individual personalities and stories:</p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Archetype</th>
+                                <th>Description</th>
+                                <th>Gameplay Role</th>
+                                <th>Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Community Gardeners</td>
+                                <td>Residents who participate in garden projects with varying levels of experience and commitment</td>
+                                <td>Provide labor for garden projects, share local knowledge, create social connections</td>
+                                <td>Sam the enthusiastic beginner, Delia the plant expert, Marcus the skeptic-turned-supporter</td>
+                            </tr>
+                            <tr>
+                                <td>Local Business Owners</td>
+                                <td>Shopkeepers and service providers trying to survive in Greenville's changing economy</td>
+                                <td>Sell supplies, buy produce, offer specialized services, provide economic perspective</td>
+                                <td>Mei at the General Store, Carlos at the Café, Leila at the Farmers Market</td>
+                            </tr>
+                            <tr>
+                                <td>Corporate Representatives</td>
+                                <td>MegaGrow employees with different levels of commitment to corporate values</td>
+                                <td>Present corporate viewpoint, offer technological solutions, create obstacles or opportunities</td>
+                                <td>Diana the true believer, James the conflicted scientist, Raj the pragmatic manager</td>
+                            </tr>
+                            <tr>
+                                <td>Environmental Activists</td>
+                                <td>Dedicated environmentalists with different approaches to advocacy and action</td>
+                                <td>Provide environmental information, assist with projects, organize protests or initiatives</td>
+                                <td>Zoe the radical, Thomas the policy wonk, Aisha the community educator</td>
+                            </tr>
+                            <tr>
+                                <td>Youth of Greenville</td>
+                                <td>Young residents caught between leaving for opportunities elsewhere and building a future in their hometown</td>
+                                <td>Bring energy to projects, connect with social media, represent future of community</td>
+                                <td>Jayden the tech-savvy teen, Lily the aspiring farmer, Miguel the community organizer</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2>Community as Character</h2>
+                <p>In HomeSalad, the community of Greenville itself functions as a character that evolves throughout the game:</p>
+                
+                <h3>Community States</h3>
+                <p>The community progresses through several states based on player actions:</p>
+                <ol>
+                    <li><strong>Fragmented:</strong> Initial state with low trust, limited cooperation, and environmental degradation</li>
+                    <li><strong>Awakening:</strong> Beginning to collaborate on small projects, growing awareness of possibilities</li>
+                    <li><strong>Organizing:</strong> Forming more structured initiatives, developing shared vision and resources</li>
+                    <li><strong>Transforming:</strong> Implementing major projects, changing physical and social landscape</li>
+                    <li><strong>Thriving:</strong> Sustainable systems in place, resilient social networks, environmental restoration</li>
+                </ol>
+                
+                <h3>Community Metrics</h3>
+                <p>The game tracks several metrics that reflect the state of the community:</p>
+                <ul>
+                    <li><strong>Environmental Health:</strong> Measures biodiversity, pollution levels, and ecosystem function</li>
+                    <li><strong>Social Cohesion:</strong> Tracks cooperation, trust, and collective efficacy</li>
+                    <li><strong>Economic Resilience:</strong> Measures local economic activity, resource circulation, and self-sufficiency</li>
+                    <li><strong>Knowledge Base:</strong> Tracks preservation and development of sustainable practices</li>
+                    <li><strong>Physical Infrastructure:</strong> Measures development of community spaces and sustainable systems</li>
+                </ul>
+                
+                <h3>Community Voice</h3>
+                <p>The community's collective perspective is expressed through:</p>
+                <ul>
+                    <li>Town hall meetings where diverse viewpoints are presented</li>
+                    <li>Community bulletin boards with notices and comments</li>
+                    <li>Local newspaper articles that summarize community developments</li>
+                    <li>Overheard conversations that change to reflect community sentiment</li>
+                    <li>Visual transformations that show the physical impact of community change</li>
+                </ul>
+                
+                <div class="alert alert-info">
+                    <p><strong>Design Note:</strong> The concept of "community as character" is central to HomeSalad's narrative design. While individual NPCs have their own stories and development, the collective transformation of Greenville provides the game's emotional core and measures the player's true progress.</p>
+                </div>
+                
+                <h2>Character Relationships</h2>
+                <p>HomeSalad features a relationship system that tracks the player's connections with individual NPCs:</p>
+                
+                <h3>Relationship Dimensions</h3>
+                <ul>
+                    <li><strong>Trust:</strong> How much the NPC believes in the player's reliability and intentions</li>
+                    <li><strong>Respect:</strong> How much the NPC values the player's skills and accomplishments</li>
+                    <li><strong>Affinity:</strong> How much the NPC personally likes and connects with the player</li>
+                </ul>
+                
+                <h3>Relationship Development</h3>
+                <p>Relationships develop through:</p>
+                <ul>
+                    <li>Dialogue choices that reveal character values and perspectives</li>
+                    <li>Completing personal quests for NPCs</li>
+                    <li>Including NPCs in community projects</li>
+                    <li>Regular interactions and activities</li>
+                    <li>Gift-giving based on NPC preferences</li>
+                </ul>
+                
+                <h3>Relationship Benefits</h3>
+                <p>Strong relationships provide:</p>
+                <ul>
+                    <li>Access to unique skills and knowledge</li>
+                    <li>Special items and resources</li>
+                    <li>Additional quest opportunities</li>
+                    <li>Support during community events and challenges</li>
+                    <li>Deeper narrative content and character development</li>
+                </ul>
+                
+                <div class="navigation-links">
+                    <a href="factions.html" class="prev-link">Previous: Factions & Organizations</a>
+                    <a href="locations.html" class="next-link">Next: Locations</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="world-overview.html">World Overview</a></li>
+                        <li><a href="narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="factions.html">Factions & Organizations</a></li>
+                        <li><a href="characters.html">Characters</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                        <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                        <li><a href="../game-design/world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
