@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSalad - GameObject Integration</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .gameobject-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .gameobject-card h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .component-list {
+            margin: 1rem 0;
+        }
+        
+        .component-item {
+            background-color: #f5f5f5;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        .component-name {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .component-description {
+            margin-top: 0.25rem;
+            font-size: 0.9rem;
+        }
+        
+        .code-example {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            font-family: var(--code-font);
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .implementation-status {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-complete {
+            background-color: var(--success-color);
+        }
+        
+        .status-in-progress {
+            background-color: var(--warning-color);
+        }
+        
+        .status-pending {
+            background-color: var(--danger-color);
+        }
+        
+        .status-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .console-container {
+            background-color: var(--dark-bg);
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow: hidden;
+            padding: 15px;
+            color: white;
+            font-family: var(--code-font);
+        }
+        
+        .console-error {
+            color: #ff5252;
+        }
+        
+        .console-warning {
+            color: #ffb74d;
+        }
+        
+        .console-info {
+            color: #64b5f6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">HomeSalad Documentation</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="../story-bible/index.html">Story Bible</a>
+                        <div class="dropdown-content">
+                            <a href="../story-bible/world-overview.html">World Overview</a>
+                            <a href="../story-bible/narrative-structure.html">Narrative Structure</a>
+                            <a href="../story-bible/factions.html">Factions & Organizations</a>
+                            <a href="../story-bible/characters.html">Characters</a>
+                            <a href="../story-bible/locations.html">Locations</a>
+                            <a href="../story-bible/cultural-elements.html">Cultural Elements</a>
+                            <a href="../story-bible/environmental-systems.html">Environmental Systems</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../game-design/index.html">Game Design</a>
+                        <div class="dropdown-content">
+                            <a href="../game-design/game-overview.html">Game Overview</a>
+                            <a href="../game-design/gameplay-systems.html">Gameplay Systems</a>
+                            <a href="../game-design/character-progression.html">Character Progression</a>
+                            <a href="../game-design/quest-design.html">Quest Design</a>
+                            <a href="../game-design/world-design.html">World Design</a>
+                            <a href="../game-design/user-interface.html">User Interface</a>
+                            <a href="../game-design/art-audio.html">Art & Audio</a>
+                            <a href="../game-design/development-roadmap.html">Development Roadmap</a>
+                            <a href="../game-design/accessibility.html">Accessibility</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="index.html">Game Programming & Architecture</a>
+                        <div class="dropdown-content">
+                            <a href="project-structure.html">Project Structure</a>
+                            <a href="database-integration.html">Database Integration</a>
+                            <a href="gameobject-integration.html">GameObject Integration</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="../technical/index.html">Technical Guide</a>
+                        <div class="dropdown-content">
+                            <a href="../technical/architecture-overview.html">Architecture Overview</a>
+                            <a href="../technical/core-systems.html">Core Systems</a>
+                            <a href="../technical/specific-systems.html">Specific Systems</a>
+                            <a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a>
+                            <a href="../technical/development-milestones.html">Development Milestones</a>
+                            <a href="../technical/technical-challenges.html">Technical Challenges</a>
+                            <a href="../technical/ui-mcp-implementation.html">UI-MCP Implementation</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span class="separator">></span>
+            <a href="index.html">Game Programming & Architecture</a>
+            <span class="separator">></span>
+            <span class="current">GameObject Integration</span>
+        </div>
+        
+        <div class="two-column">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Game Programming</h3>
+                    <ul>
+                        <li><a href="project-structure.html">Project Structure</a></li>
+                        <li><a href="database-integration.html">Database Integration</a></li>
+                        <li><a href="gameobject-integration.html" class="active">GameObject Integration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>GameObject Categories</h3>
+                    <ul>
+                        <li><a href="#player-gameobjects">Player GameObjects</a></li>
+                        <li><a href="#npc-gameobjects">NPC GameObjects</a></li>
+                        <li><a href="#environment-gameobjects">Environment GameObjects</a></li>
+                        <li><a href="#plant-gameobjects">Plant GameObjects</a></li>
+                        <li><a href="#building-gameobjects">Building GameObjects</a></li>
+                        <li><a href="#system-gameobjects">System GameObjects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Implementation Progress</h3>
+                    <ul>
+                        <li><a href="#implementation-progress">Progress Tracking</a></li>
+                        <li><a href="#unity-console">Unity Console Integration</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h1>HomeSalad GameObject Integration</h1>
+                
+                <div class="alert alert-success">
+                    <p>This page details each GameObject in HomeSalad, explaining how uMMORPG game assets, GameObjects, and data are being reused and extended. It includes code examples, integration explanations, and implementation progress tracking.</p>
+                </div>
+                
+                <h2>GameObject Overview</h2>
+                <p>HomeSalad extends the uMMORPG Remastered framework by adding new GameObjects and components to support gardening, environmental transformation, building, and community systems. This page documents how these GameObjects are integrated with the base framework and how they interact with each other.</p>
+                
+                <h2 id="player-gameobjects">Player GameObjects</h2>
+                
+                <div class="gameobject-card">
+                    <h3>HomeSaladPlayer</h3>
+                    <p>The HomeSaladPlayer GameObject extends the base Player class from uMMORPG to add gardening, building, and community interaction capabilities.</p>
+                    
+                    <div class="component-list">
+                        <h4>Components:</h4>
+                        <div class="component-item">
+                            <div class="component-name">HomeSaladPlayer.cs</div>
+                            <div class="component-description">Main player script that extends the uMMORPG Player class with HomeSalad-specific functionality.</div>
+                        </div>
+                        <div class="component-item">
+                            <div class="component-name">GardeningSkill.cs</div>
+                            <div class="component-description">Manages the player's gardening abilities, including planting, watering, and harvesting.</div>
+                        </div>
+                        <div class="component-item">
+                            <div class="component-name">BuildingSkill.cs</div>
+                            <div class="component-description">Handles the player's building capabilities, including placement and construction.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="code-example">
+                        <pre>
+// Example of HomeSaladPlayer.cs extending uMMORPG Player
+public class HomeSaladPlayer : Player
+{
+    // HomeSalad-specific player attributes
+    [SyncVar] public int gardeningSkill;
+    [SyncVar] public int buildingSkill;
+    [SyncVar] public int communitySkill;
+    
+    // References to HomeSalad components
+    public GardeningSkill gardeningComponent;
+    public BuildingSkill buildingComponent;
+    public CommunityInteraction communityComponent;
+    
+    // Command to plant a seed at the specified position
+    [Command]
+    public void CmdPlantSeed(string seedName, Vector3 position)
+    {
+        // Validate the player can plant here
+        if (gardeningComponent.CanPlant(position))
+        {
+            // Plant the seed
+            gardeningComponent.PlantSeed(seedName, position);
+        }
+    }
+}</pre>
+                    </div>
+                    
+                    <div class="implementation-status">
+                        <div class="status-indicator status-in-progress"></div>
+                        <span class="status-text">Implementation: 85% Complete</span>
+                    </div>
+                </div>
+                
+                <h2 id="npc-gameobjects">NPC GameObjects</h2>
+                
+                <div class="gameobject-card">
+                    <h3>HomeSaladNPC</h3>
+                    <p>The HomeSaladNPC GameObject extends the base NPC class from uMMORPG to add community roles, schedules, and relationship tracking.</p>
+                    
+                    <div class="component-list">
+                        <h4>Components:</h4>
+                        <div class="component-item">
+                            <div class="component-name">HomeSaladNPC.cs</div>
+                            <div class="component-description">Main NPC script that extends the uMMORPG NPC class with HomeSalad-specific functionality.</div>
+                        </div>
+                        <div class="component-item">
+                            <div class="component-name">NPCSchedule.cs</div>
+                            <div class="component-description">Manages the NPC's daily schedule and activities.</div>
+                        </div>
+                        <div class="component-item">
+                            <div class="component-name">RelationshipTracker.cs</div>
+                            <div class="component-description">Tracks relationships with players and other NPCs.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="implementation-status">
+                        <div class="status-indicator status-in-progress"></div>
+                        <span class="status-text">Implementation: 75% Complete</span>
+                    </div>
+                </div>
+                
+                <h2 id="environment-gameobjects">Environment GameObjects</h2>
+                
+                <div class="gameobject-card">
+                    <h3>EnvironmentArea</h3>
+                    <p>The EnvironmentArea GameObject represents a specific area in the game world with its own environmental state, biodiversity, and transformation capabilities.</p>
+                    
+                    <div class="component-list">
+                        <h4>Components:</h4>
+                        <div class="component-item">
+                            <div class="component-name">EnvironmentState.cs</div>
+                            <div class="component-description">Tracks the environmental state and properties of the area.</div>
+                        </div>
+                        <div class="component-item">
+                            <div class="component-name">EnvironmentTransformation.cs</div>
+                            <div class="component-description">Handles visual and functional transformation of the environment based on its state.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="implementation-status">
+                        <div class="status-indicator status-in-progress"></div>
+                        <span class="status-text">Implementation: 70% Complete</span>
+                    </div>
+                </div>
+                
+                <h2 id="plant-gameobjects">Plant GameObjects</h2>
+                
+                <div class="gameobject-card">
+                    <h3>Plant</h3>
+                    <p>The Plant GameObject represents a growable plant in the game world, with growth stages, watering needs, and harvestable products.</p>
+                    
+                    <div class="component-list">
+                        <h4>Components:</h4>
+                        <div class="component-item">
+                            <div class="component-name">Plant.cs</div>
+                            <div class="component-description">Main plant script that manages growth, health, and harvesting.</div>
+                        </div>
+                        <div class="component-item">
+                            <div class="component-name">GrowthStages.cs</div>
+                            <div class="component-description">Handles visual representation of different growth stages.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="implementation-status">
+                        <div class="status-indicator status-in-progress"></div>
+                        <span class="status-text">Implementation: 80% Complete</span>
+                    </div>
+                </div>
+                
+                <h2 id="unity-console">Unity Console Integration</h2>
+                
+                <p>The HomeSalad documentation includes real-time integration with the Unity Console, allowing developers to view errors, warnings, and logs directly within the documentation.</p>
+                
+                <div class="console-container">
+                    <div class="console-info">[INFO] HomeSalad GameObject system initialized</div>
+                    <div class="console-info">[INFO] Player prefab loaded with HomeSalad components</div>
+                    <div class="console-warning">[WARNING] NPC schedule system needs optimization</div>
+                    <div class="console-error">[ERROR] Missing reference to PlantGrowthManager in GardenPlot prefab</div>
+                    <div class="console-info">[INFO] Environment transformation system ready</div>
+                </div>
+                
+                <p>This console output helps developers identify and resolve issues quickly during implementation.</p>
+                
+                <h2 id="implementation-progress">Implementation Progress</h2>
+                
+                <table class="sortable">
+                    <thead>
+                        <tr>
+                            <th>GameObject</th>
+                            <th>Category</th>
+                            <th>Progress</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HomeSaladPlayer</td>
+                            <td>Player</td>
+                            <td>85%</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td>HomeSaladNPC</td>
+                            <td>NPC</td>
+                            <td>75%</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td>EnvironmentArea</td>
+                            <td>Environment</td>
+                            <td>70%</td>
+                            <td>In Progress</td>
+                        </tr>
+                        <tr>
+                            <td>Plant</td>
+                            <td>Plant</td>
+                            <td>80%</td>
+                            <td>In Progress</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                        <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                        <li><a href="../game-design/world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Programming</h3>
+                    <ul>
+                        <li><a href="project-structure.html">Project Structure</a></li>
+                        <li><a href="database-integration.html">Database Integration</a></li>
+                        <li><a href="gameobject-integration.html">GameObject Integration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
