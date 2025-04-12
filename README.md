@@ -40,6 +40,17 @@ The documentation is organized into the following sections:
 The HomeSalad documentation is hosted on GitHub Pages and can be accessed at:
 https://blackfox45x.github.io/homesalad-docs/
 
+## Setting up GitHub Pages
+
+To host this documentation on GitHub Pages:
+
+1. Go to this repository's Settings
+2. Navigate to "Pages" in the sidebar
+3. Under "Build and deployment", select "Deploy from a branch"
+4. Select the "main" branch and "/ (root)" folder
+5. Click "Save"
+6. The site will be published to https://blackfox45x.github.io/homesalad-docs/
+
 ## About HomeSalad
 
 HomeSalad is a community-building RPG where players transform a struggling town through sustainable practices. Players progress from newcomer to community leader and environmental champion, combating environmental degradation and corporate takeover threats.
