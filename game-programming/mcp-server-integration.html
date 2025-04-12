@@ -6,161 +6,7 @@
     <title>HomeSalad - MCP Server Integration</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Source+Code+Pro&display=swap">
     <link rel="stylesheet" href="../css/styles.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize task completion checkboxes
-            document.querySelectorAll('.task-checkbox').forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    const taskItem = this.closest('.task-item');
-                    if (this.checked) {
-                        taskItem.classList.add('completed');
-                    } else {
-                        taskItem.classList.remove('completed');
-                    }
-                    updateProgressBars();
-                });
-            });
-            
-            // Initialize error resolution toggles
-            document.querySelectorAll('.error-header').forEach(header => {
-                header.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    const content = this.nextElementSibling;
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + "px";
-                    }
-                });
-            });
-            
-            // Initialize sortable tables
-            document.querySelectorAll('.sortable').forEach(table => {
-                const headers = table.querySelectorAll('th');
-                headers.forEach((header, index) => {
-                    if (!header.classList.contains('no-sort')) {
-                        header.addEventListener('click', () => {
-                            sortTable(table, index);
-                        });
-                        header.classList.add('sortable-header');
-                    }
-                });
-            });
-            
-            // Initialize filter functionality
-            document.getElementById('errorFilter').addEventListener('keyup', function() {
-                filterErrors(this.value);
-            });
-            
-            document.getElementById('taskFilter').addEventListener('keyup', function() {
-                filterTasks(this.value);
-            });
-            
-            // Update progress bars on load
-            updateProgressBars();
-        });
-        
-        // Function to update all progress bars
-        function updateProgressBars() {
-            updateCategoryProgress('gameplay-tasks', 'gameplay-progress');
-            updateCategoryProgress('environment-tasks', 'environment-progress');
-            updateCategoryProgress('character-tasks', 'character-progress');
-            updateCategoryProgress('ui-tasks', 'ui-progress');
-            updateCategoryProgress('networking-tasks', 'networking-progress');
-            
-            // Update overall progress
-            const totalTasks = document.querySelectorAll('.task-checkbox').length;
-            const completedTasks = document.querySelectorAll('.task-checkbox:checked').length;
-            const overallPercentage = (completedTasks / totalTasks) * 100;
-            
-            const overallProgressBar = document.getElementById('overall-progress');
-            overallProgressBar.style.width = overallPercentage + '%';
-            document.getElementById('overall-percentage').textContent = Math.round(overallPercentage) + '%';
-        }
-        
-        // Function to update category progress
-        function updateCategoryProgress(tasksId, progressId) {
-            const categoryTasks = document.querySelectorAll(`#${tasksId} .task-checkbox`);
-            const completedCategoryTasks = document.querySelectorAll(`#${tasksId} .task-checkbox:checked`);
-            
-            if (categoryTasks.length > 0) {
-                const percentage = (completedCategoryTasks.length / categoryTasks.length) * 100;
-                const progressBar = document.getElementById(progressId);
-                progressBar.style.width = percentage + '%';
-                document.querySelector(`#${progressId}-text`).textContent = Math.round(percentage) + '%';
-            }
-        }
-        
-        // Function to filter errors
-        function filterErrors(query) {
-            const errorItems = document.querySelectorAll('.error-item');
-            query = query.toLowerCase();
-            
-            errorItems.forEach(item => {
-                const errorText = item.textContent.toLowerCase();
-                if (errorText.includes(query)) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-        
-        // Function to filter tasks
-        function filterTasks(query) {
-            const taskItems = document.querySelectorAll('.task-item');
-            query = query.toLowerCase();
-            
-            taskItems.forEach(item => {
-                const taskText = item.textContent.toLowerCase();
-                if (taskText.includes(query)) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-        
-        // Table sorting function
-        function sortTable(table, column) {
-            const tbody = table.querySelector('tbody');
-            const rows = Array.from(tbody.querySelectorAll('tr'));
-            const header = table.querySelectorAll('th')[column];
-            const isAscending = header.classList.contains('sort-asc');
-            
-            // Clear all sort classes
-            table.querySelectorAll('th').forEach(th => {
-                th.classList.remove('sort-asc', 'sort-desc');
-            });
-            
-            // Set new sort class
-            header.classList.add(isAscending ? 'sort-desc' : 'sort-asc');
-            
-            // Sort the rows
-            rows.sort((a, b) => {
-                const aValue = a.cells[column].textContent.trim();
-                const bValue = b.cells[column].textContent.trim();
-                
-                // Check if values are numbers
-                const aNum = parseFloat(aValue);
-                const bNum = parseFloat(bValue);
-                
-                if (!isNaN(aNum) && !isNaN(bNum)) {
-                    return isAscending ? bNum - aNum : aNum - bNum;
-                }
-                
-                // Otherwise sort as strings
-                return isAscending 
-                    ? bValue.localeCompare(aValue) 
-                    : aValue.localeCompare(bValue);
-            });
-            
-            // Reappend rows in new order
-            rows.forEach(row => tbody.appendChild(row));
-        }
-    </script>
     <style>
-        /* Additional styles for MCP Server Integration page */
         .task-section {
             margin-bottom: 2rem;
         }
@@ -231,10 +77,6 @@
             text-decoration: none;
         }
         
-        .task-reference a:hover {
-            text-decoration: underline;
-        }
-        
         .progress-container {
             margin: 1rem 0;
         }
@@ -286,26 +128,8 @@
             color: #d32f2f;
         }
         
-        .error-header:after {
-            content: '\002B';
-            color: #d32f2f;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-        
-        .error-header.active:after {
-            content: "\2212";
-        }
-        
         .error-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-            padding: 0 1rem;
-        }
-        
-        .error-details {
-            padding: 1rem 0;
+            padding: 1rem;
         }
         
         .error-message {
@@ -317,52 +141,12 @@
             overflow-x: auto;
         }
         
-        .error-solution {
-            margin-top: 1rem;
-        }
-        
-        .error-solution h5 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .error-solution ol {
-            margin-left: 1.5rem;
-        }
-        
-        .error-reference {
-            font-size: 0.8rem;
-            margin-top: 1rem;
-            color: #666;
-        }
-        
-        .filter-input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
         .mcp-server-info {
             background-color: #e8f5e9;
             border-left: 4px solid var(--primary-color);
             padding: 1rem;
             margin: 1rem 0;
             border-radius: 0 4px 4px 0;
-        }
-        
-        .mcp-server-info h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-        }
-        
-        .mcp-server-info code {
-            background-color: rgba(0, 0, 0, 0.05);
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            font-size: 0.9em;
         }
         
         .mcp-tool-example {
@@ -464,7 +248,6 @@
                         <li><a href="#environment-tasks">Environment Systems</a></li>
                         <li><a href="#character-tasks">Character Systems</a></li>
                         <li><a href="#ui-tasks">UI Systems</a></li>
-                        <li><a href="#networking-tasks">Networking Systems</a></li>
                     </ul>
                 </div>
                 
@@ -474,16 +257,6 @@
                         <li><a href="#compilation-errors">Compilation Errors</a></li>
                         <li><a href="#runtime-errors">Runtime Errors</a></li>
                         <li><a href="#networking-errors">Networking Errors</a></li>
-                        <li><a href="#database-errors">Database Errors</a></li>
-                    </ul>
-                </div>
-                
-                <div class="sidebar-section">
-                    <h3>Related Sections</h3>
-                    <ul>
-                        <li><a href="../technical/ui-mcp-implementation.html">UI-MCP Implementation</a></li>
-                        <li><a href="../technical/technical-challenges.html">Technical Challenges</a></li>
-                        <li><a href="../technical/development-milestones.html">Development Milestones</a></li>
                     </ul>
                 </div>
             </div>
@@ -499,14 +272,6 @@
                     <h3>MCP Server Overview</h3>
                     <p>The Model Context Protocol (MCP) Server is a specialized tool that connects to Unity to provide real-time monitoring, error tracking, and task management for the HomeSalad project. It serves as a bridge between the Unity Editor and the development documentation, ensuring that all implementation tasks are tracked and errors are promptly addressed.</p>
                     
-                    <p>The MCP Server provides the following capabilities:</p>
-                    <ul>
-                        <li><strong>Task Tracking:</strong> Monitors implementation progress across all game systems</li>
-                        <li><strong>Error Detection:</strong> Identifies and logs compilation and runtime errors</li>
-                        <li><strong>Console Integration:</strong> Displays Unity Console output directly in the documentation</li>
-                        <li><strong>Build Verification:</strong> Validates build integrity and identifies missing references</li>
-                    </ul>
-                    
                     <p>To connect to the MCP Server, run the following command in your terminal:</p>
                     <div class="mcp-tool-example">
                         <pre>uv --directory /Users/[username]/Applications/UnityMCP/UnityMcpServer/src run server.py</pre>
@@ -518,18 +283,16 @@
                 <div class="progress-container">
                     <div class="progress-label">
                         <span>Overall Completion:</span>
-                        <span id="overall-percentage">72%</span>
+                        <span>72%</span>
                     </div>
                     <div class="progress-bar-container">
-                        <div id="overall-progress" class="progress-bar" style="width: 72%;"></div>
+                        <div class="progress-bar" style="width: 72%;"></div>
                     </div>
                 </div>
                 
                 <h2>Build Completion Tasks</h2>
                 
                 <p>The following sections outline all remaining tasks required to complete the HomeSalad game build. Each task includes a description, implementation steps, and references to relevant documentation.</p>
-                
-                <input type="text" id="taskFilter" class="filter-input" placeholder="Filter tasks by keyword...">
                 
                 <div class="task-section">
                     <div id="gameplay-tasks" class="task-category">
@@ -538,10 +301,10 @@
                         <div class="progress-container">
                             <div class="progress-label">
                                 <span>Completion:</span>
-                                <span id="gameplay-progress-text">80%</span>
+                                <span>80%</span>
                             </div>
                             <div class="progress-bar-container">
-                                <div id="gameplay-progress" class="progress-bar" style="width: 80%;"></div>
+                                <div class="progress-bar" style="width: 80%;"></div>
                             </div>
                         </div>
                         
@@ -552,18 +315,8 @@
                                     <div class="task-title">Implement Basic Gardening Mechanics</div>
                                     <div class="task-description">Create the core gardening system with planting, watering, and harvesting functionality.</div>
                                     <div class="task-reference">
-                                        Reference: <a href="../game-design/gameplay-systems.html#gardening">Gardening System Design</a> | 
-                                        <a href="gameobject-integration.html#plant-gameobjects">Plant GameObject Integration</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="task-item completed">
-                                <input type="checkbox" class="task-checkbox" checked>
-                                <div class="task-content">
-                                    <div class="task-title">Implement Plant Growth Stages</div>
-                                    <div class="task-description">Create visual and functional growth stages for all plant types.</div>
-                                    <div class="task-reference">
-                                        Reference: <a href="../technical/specific-systems.html#plant-growth">Plant Growth System</a>
+                                        Reference: <a href="../game-design/gameplay-systems.html">Gardening System Design</a> | 
+                                        <a href="gameobject-integration.html">Plant GameObject Integration</a>
                                     </div>
                                 </div>
                             </li>
@@ -573,29 +326,8 @@
                                     <div class="task-title">Implement Seasonal Effects on Plants</div>
                                     <div class="task-description">Add seasonal variations to plant growth rates, appearance, and yields.</div>
                                     <div class="task-reference">
-                                        Reference: <a href="../game-design/gameplay-systems.html#seasons">Seasonal System Design</a> | 
-                                        <a href="../technical/specific-systems.html#seasonal-system">Seasonal System Implementation</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="task-item">
-                                <input type="checkbox" class="task-checkbox">
-                                <div class="task-content">
-                                    <div class="task-title">Implement Community Event System</div>
-                                    <div class="task-description">Create the system for scheduling and managing community events based on environmental state and player actions.</div>
-                                    <div class="task-reference">
-                                        Reference: <a href="../game-design/gameplay-systems.html#community-events">Community Events Design</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="task-item completed">
-                                <input type="checkbox" class="task-checkbox" checked>
-                                <div class="task-content">
-                                    <div class="task-title">Implement Basic Quest System</div>
-                                    <div class="task-description">Extend the uMMORPG quest system to support environmental and community-based objectives.</div>
-                                    <div class="task-reference">
-                                        Reference: <a href="../game-design/quest-design.html">Quest Design</a> | 
-                                        <a href="../technical/specific-systems.html#quest-system">Quest System Implementation</a>
+                                        Reference: <a href="../game-design/gameplay-systems.html">Seasonal System Design</a> | 
+                                        <a href="../technical/specific-systems.html">Seasonal System Implementation</a>
                                     </div>
                                 </div>
                             </li>
@@ -608,10 +340,10 @@
                         <div class="progress-container">
                             <div class="progress-label">
                                 <span>Completion:</span>
-                                <span id="environment-progress-text">65%</span>
+                                <span>65%</span>
                             </div>
                             <div class="progress-bar-container">
-                                <div id="environment-progress" class="progress-bar" style="width: 65%;"></div>
+                                <div class="progress-bar" style="width: 65%;"></div>
                             </div>
                         </div>
                         
@@ -622,8 +354,8 @@
                                     <div class="task-title">Implement Environmental State Tracking</div>
                                     <div class="task-description">Create the system for tracking environmental health, pollution, and biodiversity in each area.</div>
                                     <div class="task-reference">
-                                        Reference: <a href="../technical/specific-systems.html#environment-state">Environment State System</a> | 
-                                        <a href="database-integration.html#environment">Environment Database Integration</a>
+                                        Reference: <a href="../technical/specific-systems.html">Environment State System</a> | 
+                                        <a href="database-integration.html">Environment Database Integration</a>
                                     </div>
                                 </div>
                             </li>
@@ -633,82 +365,178 @@
                                     <div class="task-title">Implement Visual Environmental Transformation</div>
                                     <div class="task-description">Create the visual changes that occur as the environment transitions between degraded, transitional, and restored states.</div>
                                     <div class="task-reference">
-                                        Reference: <a href="../game-design/world-design.html#environmental-states">Environmental States Design</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="task-item completed">
-                                <input type="checkbox" class="task-checkbox" checked>
-                                <div class="task-content">
-                                    <div class="task-title">Implement Weather System</div>
-                                    <div class="task-description">Create the weather system with different weather types, visual effects, and gameplay impacts.</div>
-                                    <div class="task-reference">
-                                        Reference: <a href="../technical/specific-systems.html#weather-system">Weather System Implementation</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="task-item">
-                                <input type="checkbox" class="task-checkbox">
-                                <div class="task-content">
-                                    <div class="task-title">Implement Day/Night Cycle</div>
-                                    <div class="task-description">Create a day/night cycle with lighting changes and time-based events.</div>
-                                    <div class="task-reference">
-                                        Reference: <a href="../technical/specific-systems.html#time-system">Time System Implementation</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="task-item">
-                                <input type="checkbox" class="task-checkbox">
-                                <div class="task-content">
-                                    <div class="task-title">Implement Seasonal Transitions</div>
-                                    <div class="task-description">Create seasonal transitions with visual changes to the environment and impacts on gameplay.</div>
-                                    <div class="task-reference">
-                                        Reference: <a href="../game-design/gameplay-systems.html#seasons">Seasonal System Design</a>
+                                        Reference: <a href="../game-design/world-design.html">Environmental States Design</a>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    
-                    <div id="character-tasks" class="task-category">
-                        <h3>Character Systems</h3>
-                        
-                        <div class="progress-container">
-                            <div class="progress-label">
-                                <span>Completion:</span>
-                                <span id="character-progress-text">75%</span>
+                </div>
+                
+                <h2 id="compilation-errors">Current Compilation Errors</h2>
+                
+                <div class="error-section">
+                    <div class="error-item">
+                        <div class="error-header">
+                            <h4>Missing reference to EnvironmentTransformationManager in scene</h4>
+                        </div>
+                        <div class="error-content">
+                            <div class="error-message">
+                                NullReferenceException: Object reference not set to an instance of an object
+                                at HomeSalad.Environment.EnvironmentState.Start () [0x00012] in Assets/Scripts/Environment/EnvironmentState.cs:42
                             </div>
-                            <div class="progress-bar-container">
-                                <div id="character-progress" class="progress-bar" style="width: 75%;"></div>
+                            <div class="error-solution">
+                                <h5>Resolution Steps:</h5>
+                                <ol>
+                                    <li>Open the Greenville_Town scene</li>
+                                    <li>Add the EnvironmentManager prefab to the scene</li>
+                                    <li>Ensure the EnvironmentTransformationManager component is attached</li>
+                                    <li>Set the reference in the Inspector for all EnvironmentState objects</li>
+                                </ol>
+                                <div class="task-reference">
+                                    Reference: <a href="../technical/specific-systems.html">Environment System Implementation</a> | 
+                                    <a href="gameobject-integration.html">Environment GameObject Integration</a>
+                                </div>
                             </div>
                         </div>
-                        
-                        <ul class="task-list">
-                            <li class="task-item completed">
-                                <input type="checkbox" class="task-checkbox" checked>
-                                <div class="task-content">
-                                    <div class="task-title">Implement Player Skill System</div>
-                                    <div class="task-description">Create the skill system for gardening, building, and community skills with progression and unlocks.</div>
-                                    <div class="task-reference">
-                                        Reference: <a href="../game-design/character-progression.html#skills">Skill System Design</a> | 
-                                        <a href="gameobject-integration.html#player-gameobjects">Player GameObject Integration</a>
-                                    </div>
+                    </div>
+                    
+                    <div class="error-item">
+                        <div class="error-header">
+                            <h4>Missing PlantGrowthManager reference in GardenPlot prefab</h4>
+                        </div>
+                        <div class="error-content">
+                            <div class="error-message">
+                                NullReferenceException: Object reference not set to an instance of an object
+                                at HomeSalad.Gardening.GardenPlot.PlantSeed () [0x00023] in Assets/Scripts/Gardening/GardenPlot.cs:78
+                            </div>
+                            <div class="error-solution">
+                                <h5>Resolution Steps:</h5>
+                                <ol>
+                                    <li>Open the GardenPlot prefab in the Prefab Editor</li>
+                                    <li>Add a reference to the PlantGrowthManager in the Inspector</li>
+                                    <li>Save the prefab and update all instances in the scenes</li>
+                                </ol>
+                                <div class="task-reference">
+                                    Reference: <a href="../technical/specific-systems.html">Plant Growth System</a> | 
+                                    <a href="gameobject-integration.html">Plant GameObject Integration</a>
                                 </div>
-                            </li>
-                            <li class="task-item completed">
-                                <input type="checkbox" class="task-checkbox" checked>
-                                <div class="task-content">
-                                    <div class="task-title">Implement NPC Schedules</div>
-                                    <div class="task-description">Create daily schedules for NPCs with different activities based on time of day and weather.</div>
-                                    <div class="task-reference">
-                                        Reference: <a href="../game-design/gameplay-systems.html#npc-schedules">NPC Schedule Design</a> | 
-                                        <a href="gameobject-integration.html#npc-gameobjects">NPC GameObject Integration</a>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 id="runtime-errors">Runtime Errors</h2>
+                
+                <div class="error-section">
+                    <div class="error-item">
+                        <div class="error-header">
+                            <h4>Database connection error when saving plant data</h4>
+                        </div>
+                        <div class="error-content">
+                            <div class="error-message">
+                                SqliteException: no such table: plants
+                                at HomeSalad.Database.HomeSaladDatabase.SavePlant () [0x00056] in Assets/Scripts/Core/HomeSaladDatabase.cs:215
+                            </div>
+                            <div class="error-solution">
+                                <h5>Resolution Steps:</h5>
+                                <ol>
+                                    <li>Ensure the database schema has been properly initialized</li>
+                                    <li>Run the database schema extension method to create the plants table</li>
+                                    <li>Verify the table structure matches the Plant class properties</li>
+                                </ol>
+                                <div class="task-reference">
+                                    Reference: <a href="database-integration.html">Database Integration</a> | 
+                                    <a href="../technical/core-systems.html">Database System</a>
                                 </div>
-                            </li>
-                            <li class="task-item">
-                                <input type="checkbox" class="task-checkbox">
-                                <div class="task-content">
-                                    <div class="task-title">Implement Relationship System</div>
-                                    <div class="task-description">Create the relationship system for tracking player relationships with NPCs and factions.</div>
-                                    <div class="task-reference">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>MCP Server Tools</h2>
+                
+                <p>The MCP Server provides several tools to help with the development and debugging of HomeSalad:</p>
+                
+                <ul>
+                    <li><strong>manage_script</strong>: Manages C# scripts in Unity (create, read, update, delete)</li>
+                    <li><strong>manage_scene</strong>: Manages Unity scenes (load, save, create, get hierarchy)</li>
+                    <li><strong>manage_editor</strong>: Controls and queries the Unity editor's state and settings</li>
+                    <li><strong>manage_gameobject</strong>: Manages GameObjects (create, modify, delete, find)</li>
+                    <li><strong>manage_asset</strong>: Performs asset operations (import, create, modify, delete)</li>
+                    <li><strong>read_console</strong>: Gets messages from or clears the Unity Editor console</li>
+                </ul>
+                
+                <p>These tools can be used to automate many development tasks and help resolve errors more efficiently.</p>
+                
+                <div class="mcp-tool-example">
+                    <pre>
+// Example of using the manage_gameobject tool to fix a missing reference
+{
+  "action": "modify",
+  "target": "GardenPlot",
+  "search_method": "by_name",
+  "component_properties": {
+    "GardenPlot": {
+      "plantGrowthManager": {"find": "PlantGrowthManager", "method": "by_name"}
+    }
+  }
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Story Bible</h3>
+                    <ul>
+                        <li><a href="../story-bible/world-overview.html">World Overview</a></li>
+                        <li><a href="../story-bible/narrative-structure.html">Narrative Structure</a></li>
+                        <li><a href="../story-bible/factions.html">Factions & Organizations</a></li>
+                        <li><a href="../story-bible/characters.html">Characters</a></li>
+                        <li><a href="../story-bible/locations.html">Locations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Design</h3>
+                    <ul>
+                        <li><a href="../game-design/game-overview.html">Game Overview</a></li>
+                        <li><a href="../game-design/gameplay-systems.html">Gameplay Systems</a></li>
+                        <li><a href="../game-design/character-progression.html">Character Progression</a></li>
+                        <li><a href="../game-design/quest-design.html">Quest Design</a></li>
+                        <li><a href="../game-design/world-design.html">World Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Game Programming</h3>
+                    <ul>
+                        <li><a href="project-structure.html">Project Structure</a></li>
+                        <li><a href="database-integration.html">Database Integration</a></li>
+                        <li><a href="gameobject-integration.html">GameObject Integration</a></li>
+                        <li><a href="mcp-server-integration.html">MCP Server Integration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technical Guide</h3>
+                    <ul>
+                        <li><a href="../technical/architecture-overview.html">Architecture Overview</a></li>
+                        <li><a href="../technical/core-systems.html">Core Systems</a></li>
+                        <li><a href="../technical/specific-systems.html">Specific Systems</a></li>
+                        <li><a href="../technical/multiplayer-sync.html">Multiplayer Synchronization</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 HomeSalad Game Documentation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
